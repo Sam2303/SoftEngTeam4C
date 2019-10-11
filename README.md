@@ -1,1 +1,1 @@
-# SoftEngTeam4C
+# Software Engineering Theory and Practice (Coursework)
