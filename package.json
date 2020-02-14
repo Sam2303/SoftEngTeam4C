@@ -1,0 +1,24 @@
+{
+  "name": "softengteam4c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harry-Martin/SoftEngTeam4C.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/Harry-Martin/SoftEngTeam4C/issues"
+  },
+  "homepage": "https://github.com/Harry-Martin/SoftEngTeam4C#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.18.1"
+  }
+}
