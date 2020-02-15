@@ -8,12 +8,9 @@ const app = express();
 app.use(express.json());
 app.use("/static", express.static(__dirname + "/static"));
 
-// app.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, "pages", "index.html"));
-// });
-
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "pages", "index.html"));
 });
 
 app.listen(8080);
+
