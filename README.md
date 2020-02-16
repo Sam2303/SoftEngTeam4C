@@ -17,9 +17,12 @@ This can be achieved using:
 $ psql -f src/setup.sql
 
 ```
-Please note that this must run as one of the Postgres super users for your current Postgres cluster.
+Please note that this must run as one of the PostgreSQL super users for your current Postgres cluster.
 By default (on linux) this is the user 'postgres'.
-This can be achieved by running `$ sudo su postgres'.
+This can be achieved by running:
+```bash
+$ sudo su postgres
+```
 Alternatively, running the following single command will yeild the same result as running the previous two:
 ```bash
 $ sudo -u postgres psql -f src/setup.sql
