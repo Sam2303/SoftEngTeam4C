@@ -1,4 +1,6 @@
 create database team4c;
+create user postgres;
+alter user postgres with superuser;
 alter user postgres password 'postgres';
 
 \c team4c;
