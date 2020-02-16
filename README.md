@@ -19,7 +19,7 @@ $ psql -f src/setup.sql
 ```
 Please note that this must run as one of the PostgreSQL super users for your current Postgres cluster.
 By default (on linux) this is the user 'postgres'.
-This can be achieved by running:
+This can be achieved by the following command before the previous one:
 ```bash
 $ sudo su postgres
 ```
