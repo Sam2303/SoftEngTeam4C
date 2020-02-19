@@ -4,7 +4,7 @@ GitHub Username|Name|UP Number
 -|-|-
 Harry-Martin|Harry Martin|UP896106
 psidex|Simon Jenner|UP897821
-username|name|UPxxxxxx
+Sam200080|Sam Parsons|UP889823
 username|name|UPxxxxxx
 username|name|UPxxxxxx
 username|name|UPxxxxxx
