@@ -6,7 +6,7 @@ Harry-Martin|Harry Martin|UP896106
 psidex|Simon Jenner|UP897821
 Sam200080|Sam Parsons|UP889823
 SammyJC|Sam Clifton|UP880264
-username|name|UPxxxxxx
+Bancsii|Daniel McKenna|UP846201
 username|name|UPxxxxxx
 
 ## Database
