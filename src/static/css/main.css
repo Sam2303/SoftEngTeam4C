@@ -1,35 +1,52 @@
 *{
     font-family: 'Patua One';
+    margin: 0;
+    padding: 0;
 }
 
-/* LOGIN */
-
 body{
-  background: #343746;
-  /* background: #f3f3f3; */
-  font-size: 150%;
+  /* background: #343746; */
+  font-size: 140%;
   line-height: 140%;
-  margin: 0;
-  padding: 0;
 }
 
 header{
   background: #343746;
   padding: 2em;
-  /* color: #f3f3f3; */
+  color: white;
 }
 
-header img{
-  width: 30%;
-  height: auto;
+ul{
+  list-style: none;
+  margin-top: -1%;
+  text-align: right;
 }
+
+ul li{
+  display: inline;
+  margin: 2%;
+}
+
+#forumHome{
+  text-align: left;
+}
+
+/* #ForumHome{
+  list-style: none;
+  text-align: left;
+  margin-top: -3%;
+}
+
+#navbar{
+  list-style: none;
+  text-align: right;
+  margin-top: -3%;
+} */
 
 #welcome{
   color: white;
   text-align: center;
-  padding: 0;
-  margin: 0;
-  font-size: 75px;
+  font-size: 120%;
 }
 
 .box{
@@ -88,64 +105,6 @@ header img{
   background: #2ecc71;
 }
 
-/* .box{
-  width: 30%;
-  height: 10%;
-  background: white;
-  padding: 1vw;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: #1919191;
-  text-align: center;
-}
-
-.box input[type = "text"],.box input[type = "password"]{
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #343746;
-  padding: 14px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-}
-.box input[type = "text"]:focus,.box input[type = "password"]:focus{
-  width: 280px;
-  border-color: red;
-}
-
-.box input[type = "submit"]{
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #343746;
-  padding: 14px 40px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-} */
-
-#navbar{
-  list-style: none;
-  text-align: right;
-  margin-top: -3%;
-
-  }
-
-#navbar li{
-  display: inline;
-  margin: 2%;
-}
-
 #loginBtn{
     background: #2691D5;
     padding:0.5em;
@@ -154,7 +113,7 @@ header img{
 }
 
 #search{
-    /* background-color: #343746; */
+    background-color: #343746;
     color: #f3f3f3;
     text-align: center;
     padding: 1em 0 15em 0;

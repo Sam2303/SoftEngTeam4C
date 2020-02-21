@@ -1,0 +1,59 @@
+*{
+    font-family: 'Patua One';
+    margin: 0;
+    padding: 0;
+    box-sizing: space-around;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #343746;
+}
+
+.logo{
+  color: white;
+  letter-spacing: 4px;
+  font-size: 175%;
+}
+
+.nav-links{
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+
+.nav-links li{
+  list-style: none;
+}
+
+.nav-links a{
+  color: white;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 135%;
+}
+
+.nav-logout a{
+  /* background-color: #1E90FF; */
+  border: 2px solid #1E90FF;
+  padding: 1vh 1vw;
+  border-radius: 15px;
+  color: #111;
+  transition: 0.25s;
+}
+
+.nav-logout a:hover{
+  background: #1E90FF;
+}
+
+
+
+@media screen and (max-width:1500px){
+  .nav-links{
+    width: 60%;
+  }
+}
