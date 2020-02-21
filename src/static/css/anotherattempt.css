@@ -66,6 +66,7 @@ nav{
 .welcome{
   color: #111;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .box input[type = "text"],.box input[type = "password"]{
