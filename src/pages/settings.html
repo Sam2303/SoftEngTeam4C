@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-  <head>
-    <meta charset="utf-8">
-    <link href="../static/css/main.css" rel="stylesheet" title="Default">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
-    <meta name="viewport" content="wdith=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/main.css" rel="stylesheet" title="Default">
     <title>Settings</title>
-  </head>
-
-  <body>
+</head>
+<body>
     <header>
-      <a href="#" class="logo">Forum++</a>
-      <ul>
-          <li><a href="homepage.html">Home</a></li>
-          <li><a href="groups.html">Groups</a></li>
-          <li><a href="pages.html">Pages</a></li>
-          <li><a href="settings.html">Settings</a></li>
-          <li class="logout-button"><a href="index.html">Logout</a></li>
-      </ul>
-  </header>
-  <section class="banner"><img src="../static/media/login.jpeg" alt=""></section>
-  </body>
+        <a href="homepage.html" class="logo">Forum++</a>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="groups.html">Groups</a></li>
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li class="logout-button"><a href="index.html">Logout</a></li>
+        </ul>
+    </header>
+    <section class="banner"></section>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+</body>
 </html>
