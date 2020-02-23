@@ -1,7 +1,9 @@
+drop database if exists team4c;
 create database team4c;
-create user postgres;
-alter user postgres with superuser;
-alter user postgres password 'postgres';
+drop user if exists team4c;
+create user team4c;
+alter user team4c with superuser;
+alter user team4c password 'team4c';
 
 \c team4c;
 
