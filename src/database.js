@@ -13,17 +13,23 @@ async function connect(){
     console.log('Connected to Database!');
 }
 
+// Not sure if this is needed? - Simon
 async function disconnect(){
     await client.end();
 }
 
 async function query(sql){
-    const result = await client.query(sql);
-    return result;
+    return client.query(sql);
+}
+
+async function checkUser(username, passwordHash) {
+    // TODO: return true if given user name exists and the password hash matches
+    return false;
 }
 
 module.exports = {
     connect,
     disconnect,
-    query
+    query,
+    checkUser
 };

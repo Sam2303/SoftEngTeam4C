@@ -28,8 +28,6 @@ Alternatively, running the following single command will yeild the same result a
 $ sudo -u postgres psql -f src/setup.sql
 ```
 
-
-
 ## Server
 
 ```bash
@@ -37,6 +35,14 @@ npm i
 npm start
 ```
 
-## Frontend
+### API Routes
 
-`src/pages` and `src/static`
+WIP
+
+Verb|Path|Parameters
+-|-|-
+POST|`/api/login`|
+POST|`/api/question`|
+GET|`/api/question`|
+GET|`/api/question/answers`|
+POST|`/api/answer`|

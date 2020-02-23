@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Harry-Martin/SoftEngTeam4C#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "pg": "^7.18.1"
   }
 }
