@@ -1,132 +1,161 @@
-*{
-    font-family: 'Patua One';
+*
+{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Patua One', sans-serif;
+    color: #fff;
+}
+body
+{
+    background: #000;
+    min-height: 200vh;
+}
+header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 100000;
+}
+header.sticky
+{
+    padding: 10px 100px;
+    background: #fff;
+}
+header .logo
+{
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+header ul
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li
+{
+    position: relative;
+    list-style: none;
+}
+header ul li a
+{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.6s;
+}
+.banner
+{
+    position: relative;
+    width: 100%;
+    height: 100;
+    background: url(../static/media/login.jpeg);
+    background-size: cover;
+}
+header.sticky .logo,
+header.sticky ul li a
+{
+    color: #000;
+}
+.logout-button a
+{
+    border: 2px solid #1E90FF;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+.logout-button a:hover
+{
+    background-color: #1E90FF;
 }
 
-body{
-  /* background: #343746; */
-  font-size: 140%;
-  line-height: 140%;
-}
+/* Login */
 
-header{
-  background: #343746;
-  padding: 2em;
-  color: white;
-}
-
-ul{
-  list-style: none;
-  margin-top: -1%;
-  text-align: right;
-}
-
-ul li{
-  display: inline;
-  margin: 2%;
-}
-
-#forumHome{
-  text-align: left;
-}
-
-/* #ForumHome{
-  list-style: none;
-  text-align: left;
-  margin-top: -3%;
-}
-
-#navbar{
-  list-style: none;
-  text-align: right;
-  margin-top: -3%;
-} */
-
-#welcome{
-  color: white;
-  text-align: center;
-  font-size: 120%;
-}
-
-.box{
-  width: 300px;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: #191919;
-  text-align: center;
-}
-
-.box h1{
-  color: white;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.box input[type = "text"],.box input[type = "password"]{
-  border:0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #3498db;
-  padding: 14px 10px;
-  width:200px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-}
-
-.box input[type = "text"]:focus,.box input[type = "password"]:focus{
-    width: 280px;
-    border-color: #2ecc71;
-}
-
-.box input[type = "submit"]{
-  border:0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #2ecc71;
-  padding: 14px 40px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
-  cursor:pointer;
-}
-
-.box input[type = "submit"]:hover{
-  background: #2ecc71;
-}
-
-#loginBtn{
-    background: #2691D5;
-    padding:0.5em;
-    border-radius: 0.25em;
-    color: black;
-}
-
-#search{
-    background-color: #343746;
-    color: #f3f3f3;
+.box
+{
+    background-color: rgba(0,0,0,0.2);
+    width: 23%;
+    height: 40%;
+    border-radius: 24px;
+    padding: 2em;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     text-align: center;
-    padding: 1em 0 15em 0;
-    margin-top: 0.1em;
-    font-size: 50px;
+}
+.box input[type = "text"],.box input[type = "password"],.box-register input[type = "text"],.box-register input[type = "password"]
+{
+    background: none;
+    display: block;
+    margin: 2vh auto;
+    text-align: center;
+    border: 2px solid #111;
+    padding: 2vh 1.5vw;
+    width: 70%;
+    outline: none;
+    color: #fff;
+    font-size: 120%;
+    border-radius: 18px;
+    transition: 0.25s;
 }
 
-#search img{
-    width: 2%;
-    height: auto;
-    background: #2691D5;
+.box input[type = "text"]:focus,.box input[type = "password"]:focus
+{
+    width: 80%;
+    border-color: #1E90FF;
+}
+  
+.login-button, 
+.register-button
+{
+    text-decoration: none;
+    font-size: 120%;
+    background: none;
+    display: inline-block;
+    margin: 0.5vh;
+    width: 30%;
+    text-align: center;
+    border: 2px solid #1E90FF;
+    padding: 2vh;
+    outline: none;
+    color: #fff;
+    border-radius: 18px;
+    transition: 0.25s;
+    cursor:pointer;
 }
 
-#joinMsg{
-
+.register-button
+{
+    border: 2px solid #7CFC00;
 }
+  
+.login-button:hover
+{
+    background: #1E90FF;
+    color: #000;
+}
+  
+.register-button:hover
+{
+    background: #7CFC00;
+    color: #000;
+} 

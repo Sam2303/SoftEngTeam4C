@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-  <head>
-    <meta charset="utf-8">
-    <link href="../static/css/anotherattempt.css" rel="stylesheet" title="Default">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
-    <meta name="viewport" content="wdith=device-width, initial-scale=1.0">
-    <title>Index</title>
-  </head>
-
-  <body>
-      <nav>
-        <div class="logo">
-          <h4>Forum++</h4>
-        </div>
-        <ul class="nav-links">
-          <li><a href="homepage.html">Home</a></li>
-          <li><a href="groups.html">Groups</a></li>
-          <li><a href="pages.html">Pages</a></li>
-          <li><a href="settings.html">Settings</a></li>
-          <li class="nav-logout"><a href="index.html">Logout</a></li>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/main.css" rel="stylesheet" title="Default">
+    <title>Forum++</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Forum++</a>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="groups.html">Groups</a></li>
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li class="logout-button"><a href="index.html">Logout</a></li>
         </ul>
-      </nav>
-  </body>
+    </header>
+    <section class="banner"><img src="../static/media/login.jpeg" alt=""></section>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+    <div id="search">
+        <h1 id="welcome">WELCOME TO FORUM++</h1>
+        <p>The brand new forum for students</p>
+        <input type="text" name="searchBar" value="Search Here">
+        <img src="../static/media/search.png" alt="search">
+    </div>
+    <div id="joinMsg">
+        <h2>JOIN TODAY!</h2>
+        <p>This forum has one aim and that’s to help YOU pass.</p>
+        <p>This is a safe place where everything you do is ANONYMOUS.</p>
+        <p>We made this for students o be able to contact and ask questions
+            That they wouldn’t normally ask incase of embarrassment.</p>
+    </div>
+    <div id="joinMsg2">
+        <h2>WHAT ARE YOU WAITING FOR... JOIN TODAY!</h2>
+        <img src="../static/media/book.png" alt="books">
+    </div>
+</body>
 </html>
