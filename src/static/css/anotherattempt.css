@@ -51,10 +51,10 @@ nav{
 
 /* LOGIN */
 
-.box{
-  background-color: #fff;
+.box, .box-register{
+  background-color: rgba(0,0,0,0.2);
   width: 20%;
-  height: 30%;
+  height: 38%;
   border-radius: 24px;
   padding: 5em;
   position: absolute;
@@ -64,13 +64,13 @@ nav{
   text-align: center;
 }
 
-.welcome{
-  color: #111;
+h1{
+  color: #fff;
   text-transform: uppercase;
   text-align: center;
 }
 
-.box input[type = "text"],.box input[type = "password"]{
+.box input[type = "text"],.box input[type = "password"],.box-register input[type = "text"],.box-register input[type = "password"]{
   background: none;
   display: block;
   margin: 2vh auto;
@@ -79,7 +79,7 @@ nav{
   padding: 2vh 1.5vw;
   width: 12vw;
   outline: none;
-  color: #111;
+  color: #fff;
   font-size: 120%;
   border-radius: 18px;
   transition: 0.25s;
@@ -90,7 +90,7 @@ nav{
     border-color: #1E90FF;
 }
 
-.login-button{
+.login-button, .register-button{
   text-decoration: none;
   font-size: 120%;
   background: none;
@@ -100,18 +100,22 @@ nav{
   border: 2px solid #1E90FF;
   padding: 2vh;
   outline: none;
-  color: #111;
+  color: #fff;
   border-radius: 18px;
   transition: 0.25s;
   cursor:pointer;
 }
 
-/* .login-button a{
-  font-family: 'Patua One';
-} */
+.register-button{
+  border: 2px solid #7CFC00;
+}
 
 .login-button:hover{
   background: #1E90FF;
+}
+
+.register-button:hover{
+  background: #7CFC00;
 }
 
 .index-img{
