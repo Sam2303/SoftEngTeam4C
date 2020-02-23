@@ -2,7 +2,6 @@
     font-family: 'Patua One';
     margin: 0;
     padding: 0;
-    box-sizing: space-around;
 }
 
 nav{
@@ -53,11 +52,13 @@ nav{
 /* LOGIN */
 
 .box{
-  /* background-color: red; */
-  width: 30%;
+  background-color: #fff;
+  width: 20%;
+  height: 30%;
+  border-radius: 24px;
   padding: 5em;
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%,-50%);
   text-align: center;
@@ -85,7 +86,7 @@ nav{
 }
 
 .box input[type = "text"]:focus,.box input[type = "password"]:focus{
-    width: 55%;
+    width: 75%;
     border-color: #1E90FF;
 }
 
@@ -105,6 +106,13 @@ nav{
 
 .box input[type = "submit"]:hover{
   background: #1E90FF;
+}
+
+.index-img{
+  width: 100%;
+  height: 100%;
+  background-image: url(../static/media/loginnbackground.png);
+  background-size: 10%;
 }
 
 /* END OF LOGIN */
