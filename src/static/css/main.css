@@ -168,13 +168,21 @@ header.sticky .logo
 
 /* End of Login */
 
-#joinMsg
-{
+#joinMsg{
     background-color: #1E90FF;
-    padding: 2vh;
+    height:15%;
     border-radius: 18px;
     position: left;
     text-align: center;
-    margin: 40% 40% 0% 5%;
+    margin: 40% 0% 0% 5%;
+    width: 40%;
+}
 
+#joinMsg2{
+    background-color: grey;
+    height: 15%;
+    border-radius: 18px;
+    text-align: center;
+    width: 40%;
+    position: relative;
 }
