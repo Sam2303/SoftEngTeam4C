@@ -9,7 +9,7 @@
 body
 {
     background: #000;
-    min-height: 125vh;
+    /* min-height: 90vh; */
 }
 header
 {
@@ -185,4 +185,21 @@ header.sticky .logo
     text-align: center;
     width: 40%;
     position: relative;
+}
+.settings
+{
+    position: relative;
+    top: 20vh;
+    background-color: rgba(0,0,0,0.3);
+    border-bottom: 5px solid #8B0000;
+    border-radius: 6px;
+    width: 25%;
+    text-align: center;
+    padding: 2vh;
+    margin: 5vh auto;
+    transition: 0.25s;
+}
+.settings:hover
+{
+    border-color: #1E90FF;
 }
