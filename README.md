@@ -9,40 +9,39 @@ SammyJC|Sam Clifton|UP880264
 Bancsii|Daniel McKenna|UP846201
 username|name|UPxxxxxx
 
-## Database
-Run the setup file using PostgreSQL.
+## Installation / Running
 
-This can be achieved using:
-```bash
-$ psql -f src/setup.sql
+- [Install and run PostgreSQL](https://www.postgresqltutorial.com/install-postgresql/)
+- [Install Node.js + NPM](https://nodejs.org/en/)
+- `git clone` this repository
+- `cd` to the `SoftEngTeam4C` directory that you just cloned
+- Run the setup file using PostgreSQL:
+    - `sudo -u postgres psql -f src/setup.sql` or equivalent command
+- Install the required packages:
+    - `npm i`
+- Run the server:
+    - `npm start`
+- Visit `127.0.0.1:8080`
 
-```
-Please note that this must run as one of the PostgreSQL super users for your current Postgres cluster.
-By default (on linux) this is the user 'postgres'.
-This can be achieved by the following command before the previous one:
-```bash
-$ sudo su postgres
-```
-Alternatively, running the following single command will yeild the same result as running the previous two:
-```bash
-$ sudo -u postgres psql -f src/setup.sql
-```
+## Static files
 
-## Server
+Any and all files in the `SoftEngTeam4C/src/static/` directory are served from the route `/static`, for example the absolute path to `main.js` would be  `127.0.0.1:8080/static/js/main.js`
 
-```bash
-npm i
-npm start
-```
+## API Routes
 
-### API Routes
+(WIP - not implemented in code *yet*)
 
-WIP
+This is a [REST API](https://restfulapi.net/).
 
-Verb|Path|Parameters
--|-|-
-POST|`/api/login`|
-POST|`/api/question`|
-GET|`/api/question`|
-GET|`/api/question/answers`|
-POST|`/api/answer`|
+For all routes except `/api/auth`, the user must be logged in.
+
+The `auth` routes require client-side hashing of the password using SHA256. If a `password_hash` is provided but does not fit the structure of a SHA256 hash, the request will be rejected (SHA256 might be difficult to use client-side, could be easier to switch to something else?).
+
+Verb|Path|Request Body|Description|Returns
+-|-|-|-|-
+POST|`/api/auth/login`|`{email: "", password_hash: ""}`|Log in|todo
+POST|`/api/auth/register`|`{email: "", password_hash: ""}`|Register user|todo
+POST|`/api/question`|`{text: ""}`|Submit a question|todo
+GET|`/api/question`|`{id: ""}`|Get a questions details|todo
+GET|`/api/question/answers`|`{id: ""}`|Get all answers for the given question ID|todo
+POST|`/api/answer`|`{question_id: "", text: ""}`|Submit an answer|todo
