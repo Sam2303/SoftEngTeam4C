@@ -26,7 +26,7 @@ async function query(sql) {
 async function checkUser(email, expectedPasswordHash) {
 
     // This is vulnerable to SQL injection
-    const {rows} = await query(`select password from fpp_user where email = '${email}';`);
+    const {rows} = await query(`select password_hash from fpp_user where email = '${email}';`);
 
     if (rows.length != 0) { // email exists
         const [{password_hash}] = rows;
