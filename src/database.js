@@ -13,11 +13,6 @@ async function connect() {
     console.log('Connected to Database!');
 }
 
-// Not sure if this is needed? - Simon
-async function disconnect() {
-    await client.end();
-}
-
 async function query(sql) {
     return client.query(sql);
 }
@@ -26,7 +21,11 @@ async function query(sql) {
 async function checkUser(email, expectedPasswordHash) {
 
     // This is vulnerable to SQL injection
-    const {rows} = await query(`select password_hash from fpp_user where email = '${email}';`);
+    const {rows} = await query(`
+    SELECT password_hash FROM fpp_user 
+    WHERE 
+        email = '${email}';
+        `);
 
     if (rows.length != 0) { // email exists
         const [{password_hash}] = rows;
@@ -36,9 +35,33 @@ async function checkUser(email, expectedPasswordHash) {
     }
 }
 
+// returns user(id) which corresponds to email
+async function getId(email){
+    const {rows} = await query(`SELECT id from fpp_user WHERE email = '${email}';`);
+    const [{id}] = rows;
+    return id;
+}
+
+// creates a new question on the database
+async function insertQuestion(email, questionText){
+    const {rows} = await query(`
+    INSERT INTO
+        question(text, date, user_id)
+    VALUES(
+        '${questionText}', NOW(), ${await getId(email)});
+    `);
+}
+
+async function getQuestions(){
+    // we probably don't want to get all of the questions at once, but this works for now.
+    const {rows} = await query(`
+    SELECT id, text FROM question;
+    `);
+    return rows; // [{id: 0, text: ''}, ...]
+}
+
 module.exports = {
     connect,
-    disconnect,
     query,
     checkUser
 };
