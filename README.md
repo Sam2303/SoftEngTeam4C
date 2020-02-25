@@ -42,6 +42,6 @@ Verb|Path|Request Body|Description|Returns
 POST|`/api/auth/login`|`{email: "", password_hash: ""}`|Log in|todo
 POST|`/api/auth/register`|`{email: "", password_hash: ""}`|Register user|todo
 POST|`/api/question`|`{text: ""}`|Submit a question|todo
-GET|`/api/question`|`{id: ""}`|Get a questions details|todo
-GET|`/api/question/answers`|`{id: ""}`|Get all answers for the given question ID|todo
-POST|`/api/answer`|`{question_id: "", text: ""}`|Submit an answer|todo
+GET|`/api/question`|`{id: 0}`|Get a questions details|todo
+GET|`/api/question/answers`|`{id: 0}`|Get all answers for the given question ID|todo
+POST|`/api/answer`|`{question_id: 0, text: ""}`|Submit an answer|todo
