@@ -7,16 +7,6 @@ alter user team4c password 'team4c';
 
 \c team4c;
 
-create table test(
-    test_pk serial primary key,
-    test_string varchar(255),
-    test_integer integer
-);
-
-insert into test(test_string, test_integer) values
-('Hello', 123),
-('World', 456);
-
 create table fpp_user(
     id          serial primary key,
     email       varchar(50) not null,
