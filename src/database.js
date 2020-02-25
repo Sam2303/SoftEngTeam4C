@@ -22,9 +22,17 @@ async function query(sql){
     return client.query(sql);
 }
 
-async function checkUser(username, passwordHash) {
-    // TODO: return true if given user name exists and the password hash matches
-    return false;
+async function checkUser(email, passwordHash) {
+    // returns true if given user name exists and the password hash matches
+
+    const {rows} = await query(`select email, password from fpp_user where email = '${email}';`);
+
+    if(rows.length != 0){                   // email exists
+        const [{password}] = rows;
+        return password == passwordHash     // password hash matches?
+    }else{
+        return false                        // email does not exist
+    }
 }
 
 module.exports = {
