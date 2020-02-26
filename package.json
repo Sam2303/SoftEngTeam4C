@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docgen": "npx jsdoc ./src"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,9 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "pg": "^7.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "jsdoc": "^3.6.3"
   }
 }

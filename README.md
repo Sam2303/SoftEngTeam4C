@@ -23,6 +23,12 @@ username|name|UPxxxxxx
     - `npm start`
 - Visit `127.0.0.1:8080`
 
+## Docs
+
+We are using [jsdoc](https://jsdoc.app/)
+
+Run `npm docgen` to regenerate the documentation currently in /docs
+
 ## Static files
 
 Any and all files in the `SoftEngTeam4C/src/static/` directory are served from the route `/static`, for example the absolute path to `main.js` would be  `127.0.0.1:8080/static/js/main.js`

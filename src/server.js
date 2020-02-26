@@ -1,13 +1,13 @@
 const express = require("express");
 const path = require("path");
+const session = require('express-session');
 const api = require("./api");
 const db = require("./database");
-
-// TODO: Use JSDoc -> https://jsdoc.app/
 
 const app = express();
 
 app.use(express.json());
+app.use(session());  // If the server restarts everyone will be logged out
 app.use("/static", express.static(__dirname + "/static"));
 app.use("/api", api);
 
