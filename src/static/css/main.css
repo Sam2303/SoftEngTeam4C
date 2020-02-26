@@ -206,6 +206,8 @@ header.sticky .logo
 
 /* Groups */
 
+.opened-question,
+.question-list,
 .group-modules
 {
     position: relative;
@@ -213,10 +215,13 @@ header.sticky .logo
     background-color: rgba(0,0,0,0.3);
     border-radius: 18px;
     text-align: left;
-    width: 75%;
     margin: 5vh auto;
-    padding: 3vh;
     letter-spacing: 2px;
+}
+.group-modules 
+{
+    padding: 3vh;
+    width: 75%;
 }
 .group-modules h2
 {
@@ -225,4 +230,49 @@ header.sticky .logo
 .module-discription
 {
     letter-spacing: 1px;
+}
+
+/* Pages */
+
+.opened-question,
+.question-list
+{
+    position: absolute;
+    margin-left: 3vw;
+    width: 40vw;
+    height: 100vh;
+}
+.opened-question h1,
+.answers,
+.question-list h1,
+.questions
+{
+    position: relative;
+    border-radius: 6px;
+    width: 90%;
+    padding: 2vh;
+    margin: 3vh auto;
+    transition: 0.25s;
+}
+.answers,
+.questions
+{
+    background-color: rgba(0,0,0,0.3);
+}
+.opened-question h1,
+.question-list h1
+{
+    top: 2vh;
+    text-transform: uppercase;
+}
+.answers:hover,
+.questions:hover
+{
+    background-color: #fff;
+    color: #000;
+}
+.opened-question
+{
+    left: 41vw;
+    width: 52vw;
 }
