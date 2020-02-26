@@ -29,21 +29,44 @@ async function query(sql) {
 
 /**
  * Check if a given email & password combination are correct.
- * @param {string} email - The SHA256 hash of the users password.
- * @param {string} expectedPasswordHash - The users email.
- * @returns {boolean}
+ * @param {string} email - The users Email.
+ * @param {string} expectedPasswordHash - The SHA256 hash of the user's password.
+ * @returns {number} - The user's ID or -1 if (the user does not exist | the password hash is wrong)
  */
 async function checkUser(email, expectedPasswordHash) {
     const { rows } = await query(`
-        SELECT password_hash FROM fpp_user
+        SELECT password_hash, id FROM fpp_user
         WHERE email = '${email}';
     `);
 
     if (rows.length !== 0) { // email exists
         const [{ password_hash }] = rows;
-        return password_hash === expectedPasswordHash; // password hash matches?
+        const [{ id }] = rows;
+        if (password_hash === expectedPasswordHash) { // password hash matches?
+            return id;
+        }
     }
-    return false; // email does not exist
+    return -1; // email does not exist
+}
+
+/**
+ * Insert a new user into the database.
+ * @param {string} email - The users Email.
+ * @param {string} passwordHash  - The SH256 hash of the user's password
+ * @returns {number} - The ID for the new user.
+ */
+async function insertUser(email, passwordHash) {
+    const { rows } = await query(`
+        INSERT INTO
+            fpp_user(email, password_hash)
+        VALUES(
+            '${email}', '${passwordHash}'
+        RETURNING
+            id
+        );
+    `);
+    const [{ id }] = rows;
+    return id;
 }
 
 /**
@@ -64,10 +87,11 @@ async function getId(email) {
  */
 async function insertQuestion(email, questionText) {
     await query(`
-    INSERT INTO
-        question(text, date, user_id)
-    VALUES(
-        '${questionText}', NOW(), ${await getId(email)});
+        INSERT INTO
+            question(text, date, user_id)
+        VALUES(
+            '${questionText}', NOW(), ${await getId(email)}
+        );
     `);
 }
 
@@ -88,6 +112,7 @@ module.exports = {
     disconnect,
     query,
     checkUser,
+    insertUser,
     getId,
     insertQuestion,
     getQuestions,

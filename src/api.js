@@ -11,19 +11,31 @@ function notImplemented(res) {
 api.post('/auth/login', async (req, res) => {
     const userEmail = req.body.email;
     const passwordHash = req.body.password_hash;
+    const userId = db.checkUser(userEmail, passwordHash);
 
-    if (userEmail && passwordHash && await db.checkUser(userEmail, passwordHash)) {
+    if (userEmail && passwordHash && userId > -1) {
         req.session.loggedin = true;
-        req.session.userEmail = userEmail;
-        await res.json({ success: true });
+        req.session.userId = userId;
+        res.json({ success: true });
     } else {
         // Something was wrong
-        await res.json({ success: false });
+        res.json({ success: false });
     }
 });
 
+
 api.post('/auth/register', (req, res) => {
-    notImplemented(res);
+    const userEmail = req.body.email;
+    const passwordHash = req.body.password_hash;
+
+    if (userEmail && passwordHash) {
+        const userId = db.insertUser(userEmail, passwordHash);
+        req.session.loggedin = true;
+        req.session.userId = userId;
+        res.json({ success: true });
+    } else {
+        res.json({ success: false });
+    }
 });
 
 api.post('/question', (req, res) => {
