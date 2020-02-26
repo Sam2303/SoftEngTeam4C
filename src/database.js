@@ -14,6 +14,11 @@ async function connect() {
     console.log('Connected to Database!');
 }
 
+/** Disconnect from the Postgres Database */
+async function disconnect() {
+    await client.end();
+}
+
 /**
  * Execute an SQL query.
  * @param {string} sql - The query to execute.
@@ -29,7 +34,6 @@ async function query(sql) {
  * @returns {boolean}
  */
 async function checkUser(email, expectedPasswordHash) {
-    // This is vulnerable to SQL injection
     const { rows } = await query(`
         SELECT password_hash FROM fpp_user
         WHERE email = '${email}';
@@ -81,10 +85,10 @@ async function getQuestions() {
 
 module.exports = {
     connect,
+    disconnect,
     query,
     checkUser,
     getId,
     insertQuestion,
     getQuestions,
-
 };

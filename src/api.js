@@ -9,20 +9,17 @@ function notImplemented(res) {
 }
 
 api.post('/auth/login', async (req, res) => {
-    const { username } = req.body;
-    // TODO: hash the password client-side
-    const { passwordHash } = req.body;
+    const userEmail = req.body.email;
+    const passwordHash = req.body.password_hash;
 
-    if (username && passwordHash && await db.checkUser(username, passwordHash)) {
+    if (userEmail && passwordHash && await db.checkUser(userEmail, passwordHash)) {
         req.session.loggedin = true;
-        req.session.username = username;
-        res.redirect('/loggedin');
+        req.session.userEmail = userEmail;
+        await res.json({ success: true });
+    } else {
+        // Something was wrong
+        await res.json({ success: false });
     }
-
-    // Something was wrong
-    res.json({
-        error: true,
-    });
 });
 
 api.post('/auth/register', (req, res) => {
