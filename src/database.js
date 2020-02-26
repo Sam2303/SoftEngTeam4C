@@ -72,12 +72,15 @@ async function insertUser(email, passwordHash) {
 /**
  * Get the id for a given email.
  * @param {string} email - The users email.
- * @returns {number} The ID for that user.
+ * @returns {number} The ID for that user or -1 if user does not exist
  */
 async function getId(email) {
     const { rows } = await query(`SELECT id from fpp_user WHERE email = '${email}';`);
-    const [{ id }] = rows;
-    return id;
+    if (rows.length !== 0) {
+        const [{ id }] = rows;
+        return id;
+    }
+    return -1; // user does not exist
 }
 
 /**

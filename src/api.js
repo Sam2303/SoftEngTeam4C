@@ -27,8 +27,9 @@ api.post('/auth/login', async (req, res) => {
 api.post('/auth/register', (req, res) => {
     const userEmail = req.body.email;
     const passwordHash = req.body.password_hash;
+    const userExists = db.getId(userEmail); // -1 if user does not exist
 
-    if (userEmail && passwordHash) {
+    if (userEmail && passwordHash && userExists === -1) {
         const userId = db.insertUser(userEmail, passwordHash);
         req.session.loggedin = true;
         req.session.userId = userId;
