@@ -7,7 +7,14 @@ const db = require("./database");
 const app = express();
 
 app.use(express.json());
-app.use(session());  // If the server restarts everyone will be logged out
+
+// If the server restarts everyone will be logged out?
+app.use(session({
+    secret: "this is required but only really useful if we are using https, which we are not",
+    resave: false,
+    saveUninitialized: false
+}));
+
 app.use("/static", express.static(__dirname + "/static"));
 app.use("/api", api);
 
@@ -20,4 +27,5 @@ app.get("/", (req, res) => {
 (async () => {
     await db.connect();
     app.listen(8080);
+    console.log("Server running at http://127.0.0.1:8080");
 })();
