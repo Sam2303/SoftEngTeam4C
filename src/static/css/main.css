@@ -93,6 +93,9 @@ header.sticky .logo
     background-color: #1E90FF;
 }
 
+
+
+
 /* Login */
 
 .box
@@ -166,26 +169,70 @@ header.sticky .logo
     color: #000;
 }
 
+/* Homepage Welcome msg and search bar */
+.welcome{
+    font-size: 150%;
+    text-align: center;
+    margin-top: 15%;
+}
+
+
+
 /* End of Login */
 
 #joinMsg{
     background-color: #1E90FF;
     height: 15%;
     border-radius: 18px;
-    position: left;
-    text-align: center;
-    margin: 40% 0% 0% 5%;
-    width: 40%;
+
 }
 
-#joinMsg2{
-    background-color: grey;
-    height: 15%;
-    border-radius: 18px;
-    text-align: center;
-    width: 40%;
-    position: relative;
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
 }
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton img{
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* Settings */
+
 .settings
 {
     position: relative;
@@ -218,7 +265,7 @@ header.sticky .logo
     margin: 5vh auto;
     letter-spacing: 2px;
 }
-.group-modules 
+.group-modules
 {
     padding: 3vh;
     width: 75%;
