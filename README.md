@@ -43,11 +43,50 @@ For all routes except `/api/auth`, the user must be logged in.
 
 The `auth` routes require client-side hashing of the password using SHA256. If a `password_hash` is provided but does not fit the structure of a SHA256 hash, the request will be rejected (SHA256 might be difficult to use client-side, could be easier to switch to something else?).
 
-Verb|Path|Request Body|Description|Returns
+`POST` requests should have their data sent in the body (shown in the example), `GET` requests should have their data sent as url parameters, e.g. `/api/question?id=69`.
+
+Verb|Path|Parameters|Description|Returns
 -|-|-|-|-
 POST|`/api/auth/login`|`{email: "", password_hash: ""}`|Log in| `{success: true\|false}`
 POST|`/api/auth/register`|`{email: "", password_hash: ""}`|Register user| `{success: true\|false}`
 POST|`/api/question`|`{text: ""}`|Submit a question|The ID of the newly created question - `{id: 0}`
-GET|`/api/question`|`{id: 0}`|Get a questions details|`{text: "", date: "", user_id: 0}`
-GET|`/api/question/answers`|`{id: 0}`|Get all answers for the given question ID|todo
+GET|`/api/question`|`?id=0`|Get a questions details|`{text: "", date: "", user_id: 0}`
+GET|`/api/question/answers`|`?id=0`|Get all answers for the given question ID|todo
 POST|`/api/answer`|`{question_id: 0, text: ""}`|Submit an answer|todo
+
+### Javascript Example
+
+```javascript
+// Define an asynchronous function as we want to use fetch, which is asynchronous
+async function logInUser() {
+
+    // The API route
+    const url = "http://127.0.0.1:8080/api/auth/login";
+    
+    // The data we want to send
+    // Credentials taken from SQL setup file
+    const data = {
+        email: "test-email@test.ac.uk",
+        password_hash: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"
+    };
+    
+    // Fetch returns a response object that tells us different things about the response
+    const response = await fetch(url, {
+        method: 'POST', // Send a POST request
+        headers: {'Content-Type': 'application/json'}, // Tell the server we are sending JSON
+        body: JSON.stringify(data) // Data type must match "Content-Type" header
+    });
+    
+    // Get the JSON data from the response
+    const returned = await response.json();
+    
+    // Check if it worked
+    if (returned["success"] === true) {
+        // You are logged in now
+        // At this point you would probably send the user to another page (like a home page)
+    } else {
+        // Login failed
+    }
+
+}
+```
