@@ -57,13 +57,10 @@ async function checkUser(email, expectedPasswordHash) {
  */
 async function insertUser(email, passwordHash) {
     const { rows } = await query(`
-        INSERT INTO
-            fpp_user(email, password_hash)
-        VALUES(
-            '${email}', '${passwordHash}'
+        INSERT INTO fpp_user (email, password_hash)
+            VALUES ('${email}', '${passwordHash}')
         RETURNING
-            id
-        );
+            id;
     `);
     const [{ id }] = rows;
     return id;

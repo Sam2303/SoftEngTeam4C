@@ -1,5 +1,6 @@
 const express = require('express');
 const db = require('./database');
+const utils = require('./utils');
 
 const api = express.Router();
 
@@ -11,31 +12,53 @@ function notImplemented(res) {
 api.post('/auth/login', async (req, res) => {
     const userEmail = req.body.email;
     const passwordHash = req.body.password_hash;
-    const userId = db.checkUser(userEmail, passwordHash);
+
+    // Probably a more elegant solution than this (same goes for register)
+    if (!utils.isSHA256(passwordHash)) {
+        await res.json({ success: false });
+        return;
+    }
+
+    const userId = await db.checkUser(userEmail, passwordHash);
 
     if (userEmail && passwordHash && userId > -1) {
         req.session.loggedin = true;
         req.session.userId = userId;
-        res.json({ success: true });
+        await res.json({ success: true });
     } else {
         // Something was wrong
-        res.json({ success: false });
+        await res.json({ success: false });
     }
 });
 
 
-api.post('/auth/register', (req, res) => {
+api.post('/auth/register', async (req, res) => {
     const userEmail = req.body.email;
     const passwordHash = req.body.password_hash;
-    const userExists = db.getId(userEmail); // -1 if user does not exist
+
+    if (!utils.isSHA256(passwordHash)) {
+        await res.json({ success: false });
+        return;
+    }
+
+    const userExists = await db.getId(userEmail); // -1 if user does not exist
 
     if (userEmail && passwordHash && userExists === -1) {
-        const userId = db.insertUser(userEmail, passwordHash);
+        const userId = await db.insertUser(userEmail, passwordHash);
         req.session.loggedin = true;
         req.session.userId = userId;
-        res.json({ success: true });
+        await res.json({ success: true });
     } else {
-        res.json({ success: false });
+        await res.json({ success: false });
+    }
+});
+
+// TODO: For testing, remove later
+api.get('/auth/logintest', (req, res) => {
+    if (req.session.loggedin) {
+        res.json({ loggedin: true });
+    } else {
+        res.json({ loggedin: false });
     }
 });
 
