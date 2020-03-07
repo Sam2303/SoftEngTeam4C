@@ -1,9 +1,10 @@
+/** This module is for anything to do with interacting with the database.
+ * @module database
+ */
+
 const { Client } = require('pg');
 
-/**
- * When writing postgres queries, use http://sqlformat.darold.net/ so they are
- * consistent and readable.
- */
+// When writing postgres queries, use http://sqlformat.darold.net/ for readability.
 
 const client = new Client({
     user: 'team4c',

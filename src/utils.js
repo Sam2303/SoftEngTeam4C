@@ -1,7 +1,8 @@
-/**
- * A RegEx expression that exactly matches a SHA256 hash.
- * From https://www.regextester.com/95011.
+/** This module is for utility functions.
+ * @module utils
  */
+
+// From https://www.regextester.com/95011.
 const sha256RegEx = /^[A-Fa-f0-9]{64}$/g;
 
 /**

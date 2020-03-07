@@ -1,11 +1,11 @@
+/** This module implements all of the API routes for our server.
+ * @module api
+ */
+
 const express = require('express');
 const db = require('./database');
 const utils = require('./utils');
 
-/**
- * This router implements all of the API routes for our server.
- * @type {core.Router}
- */
 const api = express.Router();
 
 /**
@@ -23,6 +23,8 @@ function notImplemented(res) {
  * requests. This means that to "log in" all you have to do is send a request to this route with
  * the correct details, and everything else will happen automatically.
  * If the password_hash field is not a valid SHA256 hash, the request will be abandoned.
+ * @name Log In
+ * @route {POST} /auth/login
  */
 api.post('/auth/login', async (req, res) => {
     const userEmail = req.body.email;
@@ -50,6 +52,8 @@ api.post('/auth/login', async (req, res) => {
  * For the request to be valid, the email must be not already in the database, otherwise the
  * request will return {success: false}.
  * If the password_hash field is not a valid SHA256 hash, the request will be abandoned.
+ * @name Register
+ * @route {POST} /auth/register
  */
 api.post('/auth/register', async (req, res) => {
     const userEmail = req.body.email;
@@ -76,6 +80,8 @@ api.post('/auth/register', async (req, res) => {
 /**
  * This is a route for testing.
  * ToDo: Remove.
+ * @name Log In Test
+ * @route {GET} /auth/logintest
  */
 api.get('/auth/logintest', (req, res) => {
     if (req.session.loggedin) {
@@ -85,10 +91,24 @@ api.get('/auth/logintest', (req, res) => {
     }
 });
 
+/**
+ * @name Submit question
+ * @route {POST} /question
+ * @authentication This route requires the user to be logged in and have a valid cookie.
+ * @bodyparam {string} text - The questions text
+ * @bodyparam {string} title - The questions title
+ */
 api.post('/question', (req, res) => {
     notImplemented(res);
 });
 
+/**
+ * Get a questions details
+ * @name Get question
+ * @route {GET} /question
+ * @authentication This route requires the user to be logged in and have a valid cookie.
+ * @queryparam {number} id - The question id
+ */
 api.get('/question', (req, res) => {
     notImplemented(res);
 });

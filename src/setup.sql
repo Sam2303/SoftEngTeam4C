@@ -17,8 +17,8 @@ create table fpp_user(
 
 create table question(
     id          serial primary key,
-    title       text not null,
     text        text not null,
+    title       text not null,
     date        date not null,
     user_id     integer         references fpp_user(id)
 );
@@ -39,8 +39,8 @@ insert into fpp_user(email, password_hash) values
 );
 
 -- insert test question
-insert into question(text, date, user_id) values
-('I need air! I can''t breath!', now(), 1);
+insert into question(text, title, date, user_id) values
+('I need air! I can''t breath!', 'This is a titleee', now(), 1);
 
 -- insert test answer to question
 insert into answer(text, user_id, question_id) values

@@ -16,7 +16,7 @@ username|name|UPxxxxxx
 - `git clone` this repository
 - `cd` to the `SoftEngTeam4C` directory that you just cloned
 - Run the setup file using PostgreSQL:
-    - `sudo -u postgres psql -f src/setup.sql` or equivalent command
+    - `psql -f src/setup.sql` or equivalent command
 - Install the required packages:
     - `npm i`
 - Run the server:
@@ -27,11 +27,15 @@ username|name|UPxxxxxx
 
 We are using [jsdoc](https://jsdoc.app/)
 
-Run `npm docgen` to regenerate the documentation currently in /docs
+Run `npm run docgen` to regenerate the documentation currently in /docs
 
 ## Testing
 
 We are using [jest](https://jestjs.io/) as our jesting framework. Run `npm test` to run all the tests in `/tests`.
+
+## Linter
+
+We are using [eslint](https://eslint.org/) for automatic Javascript linting. Run `npm run lint` to lint.
 
 ## Static files
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: utils.js</title>
+    <title>JSDoc: Source: server.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: utils.js</h1>
+    <h1 class="page-title">Source: server.js</h1>
 
     
 
@@ -26,26 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/** This module is for utility functions.
- * @module utils
+            <pre class="prettyprint source linenums"><code>/** This is the main express server module.
+ * @module server
  */
 
-// From https://www.regextester.com/95011.
-const sha256RegEx = /^[A-Fa-f0-9]{64}$/g;
+const express = require('express');
+const path = require('path');
+const session = require('express-session');
+const api = require('./api');
 
-/**
- * Check if a string is a valid SHA256 hash.
- * @param {string} hash - The string to validate.
- * @returns {boolean} - true if it is valid, otherwise false.
- */
-function isSHA256(hash) {
-    // Some JS magic - https://stackoverflow.com/a/784946
-    return !!hash.match(sha256RegEx);
-}
+const app = express();
 
-module.exports = {
-    isSHA256,
-};
+app.use(express.json());
+app.use(session({
+    secret: 'this is required but only really useful if we are using https, which we are not',
+    resave: false,
+    saveUninitialized: false,
+}));
+
+app.use('/api', api);
+app.use('/static', express.static(path.join(__dirname, '/static')));
+app.use('/', express.static(path.join(__dirname, '/pages')));
+
+module.exports = app;
 </code></pre>
         </article>
     </section>
