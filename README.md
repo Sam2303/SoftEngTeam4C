@@ -49,7 +49,7 @@ Verb|Path|Parameters|Description|Returns
 -|-|-|-|-
 POST|`/api/auth/login`|`{email: "", password_hash: ""}`|Log in|`{success: true\|false}`
 POST|`/api/auth/register`|`{email: "", password_hash: ""}`|Register user|`{success: true\|false}`
-POST|`/api/question`|`{text: ""}`|Submit a question|The ID of the newly created question - `{id: 0}`
+POST|`/api/question`|`{text: "", title: ""}`|Submit a question|The ID of the newly created question - `{id: 0}`
 GET|`/api/question`|`?id=0`|Get a questions details|`{text: "", title: "", date: "", user_id: 0}`
 GET|`/api/question/answers`|`?id=0`|Get all answers for the given question ID|todo
 POST|`/api/answer`|`{question_id: 0, text: ""}`|Submit an answer|todo

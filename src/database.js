@@ -111,12 +111,13 @@ async function insertUser(email, passwordHash) {
  * Insert a question text into the database.
  * @param {number} userID - The users ID.
  * @param {string} questionText - The text of the question to insert.
+ * @param {string} questionTitle - The title of the question to insert.
  * @returns {number} The ID for the newly inserted question.
  */
-async function insertQuestion(userID, questionText) {
+async function insertQuestion(userID, questionText, questionTitle) {
     const { rows } = query(`
-        INSERT INTO question (text, date, user_id)
-            VALUES ('${questionText}', NOW(), $ userID)
+        INSERT INTO question (text, title, date, user_id)
+            VALUES ('${questionText}', '${questionTitle}', NOW(), $ userID)
          RETURNING
             id;
     `);
@@ -128,13 +129,14 @@ async function insertQuestion(userID, questionText) {
 /**
  * Get the info for all questions stored in the db.
  * We probably don't want to get all of the questions at once, but this works for now.
- * @returns An array of objects, each containing the id, title, and text for each question.
+ * @returns An array of objects, each containing the id, title, date, and text for each question.
  */
 async function getQuestions() {
     return query(`
         SELECT
             id,
             title,
+            date,
             text
         FROM
             question;
