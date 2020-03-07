@@ -29,28 +29,28 @@ We are using [jsdoc](https://jsdoc.app/)
 
 Run `npm docgen` to regenerate the documentation currently in /docs
 
+## Testing
+
+We are using [jest](https://jestjs.io/) as our jesting framework. Run `npm test` to run all the tests in `/tests`.
+
 ## Static files
 
 Any and all files in the `SoftEngTeam4C/src/static/` directory are served from the route `/static`, for example the absolute path to `main.js` would be  `127.0.0.1:8080/static/js/main.js`
 
 ## API Routes
 
-(WIP - not implemented in code *yet*)
-
-This is a [REST API](https://restfulapi.net/).
-
-For all routes except `/api/auth`, the user must be logged in.
-
-The `auth` routes require client-side hashing of the password using SHA256. If a `password_hash` is provided but does not fit the structure of a SHA256 hash, the request will be rejected (SHA256 might be difficult to use client-side, could be easier to switch to something else?).
-
-`POST` requests should have their data sent in the body (shown in the example), `GET` requests should have their data sent as url parameters, e.g. `/api/question?id=69`.
+- This is a [REST API](https://restfulapi.net/).
+- For all routes except `/api/auth`, the user must be logged in.
+- The `auth` routes require client-side hashing of the password using SHA256. If a `password_hash` is provided but does not fit the structure of a SHA256 hash, the request will be rejected (SHA256 might be difficult to use client-side, could be easier to switch to something else?).
+- `POST` requests should have their data sent in the body (shown in the example), `GET` requests should have their data sent as url parameters, e.g. `/api/question?id=69`.
+- ALL API routes will always return JSON, and will always have a `success` field in the returned body, indicating if the request was successful or not.
 
 Verb|Path|Parameters|Description|Returns
 -|-|-|-|-
-POST|`/api/auth/login`|`{email: "", password_hash: ""}`|Log in| `{success: true\|false}`
-POST|`/api/auth/register`|`{email: "", password_hash: ""}`|Register user| `{success: true\|false}`
+POST|`/api/auth/login`|`{email: "", password_hash: ""}`|Log in|`{success: true\|false}`
+POST|`/api/auth/register`|`{email: "", password_hash: ""}`|Register user|`{success: true\|false}`
 POST|`/api/question`|`{text: ""}`|Submit a question|The ID of the newly created question - `{id: 0}`
-GET|`/api/question`|`?id=0`|Get a questions details|`{text: "", date: "", user_id: 0}`
+GET|`/api/question`|`?id=0`|Get a questions details|`{text: "", title: "", date: "", user_id: 0}`
 GET|`/api/question/answers`|`?id=0`|Get all answers for the given question ID|todo
 POST|`/api/answer`|`{question_id: 0, text: ""}`|Submit an answer|todo
 
