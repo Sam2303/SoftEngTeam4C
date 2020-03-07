@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: utils.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,37 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: utils.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A RegEx expression that exactly matches a SHA256 hash.
+ * From https://www.regextester.com/95011.
+ */
+const sha256RegEx = /^[A-Fa-f0-9]{64}$/g;
 
+/**
+ * Check if a string is a valid SHA256 hash.
+ * @param {string} hash - The string to validate.
+ * @returns {boolean} - true if it is valid, otherwise false.
+ */
+function isSHA256(hash) {
+    // Some JS magic - https://stackoverflow.com/a/784946
+    return !!hash.match(sha256RegEx);
+}
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = {
+    isSHA256,
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

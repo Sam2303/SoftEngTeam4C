@@ -9,15 +9,21 @@
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "$": true,
+        "test": true,
+        "beforeAll": true,
+        "afterAll": true,
+        "describe": true,
+        "expect": true
     },
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
-     "indent": ["error", 4],
-     "no-console": 0,
-     "camelcase": 0
+        "indent": ["error", 4],
+        "no-console": 0,
+        "camelcase": 0
     }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./src/run.js",
     "test": "npx jest",
-    "docgen": "npx jsdoc ./src"
+    "lint": "npx eslint .",
+    "docgen": "npx jsdoc ./src -d docs"
   },
   "repository": {
     "type": "git",

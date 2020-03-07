@@ -10,7 +10,8 @@ const sha256RegEx = /^[A-Fa-f0-9]{64}$/g;
  * @returns {boolean} - true if it is valid, otherwise false.
  */
 function isSHA256(hash) {
-    return hash.match(sha256RegEx) ? true: false;
+    // Some JS magic - https://stackoverflow.com/a/784946
+    return !!hash.match(sha256RegEx);
 }
 
 module.exports = {

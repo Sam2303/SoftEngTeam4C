@@ -94,6 +94,208 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="api"><span class="type-signature">(constant) </span>api<span class="type-signature"> :core.Router</span></h4>
+
+
+
+
+<div class="description">
+    This router implements all of the API routes for our server.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">core.Router</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="client"><span class="type-signature">(constant) </span>client<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    When writing postgres queries, use http://sqlformat.darold.net/ so they are
+consistent and readable.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sha256RegEx"><span class="type-signature">(constant) </span>sha256RegEx<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    A RegEx expression that exactly matches a SHA256 hash.
+From https://www.regextester.com/95011.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -104,7 +306,7 @@
     
 
     
-    <h4 class="name" id="checkUser"><span class="type-signature">(async) </span>checkUser<span class="signature">(email, expectedPasswordHash)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="checkUser"><span class="type-signature">(async) </span>checkUser<span class="signature">(email, expectedPasswordHash)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
     
@@ -164,7 +366,7 @@
 
             
 
-            <td class="description last">The SHA256 hash of the users password.</td>
+            <td class="description last">The users Email.</td>
         </tr>
 
     
@@ -187,7 +389,7 @@
 
             
 
-            <td class="description last">The users email.</td>
+            <td class="description last">The SHA256 hash of the user's password.</td>
         </tr>
 
     
@@ -228,7 +430,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line31">line 31</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -256,6 +458,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    - The user's ID or -1 if (the user does not exist | the password hash is wrong)
+</div>
+
 
 
 <dl>
@@ -264,7 +470,7 @@
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type">number</span>
 
 
     </dd>
@@ -334,7 +540,95 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line11">line 11</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="disconnect"><span class="type-signature">(async) </span>disconnect<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Disconnect from the Postgres Database
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -378,7 +672,7 @@
 
 
 <div class="description">
-    Get the id for a given email.
+    Get the user id for a given email.
 </div>
 
 
@@ -471,7 +765,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line52">line 52</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -500,7 +794,7 @@
 
         
 <div class="param-desc">
-    The ID for that user.
+    The ID for that user or -1 if user does not exist.
 </div>
 
 
@@ -537,7 +831,8 @@
 
 
 <div class="description">
-    Get the id and text for all questions.
+    Get the info for all questions stored in the db.
+We probably don't want to get all of the questions at once, but this works for now.
 </div>
 
 
@@ -581,7 +876,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line76">line 76</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line134">line 134</a>
     </li></ul></dd>
     
 
@@ -610,7 +905,7 @@
 
         
 <div class="param-desc">
-    ?
+    An array of objects, each containing the id, title, date, and text for each question.
 </div>
 
 
@@ -627,7 +922,7 @@
     
 
     
-    <h4 class="name" id="insertQuestion"><span class="type-signature">(async) </span>insertQuestion<span class="signature">(email, questionText)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="insertQuestion"><span class="type-signature">(async) </span>insertQuestion<span class="signature">(userID, questionText, questionTitle)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
     
@@ -671,13 +966,13 @@
 
         <tr>
             
-                <td class="name"><code>email</code></td>
+                <td class="name"><code>userID</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -687,7 +982,7 @@
 
             
 
-            <td class="description last">The users email.</td>
+            <td class="description last">The users ID.</td>
         </tr>
 
     
@@ -711,6 +1006,29 @@
             
 
             <td class="description last">The text of the question to insert.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionTitle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The title of the question to insert.</td>
         </tr>
 
     
@@ -751,7 +1069,502 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line63">line 63</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line117">line 117</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The ID for the newly inserted question.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="insertUser"><span class="type-signature">(async) </span>insertUser<span class="signature">(email, passwordHash)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Insert a new user into the database.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The users Email.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>passwordHash</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The SH256 hash of the users password</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The ID for the new user, or -1 if the email is already in use,
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isSHA256"><span class="type-signature"></span>isSHA256<span class="signature">(hash)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check if a string is a valid SHA256 hash.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>hash</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string to validate.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - true if it is valid, otherwise false.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="notImplemented"><span class="type-signature"></span>notImplemented<span class="signature">(res)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This sends a response with a "501 Not Implemented" message.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The response variable from an express route.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -888,7 +1701,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line21">line 21</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -913,6 +1726,16 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    What the client.query method returns for the given query.
+</div>
+
+
+
+    
 
 
 
@@ -934,13 +1757,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkUser">checkUser</a></li><li><a href="global.html#connect">connect</a></li><li><a href="global.html#getId">getId</a></li><li><a href="global.html#getQuestions">getQuestions</a></li><li><a href="global.html#insertQuestion">insertQuestion</a></li><li><a href="global.html#query">query</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#api">api</a></li><li><a href="global.html#checkUser">checkUser</a></li><li><a href="global.html#client">client</a></li><li><a href="global.html#connect">connect</a></li><li><a href="global.html#disconnect">disconnect</a></li><li><a href="global.html#getId">getId</a></li><li><a href="global.html#getQuestions">getQuestions</a></li><li><a href="global.html#insertQuestion">insertQuestion</a></li><li><a href="global.html#insertUser">insertUser</a></li><li><a href="global.html#isSHA256">isSHA256</a></li><li><a href="global.html#notImplemented">notImplemented</a></li><li><a href="global.html#query">query</a></li><li><a href="global.html#sha256RegEx">sha256RegEx</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Feb 26 2020 01:01:53 GMT+0000 (Greenwich Mean Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Mar 07 2020 22:07:03 GMT+0000 (Greenwich Mean Time)
 </footer>
 
 <script> prettyPrint(); </script>
