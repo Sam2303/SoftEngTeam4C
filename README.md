@@ -49,14 +49,20 @@ Any and all files in the `SoftEngTeam4C/src/static/` directory are served from t
 - `POST` requests should have their data sent in the body (shown in the example), `GET` requests should have their data sent as url parameters, e.g. `/api/question?id=69`.
 - ALL API routes will always return JSON, and will always have a `success` field in the returned body, indicating if the request was successful or not.
 
-Verb|Path|Parameters|Description|Returns
+Verb|Path|Parameters|Description|Returns (includes example)
 -|-|-|-|-
 POST|`/api/auth/login`|`{email: "", password_hash: ""}`|Log in|`{success: true\|false}`
 POST|`/api/auth/register`|`{email: "", password_hash: ""}`|Register user|`{success: true\|false}`
-POST|`/api/question`|`{text: "", title: ""}`|Submit a question|The ID of the newly created question - `{id: 0}`
-GET|`/api/question`|`?id=0`|Get a questions details|`{text: "", title: "", date: "", user_id: 0}`
-GET|`/api/question/answers`|`?id=0`|Get all answers for the given question ID|todo
-POST|`/api/answer`|`{question_id: 0, text: ""}`|Submit an answer|todo
+POST|`/api/question`|`{text: "", title: ""}`|Submit a question|The ID of the newly created question - `{success: true, id: 0}`
+GET|`/api/question`|`?id=0`|Get a questions details|`{success: true, text: "", title: "", date: "", user_id: 0}`
+GET|`/api/question/answers`|`?id=0`|Get all answers for the given question ID|A field with an array of objects, each containing `id`, `text`, `score`, and `user_id` - `{success: true, answers: [{...}, {...}, etc.]}`
+POST|`/api/answer`|`{question_id: 0, text: ""}`|Submit an answer. After submitting you should refresh your answer list using the `question/answers` route|`{success: true\|false}`
+
+### ToDo
+
+- `/api/question/search`
+  - Getting a list of question ID + titles based on a textual search
+  - Getting a list of question ID + titles based on a date search
 
 ### Javascript Example
 
