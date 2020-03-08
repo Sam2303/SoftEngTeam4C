@@ -133,8 +133,31 @@ api.get('/question', async (req, res) => {
     }
 });
 
-api.get('/question/answers', (req, res) => {
-    notImplemented(res);
+/**
+ * Get a questions details
+ * @name Get answers
+ * @route {GET} /question/answers
+ * @authentication This route requires the user to be logged in and have a valid cookie.
+ * @queryparam {number} id - The question id
+ */
+api.get('/question/answers', async (req, res) => {
+    const qId = Number(req.query.id);
+
+    if (req.session.loggedin !== true || Number.isNaN(qId)) {
+        await res.json({ success: false });
+        return;
+    }
+
+    const answers = await db.getAnswers(qId);
+
+    if (answers === []) {
+        await res.json({ success: false });
+    } else {
+        await res.json({
+            success: true,
+            answers,
+        });
+    }
 });
 
 api.post('/answer', (req, res) => {
