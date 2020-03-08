@@ -134,7 +134,7 @@ api.get('/question', async (req, res) => {
 });
 
 /**
- * Get a questions details
+ * Get array of answers for a specific question
  * @name Get answers
  * @route {GET} /question/answers
  * @authentication This route requires the user to be logged in and have a valid cookie.
