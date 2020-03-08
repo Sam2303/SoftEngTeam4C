@@ -110,7 +110,6 @@ async function insertUser(email, passwordHash) {
 
 /**
  * Insert a question text into the database.
- * TODO: Make sure text and title aren't blank.
  * @param {number} userID - The users ID.
  * @param {string} questionText - The text of the question to insert.
  * @param {string} questionTitle - The title of the question to insert.

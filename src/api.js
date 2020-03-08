@@ -90,10 +90,15 @@ api.post('/question', async (req, res) => {
         return;
     }
 
-    const qText = req.body.text;
-    const qTitle = req.body.title;
-    const qId = await db.insertQuestion(req.session.userId, qText, qTitle);
-    await res.json({ success: true, id: qId });
+    const qText = req.body.text.trim();
+    const qTitle = req.body.title.trim();
+
+    if (qText && qTitle) {
+        const qId = await db.insertQuestion(req.session.userId, qText, qTitle);
+        await res.json({ success: true, id: qId });
+    } else {
+        await res.json({ success: false });
+    }
 });
 
 /**
