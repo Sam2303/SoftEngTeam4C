@@ -24,6 +24,7 @@ CREATE TABLE question (
     user_id integer REFERENCES fpp_user (id)
 );
 
+-- TODO: Add date field for answer.
 CREATE TABLE answer (
     id serial PRIMARY KEY,
     text text NOT NULL,

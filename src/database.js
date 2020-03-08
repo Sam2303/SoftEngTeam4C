@@ -110,15 +110,16 @@ async function insertUser(email, passwordHash) {
 
 /**
  * Insert a question text into the database.
+ * TODO: Make sure text and title aren't blank.
  * @param {number} userID - The users ID.
  * @param {string} questionText - The text of the question to insert.
  * @param {string} questionTitle - The title of the question to insert.
  * @returns {number} The ID for the newly inserted question.
  */
 async function insertQuestion(userID, questionText, questionTitle) {
-    const { rows } = query(`
+    const { rows } = await query(`
         INSERT INTO question (text, title, date, user_id)
-            VALUES ('${questionText}', '${questionTitle}', NOW(), $ userID)
+            VALUES ('${questionText}', '${questionTitle}', NOW(), ${userID})
          RETURNING
             id;
     `);
@@ -128,20 +129,28 @@ async function insertQuestion(userID, questionText, questionTitle) {
 }
 
 /**
- * Get the info for all questions stored in the db.
- * We probably don't want to get all of the questions at once, but this works for now.
- * @returns An array of objects, each containing the id, title, date, and text for each question.
+ * Get info for a specific question.
+ * @param {number} id - The ID of the question to get.
+ * @returns Array of strings in order: title, text, date. If the query fails, they are undefined.
  */
-async function getQuestions() {
-    return query(`
+async function getQuestion(id) {
+    const { rows } = await query(`
         SELECT
-            id,
             title,
-            date,
-            text
+            text,
+            date
         FROM
-            question;
+            question
+        WHERE
+            id = ${id};
     `);
+
+    if (rows.length === 0) {
+        return [];
+    }
+
+    const [{ title, text, date }] = rows;
+    return [title, text, date];
 }
 
 module.exports = {
@@ -151,5 +160,5 @@ module.exports = {
     insertUser,
     getId,
     insertQuestion,
-    getQuestions,
+    getQuestion,
 };

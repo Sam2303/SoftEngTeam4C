@@ -11,8 +11,12 @@ const sha256RegEx = /^[A-Fa-f0-9]{64}$/g;
  * @returns {boolean} - true if it is valid, otherwise false.
  */
 function isSHA256(hash) {
-    // Some JS magic - https://stackoverflow.com/a/784946
-    return !!hash.match(sha256RegEx);
+    // https://stackoverflow.com/a/9436948
+    if (typeof hash === 'string' || hash instanceof String) {
+        // Some JS magic - https://stackoverflow.com/a/784946
+        return !!hash.match(sha256RegEx);
+    }
+    return false;
 }
 
 module.exports = {
