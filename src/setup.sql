@@ -24,11 +24,11 @@ CREATE TABLE question (
     user_id integer REFERENCES fpp_user (id)
 );
 
--- TODO: Add date field for answer.
 CREATE TABLE answer (
     id serial PRIMARY KEY,
     text text NOT NULL,
     score integer DEFAULT 0,
+    date date NOT NULL,
     user_id integer REFERENCES fpp_user (id),
     question_id integer REFERENCES question (id)
 );
@@ -42,8 +42,8 @@ INSERT INTO question (text, title, date, user_id)
     VALUES ('I need air! I can''t breath!', 'This is a titleee', now(), 1);
 
 -- insert test answer to question
-INSERT INTO answer (text, user_id, question_id)
-    VALUES ('leave the smoking area then..', 1, 1);
+INSERT INTO answer (text, date, user_id, question_id)
+    VALUES ('leave the smoking area then..', now(), 1, 1);
 
 -- display all questions posted and the email of the user who posted them
 SELECT
