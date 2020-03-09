@@ -110,15 +110,15 @@ async function insertUser(email, passwordHash) {
 
 /**
  * Insert a question text into the database.
- * @param {number} userID - The users ID.
+ * @param {number} userId - The users ID.
  * @param {string} questionText - The text of the question to insert.
  * @param {string} questionTitle - The title of the question to insert.
  * @returns {number} The ID for the newly inserted question.
  */
-async function insertQuestion(userID, questionText, questionTitle) {
+async function insertQuestion(userId, questionText, questionTitle) {
     const { rows } = await query(`
-        INSERT INTO question (text, title, date, user_id)
-            VALUES ('${questionText}', '${questionTitle}', NOW(), ${userID})
+        INSERT INTO question (text, title, user_id)
+            VALUES ('${questionText}', '${questionTitle}', ${userId})
          RETURNING
             id;
     `);
@@ -173,6 +173,38 @@ async function getAnswers(id) {
     return rows;
 }
 
+/**
+ * Insert an answer for a question.
+ * @param {number} userId - The ID of the user that is submitting this answer.
+ * @param {number} questionId - The ID of the question that the answer is answering.
+ * @param {string} text - The text of the answer.
+ * @returns {undefined} Nothing.
+ */
+async function insertAnswer(userId, questionId, text) {
+    await query(`
+        INSERT INTO answer (text, user_id, question_id)
+            VALUES ('${text}', ${userId}, ${questionId});
+    `);
+}
+
+/**
+ * Determine if a question ID exists in the database or not.
+ * @param {number} questionId - The ID to test.
+ * @returns {boolean} If the question exists or not.
+ */
+async function validQuestionId(questionId) {
+    const { rows } = await query(`
+        SELECT
+            id
+        FROM
+            question
+        WHERE
+            id = ${questionId};
+    `);
+
+    return rows.length !== 0;
+}
+
 module.exports = {
     connect,
     disconnect,
@@ -182,4 +214,6 @@ module.exports = {
     insertQuestion,
     getQuestion,
     getAnswers,
+    insertAnswer,
+    validQuestionId,
 };
