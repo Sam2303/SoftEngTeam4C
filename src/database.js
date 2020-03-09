@@ -155,7 +155,7 @@ async function getQuestion(id) {
 /**
  * Get info for a specific question.
  * @param {number} id - The ID of the question with which to get the answers.
- * @returns Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
+ * @returns {array} Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
  */
 async function getAnswers(id) {
     const { rows } = await query(`

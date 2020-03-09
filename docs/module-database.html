@@ -502,6 +502,165 @@
     
 
     
+    <h4 class="name" id="~getAnswers"><span class="type-signature">(async, inner) </span>getAnswers<span class="signature">(id)</span><span class="type-signature"> &rarr; {array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get info for a specific question.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the question with which to get the answers.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line160">line 160</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="~getId"><span class="type-signature">(async, inner) </span>getId<span class="signature">(email)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
@@ -762,7 +921,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line136">line 136</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line135">line 135</a>
     </li></ul></dd>
     
 
@@ -808,7 +967,7 @@
     
 
     
-    <h4 class="name" id="~insertQuestion"><span class="type-signature">(async, inner) </span>insertQuestion<span class="signature">(userID, questionText, questionTitle)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="~insertAnswer"><span class="type-signature">(async, inner) </span>insertAnswer<span class="signature">(userId, questionId, text)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
     
 
     
@@ -816,8 +975,7 @@
 
 
 <div class="description">
-    Insert a question text into the database.
-TODO: Make sure text and title aren't blank.
+    Insert an answer for a question.
 </div>
 
 
@@ -853,7 +1011,212 @@ TODO: Make sure text and title aren't blank.
 
         <tr>
             
-                <td class="name"><code>userID</code></td>
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the user that is submitting this answer.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>questionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the question that the answer is answering.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The text of the answer.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line183">line 183</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Nothing.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">undefined</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~insertQuestion"><span class="type-signature">(async, inner) </span>insertQuestion<span class="signature">(userId, questionText, questionTitle)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Insert a question text into the database.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
             
 
             <td class="type">
@@ -956,7 +1319,7 @@ TODO: Make sure text and title aren't blank.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="database.js.html">database.js</a>, <a href="database.js.html#line119">line 119</a>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line118">line 118</a>
     </li></ul></dd>
     
 
@@ -1338,6 +1701,165 @@ TODO: Make sure text and title aren't blank.
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id="~validQuestionId"><span class="type-signature">(async, inner) </span>validQuestionId<span class="signature">(questionId)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Determine if a question ID exists in the database or not.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>questionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID to test.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="database.js.html">database.js</a>, <a href="database.js.html#line195">line 195</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    If the question exists or not.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -1359,7 +1881,7 @@ TODO: Make sure text and title aren't blank.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sun Mar 08 2020 00:39:12 GMT+0000 (Greenwich Mean Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Mar 09 2020 03:15:52 GMT+0000 (Greenwich Mean Time)
 </footer>
 
 <script> prettyPrint(); </script>
