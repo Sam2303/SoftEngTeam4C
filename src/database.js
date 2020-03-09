@@ -153,6 +153,24 @@ async function getQuestion(id) {
 }
 
 /**
+ * Determine if a question ID exists in the database or not.
+ * @param {number} questionId - The ID to test.
+ * @returns {boolean} If the question exists or not.
+ */
+async function validQuestionId(questionId) {
+    const { rows } = await query(`
+        SELECT
+            id
+        FROM
+            question
+        WHERE
+            id = ${questionId};
+    `);
+
+    return rows.length !== 0;
+}
+
+/**
  * Get info for a specific question.
  * @param {number} id - The ID of the question with which to get the answers.
  * @returns {array} Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
@@ -188,21 +206,14 @@ async function insertAnswer(userId, questionId, text) {
 }
 
 /**
- * Determine if a question ID exists in the database or not.
- * @param {number} questionId - The ID to test.
- * @returns {boolean} If the question exists or not.
+ * Change the vote for an answer
+ * @param {number} answerId - The ID of the answer to change.
+ * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
+ * @returns {undefined}
  */
-async function validQuestionId(questionId) {
-    const { rows } = await query(`
-        SELECT
-            id
-        FROM
-            question
-        WHERE
-            id = ${questionId};
-    `);
-
-    return rows.length !== 0;
+// eslint-disable-next-line no-unused-vars
+async function voteOnAnswer(answerId, upvote) {
+    // TODO: This and the API route for this.
 }
 
 module.exports = {

@@ -52,18 +52,17 @@ Verb|Path|Parameters|Description|Returns (includes example)
 -|-|-|-|-
 POST|`/api/auth/login`|`{email: "", password: ""}`|Log in|`{success: true\|false}`
 POST|`/api/auth/register`|`{email: "", password: ""}`|Register user|`{success: true\|false}`
-POST|`/api/question`|`{text: "", title: ""}`|Submit a question|The ID of the newly created question - `{success: true, id: 0}`
-GET|`/api/question`|`?id=0`|Get a questions details|`{success: true, text: "", title: "", date: "", user_id: 0}`
-GET|`/api/question/answers`|`?id=0`|Get all answers for the given question ID|A field with an array of objects, each containing `id`, `text`, `score`, and `user_id` - `{success: true, answers: [{...}, {...}, etc.]}`
-POST|`/api/answer`|`{question_id: 0, text: ""}`|Submit an answer. After submitting you should refresh your answer list using the `question/answers` route|`{success: true\|false}`
+POST|`/api/question`|`{text: "", title: ""}`|Submit a question|The ID of the newly created question - `{success: true, id: 1}`
+GET|`/api/question`|`?id=1`|Get a questions details|`{success: true, text: "", title: "", date: "", user_id: 1}`
+GET|`/api/question/answers`|`?id=1`|Get all answers for the given question ID|A field with an array of objects, each containing `id`, `text`, `score`, and `user_id` - `{success: true, answers: [{...}, {...}, etc.]}`
+POST|`/api/answer`|`{question_id: 1, text: ""}`|Submit an answer. After submitting you should refresh your answer list using the `question/answers` route|`{success: true\|false}`
+PUT|`/api/answer/vote`|`{id: 1, upvote: true}`|Upvote / downvote an answer. The `upvote` field should be `true` if the user is upvoting, and `false` if the user is downvoting|The new score - `{success: true\|false, score: 1}`
 
 ### ToDo
 
 - `/api/question/search`
   - Getting a list of question ID + titles based on a textual search
   - Getting a list of question ID + titles based on a date search
-- `/api/answer/vote`
-  - Allow user to upvote / downvote an answer
 
 ### Javascript Example
 
