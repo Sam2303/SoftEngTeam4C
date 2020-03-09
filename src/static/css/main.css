@@ -224,14 +224,43 @@ header.sticky .logo
 /* End of Login */
 
 #joinMsg{
-    background-color: #1E90FF;
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
     height: 15%;
     border-radius: 18px;
-
+    bottom: 1vh;
+    width: 47.5%;
+    left: 1vw;
 }
 
+#joinMsg2{
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
+    height: 15%;
+    border-radius: 18px;
+    bottom: 1vh;
+    width: 47.5%;
+    right: 1vw;
+}
 
+#joinMsg h2, #joinMsg2 h2{
+  position: relative;
+  margin-top: 0.5em;
+  text-align: center;
+  padding: 1em auto;
+}
 
+#joinMsg p, #joinMsg2 p{
+  position: relative;
+  padding: 0 1em;
+  margin-top: 5px;
+  text-align: center;
+}
+
+#joinMsg2 img{
+  position: absolute;
+  left: 23vw;
+}
 
 /* Settings */
 
