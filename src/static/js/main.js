@@ -112,23 +112,21 @@ Object.values(submit_but).forEach((submit_but) => {
             // redirect to pages.html
             window.location.href = 'pages.html';
             console.log("Your question has been submitted");
+            
+            const id = "1";
+
+            const url = baseUrl + id;
+
+            const response = await fetch(url, {method: 'GET'});
+            const returned = await response.json();
+
+            if (returned.success === true) {
+                const newQuestionId = returned.id;
+            }     else {
+                //
+            }
         } else {
             console.log('There has been an error');
+
         }
-                    // The URL without an ID
-        const baseUrl = '/api/question?id=';
-
-// The ID of the question we want
-        const id = "1";
-
-        const url = baseUrl + id;
-
-        const response = await fetch(url, {method: 'GET'});
-        const returned = await response.json();
-
-        if (returned.success === true) {
-            const newQuestionId = returned.id;
-        }     else {
-    //
-}
     });
