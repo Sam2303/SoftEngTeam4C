@@ -57,20 +57,20 @@ Object.values(registerElements).forEach((registerElements) => {
         // The data we want to send
         // Credentials taken from SQL setup file
         // making variables to ge† the values in the email and password input boxes
-        let reg-email = document.body.getElementById('reg-email').value;
-        let reg-password = document.body.getElementById('reg-password').value;
+        let reg_email = document.body.getElementById('reg-email').value;
+        let reg_password = document.body.getElementById('reg-password').value;
         const data = {
-            email: reg-email,
-            password: reg-password,
+            email: reg_email,
+            password: reg_password,
         };
 
-        const reg-response = await fetch(url, {
+        const reg_response = await fetch(url, {
             method: 'POST', // Send a POST request
             headers: { 'Content-Type': 'application/json' }, // Tell the server we are sending JSON
             body: JSON.stringify(data), // Data type must match "Content-Type" header
         });
         // Get the JSON data from the response
-        const returned = await reg-response.json();
+        const returned = await reg_response.json();
 
         // Check if it worked
         if (returned.success === true) {
@@ -83,8 +83,8 @@ Object.values(registerElements).forEach((registerElements) => {
     });
 });
 
-const submit-but = document.getElementById('submit-button');
-Object.values(submit-but).forEach((submit-but) => {
+const submit_but = document.getElementById('submit-button');
+Object.values(submit_but).forEach((submit_but) => {
     // in this case we're using the 'click' event
     element.addEventListener('click', async () => {
         // The API route
@@ -99,13 +99,13 @@ Object.values(submit-but).forEach((submit-but) => {
             text: question,
             title: title,
         };
-        const submit-but = await fetch(url, {
+        const submit_response = await fetch(url, {
             method: 'POST', // Send a POST request
             headers: { 'Content-Type': 'application/json' }, // Tell the server we are sending JSON
             body: JSON.stringify(data), // Data type must match "Content-Type" header
         });
         // Get the JSON data from the response
-        const returned = await submit-but.json();
+        const returned = await submit_response.json();
 
         // Check if it worked
         if (returned.success === true) {
