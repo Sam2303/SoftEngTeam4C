@@ -92,9 +92,9 @@ Object.values(submit_but).forEach((submit_but) => {
 
         // The data we want to send
         // Credentials taken from SQL setup file
-        // making variables to ge† the values in the email and password input boxes
+        // making variables to ge† the values in the title and question input boxes
         let title = document.body.getElementById('title').value;
-        let question = document.body.getElementById('submit').value;
+        let question = document.body.getElementById('question').value;
         const data = {
             text: question,
             title: title,
@@ -109,8 +109,8 @@ Object.values(submit_but).forEach((submit_but) => {
 
         // Check if it worked
         if (returned.success === true) {
-            // redirect to homepage.html
-            window.location.href = 'homepage.html';
+            // redirect to pages.html
+            window.location.href = 'pages.html';
             console.log("Your question has been submitted");
         } else {
             console.log('There has been an error');
