@@ -102,7 +102,7 @@ header.sticky .logo
 {
     background-color: rgba(0,0,0,0.2);
     width: 23%;
-    height: 40%;
+    height: auto;
     border-radius: 24px;
     padding: 2em;
     position: absolute;
@@ -134,7 +134,8 @@ header.sticky .logo
 }
 
 .login-button,
-.register-button
+.register-button,
+.register-button2
 {
     text-decoration: none;
     font-size: 120%;
@@ -152,7 +153,8 @@ header.sticky .logo
     cursor:pointer;
 }
 
-.register-button
+.register-button,
+.register-button2
 {
     border: px solid #7CFC00;
 }
@@ -163,11 +165,13 @@ header.sticky .logo
     color: #000;
 }
 
-.register-button:hover
+.register-button:hover,
+.register-button2:hover
 {
     background: #7CFC00;
     color: #000;
 }
+
 
 /* Homepage Welcome msg and search bar */
 .welcome{

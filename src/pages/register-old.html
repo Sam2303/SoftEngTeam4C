@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+        <title>Register</title>
+    </head>
+
+    <body>
+
+        <header>
+            <a href="#" class="logo">Forum++</a>
+        </header>
+        <div class="align">
+            <!-- <img class="logo" src="img/logo.svg"> -->
+            <div class="card">
+                <div class="head">
+                    <div></div>
+                    <a id="login" class="selected" href="#login">Login</a>
+                    <a id="register" href="#register">Register</a>
+                    <div></div>
+                </div>
+                <div class="tabs">
+                    <form>
+                        <div class="inputs">
+                            <div class="input">
+                                <input placeholder="Email (ac.uk)" type="text">
+                                <!-- <img src="img/user.svg"> -->
+                            </div>
+                            <div class="input">
+                                <input placeholder="Password" type="password">
+                                <!-- <img src="img/pass.svg"> -->
+                            </div>
+                            <!-- <label class="checkbox">
+                                <input type="checkbox">
+                                <span>Remember me</span>
+                            </label> -->
+                        </div>
+                        <button>Login</button>
+                    </form>
+                    <form>
+                        <div class="inputs">
+                            <div class="input">
+                                <input id="email" placeholder="Email" type="text">
+                                <!-- <img src="img/mail.svg"> -->
+                            </div>
+                            <div class="input">
+                                <input placeholder="Username" type="text">
+                                <!-- <img src="img/user.svg"> -->
+                            </div>
+                            <div class="input">
+                                <input id="passwordHash" placeholder="Password" type="password">
+                                <!-- <img src="img/pass.svg"> -->
+                            </div>
+                        </div>
+                        <button>Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="../static/js/jquery-3.3.1.min.js"></script>
+        <script src="../static/js/index.js"></script>
+        <script src="../static/js/main.js"></script>
+    </body>
+
+</html>
+
+<!--
+<body>
+    <header>
+        <a href="#" class="logo">Forum++</a>
+    </header>
+    <div class="box">
+        <h1>Welcome!</h1>
+        <input type="text" name="" placeholder="Email (ac.uk)">
+        <input type="password" name="" placeholder="Password">
+        <input type="password" name="" placeholder="Re-Enter Password">
+        <a class="register-button" href="index.html">Register</a>
+    </div>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+</body>
