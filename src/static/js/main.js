@@ -70,7 +70,7 @@ Object.values(registerElements).forEach((registerElements) => {
             body: JSON.stringify(data), // Data type must match "Content-Type" header
         });
         // Get the JSON data from the response
-        const returned = await reg-esponse.json();
+        const returned = await reg-response.json();
 
         // Check if it worked
         if (returned.success === true) {
@@ -82,3 +82,37 @@ Object.values(registerElements).forEach((registerElements) => {
         }
     });
 });
+
+const submit-but = document.getElementById('submit-button');
+Object.values(submit-but).forEach((submit-but) => {
+    // in this case we're using the 'click' event
+    element.addEventListener('click', async () => {
+        // The API route
+        const url = '/api/question';
+
+        // The data we want to send
+        // Credentials taken from SQL setup file
+        // making variables to ge† the values in the email and password input boxes
+        let title = document.body.getElementById('title').value;
+        let question = document.body.getElementById('submit').value;
+        const data = {
+            text: question,
+            title: title,
+        };
+        const submit-but = await fetch(url, {
+            method: 'POST', // Send a POST request
+            headers: { 'Content-Type': 'application/json' }, // Tell the server we are sending JSON
+            body: JSON.stringify(data), // Data type must match "Content-Type" header
+        });
+        // Get the JSON data from the response
+        const returned = await submit-but.json();
+
+        // Check if it worked
+        if (returned.success === true) {
+            // redirect to homepage.html
+            window.location.href = 'homepage.html';
+            console.log("Your question has been submitted");
+        } else {
+            console.log('There has been an error');
+        }
+    });
