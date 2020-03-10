@@ -7,7 +7,7 @@ psidex|Simon Jenner|UP897821
 Sam200080|Sam Parsons|UP889823
 SammyJC|Sam Clifton|UP880264
 Bancsii|Daniel McKenna|UP846201
-username|name|UPxxxxxx
+romelblair|Romel Blair|UP811440
 
 ## Installation / Running
 
