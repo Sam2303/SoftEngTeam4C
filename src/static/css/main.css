@@ -93,9 +93,6 @@ header.sticky .logo
     background-color: #1E90FF;
 }
 
-
-
-
 /* Login */
 
 .box
@@ -171,10 +168,6 @@ header.sticky .logo
     background: #7CFC00;
     color: #000;
 }
-
-
-
-
 
 /* Homepage Welcome msg and search bar */
 .welcome{
@@ -267,6 +260,67 @@ header.sticky .logo
 #joinMsg2 img{
   position: absolute;
   left: 23vw;
+}
+
+/* Pages */
+
+.submit-question{
+  background-color: rgba(0,0,0,0.3);
+  display: block;
+  text-align: center;
+  width: 60%;
+  margin: 15vh auto;
+  padding: 2vh 2vw;
+  border-radius: 10px;
+}
+
+#title,
+#question{
+  background: none;
+  display: flex;
+  margin: 2vh auto;
+  text-align: center;
+  border: 2px solid #fff;
+  padding: 2vh 1.5vw;
+  width: 97.5%;
+  outline: none;
+  color: #fff;
+  font-size: 110%;
+  border-radius: 18px;
+  transition: 0.25s;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+#title:focus,
+#question:focus{
+  border-color: #1E90FF;
+}
+
+#question:focus{
+  height: 50vh;
+}
+
+#submit-button{
+  text-decoration: none;
+  font-size: 110%;
+  background: none;
+  display: inline-block;
+  margin: 0.5vh;
+  width: 25%;
+  text-align: center;
+  border: 2px solid #1E90FF;
+  padding: 2vh;
+  outline: none;
+  color: #fff;
+  border-radius: 18px;
+  transition: 0.25s;
+  cursor:pointer;
+}
+
+#submit-button:hover{
+  background: #1E90FF;
+  color: #000;
 }
 
 /* Settings */
