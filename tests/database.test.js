@@ -41,3 +41,15 @@ describe('getId method', () => {
         expect(await db.getId('incorrect-email@test.ac.uk')).toBe(-1);
     });
 });
+
+
+
+describe('getQuestion method', () => {
+    test('Call getQuestion with correct ID', async () => {
+        expect(await db.getId(1)).toBe(1);
+    });
+
+    test('Call getQuestion with incorrect ID', async () => {
+        expect(await db.getId('One')).toBe(-1);
+    });
+});
