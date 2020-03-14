@@ -32,6 +32,8 @@ describe('checkUser method', () => {
     });
 });
 
+
+
 describe('getId method', () => {
     test('Call getId with default test user', async () => {
         expect(await db.getId('test-email@test.ac.uk')).toBe(1);
@@ -46,10 +48,10 @@ describe('getId method', () => {
 
 describe('getQuestion method', () => {
     test('Call getQuestion with correct ID', async () => {
-        expect(await db.getId(1)).toBe(1);
+        expect(await db.getQuestion(1)).toBe(1);
     });
 
     test('Call getQuestion with incorrect ID', async () => {
-        expect(await db.getId('One')).toBe(-1);
+        expect(await db.getQuestion(2)).toBe(-1);
     });
 });
