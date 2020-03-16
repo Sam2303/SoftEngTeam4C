@@ -117,7 +117,7 @@ async function insertUser(email, passwordHash) {
  */
 async function insertQuestion(userId, questionText, questionTitle) {
     const { rows } = await query(`
-        INSERT INTO question (qText, title, user_id)
+        INSERT INTO question (text, title, user_id)
             VALUES ('${questionText}', '${questionTitle}', ${userId})
          RETURNING
             id;
@@ -130,14 +130,14 @@ async function insertQuestion(userId, questionText, questionTitle) {
 /**
  * Get info for a specific question.
  * @param {number} id - The ID of the question to get.
- * @returns Array of strings in order: title, qText, qDate. If the query fails, they are undefined.
+ * @returns Array of strings in order: title, text, date. If the query fails, they are undefined.
  */
 async function getQuestion(id) {
     const { rows } = await query(`
         SELECT
             title,
-            qText,
-            qDate
+            text,
+            date
         FROM
             question
         WHERE
@@ -145,11 +145,12 @@ async function getQuestion(id) {
     `);
 
     if (rows.length === 0) {
-        return -1;
+        return [];
+        // return -1;
     }
 
-    const [{ title, qText, qDate }] = rows;
-    // return [title, qText, qDate];
+    const [{ title, text, date }] = rows;
+    // return [title, text, date];
     return 1;
 }
 
@@ -174,13 +175,13 @@ async function validQuestionId(questionId) {
 /**
  * Get info for a specific question.
  * @param {number} id - The ID of the question with which to get the answers.
- * @returns {array} Array of Objects in the form {id: , aText: , score: , user_id: }. If the query fails, the Objects are undefined.
+ * @returns {array} Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
  */
 async function getAnswers(id) {
     const { rows } = await query(`
     SELECT
         id,
-        aText,
+        text,
         score,
         user_id
     FROM
@@ -196,13 +197,13 @@ async function getAnswers(id) {
  * Insert an answer for a question.
  * @param {number} userId - The ID of the user that is submitting this answer.
  * @param {number} questionId - The ID of the question that the answer is answering.
- * @param {string} aText - The text of the answer.
+ * @param {string} text - The text of the answer.
  * @returns {undefined} Nothing.
  */
-async function insertAnswer(userId, questionId, aText) {
+async function insertAnswer(userId, questionId, text) {
     await query(`
-        INSERT INTO answer (aText, user_id, question_id)
-            VALUES ('${aText}', ${userId}, ${questionId});
+        INSERT INTO answer (text, user_id, question_id)
+            VALUES ('${text}', ${userId}, ${questionId});
     `);
 }
 

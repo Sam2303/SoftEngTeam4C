@@ -18,17 +18,17 @@ CREATE TABLE fpp_user (
 
 CREATE TABLE question (
     id serial PRIMARY KEY,
-    qText text NOT NULL,
+    text text NOT NULL,
     title text NOT NULL,
-    qDate date NOT NULL DEFAULT NOW(),
+    date date NOT NULL DEFAULT NOW(),
     user_id integer REFERENCES fpp_user (id)
 );
 
 CREATE TABLE answer (
     id serial PRIMARY KEY,
-    aText text NOT NULL,
+    text text NOT NULL,
     score integer DEFAULT 0,
-    aDate date NOT NULL DEFAULT NOW(),
+    date date NOT NULL DEFAULT NOW(),
     user_id integer REFERENCES fpp_user (id),
     question_id integer REFERENCES question (id)
 );
@@ -38,11 +38,11 @@ INSERT INTO fpp_user (email, password_hash)
     VALUES ('test-email@test.ac.uk', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
 
 -- insert test question
-INSERT INTO question (qText, title, user_id)
+INSERT INTO question (text, title, user_id)
     VALUES ('I need air! I can''t breath!', 'This is a titleee', 1);
 
 -- insert test answer to question
-INSERT INTO answer (aText, user_id, question_id)
+INSERT INTO answer (text, user_id, question_id)
     VALUES ('leave the smoking area then..', 1, 1);
 
 ---- display all questions posted and the email of the user who posted them
