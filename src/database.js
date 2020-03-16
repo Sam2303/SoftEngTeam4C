@@ -143,6 +143,7 @@ async function getQuestion(id) {
         WHERE
             id = ${id};
     `);
+    // console.log(rows);
 
     if (rows.length === 0) {
         return [];
@@ -150,8 +151,8 @@ async function getQuestion(id) {
     }
 
     const [{ title, text, date }] = rows;
-    // return [title, text, date];
-    return 1;
+    return [title, text, date];
+    // return 1;
 }
 
 /**

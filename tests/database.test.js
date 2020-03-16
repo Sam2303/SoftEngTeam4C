@@ -48,9 +48,9 @@ describe('getId method', () => {
 
 describe('getQuestion method', () => {
     test('Call getQuestion with correct ID', async () => {
-        console.log("TEST 1");
-        expect(await db.getQuestion(1)).toBe(1);
-        console.log("TEST 2");
+        // console.log("TEST 1");
+        expect(await db.getQuestion(1)).not.toBe([]);
+        // console.log("TEST 2");
     });
 
     test('Call getQuestion with incorrect ID', async () => {
