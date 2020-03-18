@@ -10,7 +10,7 @@ afterAll(async () => {
 
 // checkUser        DONE
 // getId            DONE
-// insertUser
+// insertUser       DONE
 // insertQuestion
 // getQuestion      DONE
 // validQuestionId  DONE
@@ -89,5 +89,23 @@ describe('validQuestionId method', () => {
 
     test('Call validQuestionId with incorrect ID', async () => {
         expect(await db.validQuestionId(2)).toBe(false);
+    });
+});
+
+
+
+describe('insertUser method', () => {
+    test('Call insertUser with already taken details', async () => {
+        expect(await db.insertUser(
+            'test-email@test.ac.uk',
+            '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',
+        )).toBe(-1);
+    });
+
+    test('Call insertUser with new details', async () => {
+        expect(await db.insertUser(
+            'Sams-email@test.ac.uk',
+            '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',
+        )).toBe(2);
     });
 });
