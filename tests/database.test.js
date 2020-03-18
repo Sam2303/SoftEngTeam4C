@@ -8,6 +8,15 @@ afterAll(async () => {
     await db.disconnect();
 });
 
+// checkUser        DONE
+// getId            DONE
+// insertUser
+// insertQuestion
+// getQuestion      DONE
+// validQuestionId  DONE
+// getAnswers       DONE
+// insertAnswer
+
 describe('checkUser method', () => {
     test('Call checkUser with default test user', async () => {
         expect(await db.checkUser(
@@ -68,5 +77,17 @@ describe('getAnswers method', () => {
 
     test('Call getAnswers with incorrect ID', async () => {
         expect(await db.getAnswers(2)).toStrictEqual([]);
+    });
+});
+
+
+
+describe('validQuestionId method', () => {
+    test('Call validQuestionId with correct ID', async () => {
+        expect(await db.validQuestionId(1)).toBe(true);
+    });
+
+    test('Call validQuestionId with incorrect ID', async () => {
+        expect(await db.validQuestionId(2)).toBe(false);
     });
 });
