@@ -143,7 +143,7 @@ async function getQuestion(id) {
         WHERE
             id = ${id};
     `);
-    // console.log(rows);
+     console.log(rows);
 
     if (rows.length === 0) {
         return [];
@@ -191,6 +191,7 @@ async function getAnswers(id) {
         question_id = ${id};
     `);
 
+    // console.log(rows);
     return rows;
 }
 

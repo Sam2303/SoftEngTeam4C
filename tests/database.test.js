@@ -48,12 +48,25 @@ describe('getId method', () => {
 
 describe('getQuestion method', () => {
     test('Call getQuestion with correct ID', async () => {
-        // console.log("TEST 1");
         expect(await db.getQuestion(1)).not.toBe([]);
-        // console.log("TEST 2");
     });
 
     test('Call getQuestion with incorrect ID', async () => {
         expect(await db.getQuestion(2)).toStrictEqual([]);
+    });
+});
+
+
+
+describe('getAnswers method', () => {
+    test('Call getAnswers with correct ID', async () => {
+        expect(await db.getAnswers(1)).toStrictEqual([{"id": 1,
+        "score": 0,
+        "text": "leave the smoking area then..",
+        "user_id": 1}]);
+    });
+
+    test('Call getAnswers with incorrect ID', async () => {
+        expect(await db.getAnswers(2)).toStrictEqual([]);
     });
 });
