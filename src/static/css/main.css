@@ -14,6 +14,7 @@ body
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    height: 120vh;
 }
 
 /* Navigation Bar */
@@ -92,12 +93,14 @@ header.sticky .logo
 } */
 
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   padding: 0 100px;
   background: #262626;
   width: 100%;
+  z-index: 100000;
+  transition: 0.5s;
 }
 header .logo {
   color: #fff;
@@ -123,6 +126,7 @@ header nav ul li a {
   color: #fff;
   text-decoration: none;
   display: block;
+  transition: 0.25s;
 }
 header nav ul li a:hover,
 header nav ul li a.active {
@@ -136,6 +140,14 @@ header nav ul li a.active {
   font-size: 24px;
   cursor: pointer;
   display: none;
+}
+
+header.sticky {
+  background-color: #fff;
+}
+header.sticky .logo,
+header.sticky ul li a {
+  color: #111;
 }
 
 @media screen and (max-width: 1024px) {

@@ -16,8 +16,8 @@
             <ul>
                 <li><a href="homepage.html">Home</a></li>
                 <li><a href="usefullinks.html">Useful Links</a></li>
-                <li><a href="pages.html" class="active">Pages</a></li>
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="pages.html">Pages</a></li>
+                <li><a href="settings.html" class="active">Settings</a></li>
                 <li class="logout-button"><a href="index.html">Logout</a></li>
             </ul>
           </nav>
@@ -29,6 +29,13 @@
         <h2 class="settings">Nofications: Questions Added to Topic</h2>
         <h2 class="settings">Nofications: Questions Deleted</h2>
 
+        <script type="text/javascript">
+          window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+          })
+        </script>
+        
         <script src="../static/js/main.js"></script>
     </body>
 
