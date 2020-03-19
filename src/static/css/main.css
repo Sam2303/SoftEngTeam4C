@@ -11,6 +11,9 @@ body
     background: #000;
     /* min-height: 90vh; */
 }
+
+/* Navigation Bar */
+
 header
 {
     position: fixed;
@@ -93,13 +96,15 @@ header.sticky .logo
     background-color: #1E90FF;
 }
 
+/* End of Navigation Bar */
 /* Login */
 
-.box
+.box,
+.reg-box
 {
     background-color: rgba(0,0,0,0.2);
-    width: 23%;
-    height: auto;
+    width: 30%;
+    height: 52.5vh;
     border-radius: 24px;
     padding: 2em;
     position: absolute;
@@ -107,14 +112,22 @@ header.sticky .logo
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
+    /* background-color: red; */
 }
-.box input[type = "text"],.box input[type = "password"],.box-register input[type = "text"],.box-register input[type = "password"]
+.reg-box
+{
+  height: 70vh;
+}
+.box input[type = "text"],
+.box input[type = "password"],
+.reg-box input[type = "text"],
+.reg-box input[type = "password"]
 {
     background: none;
     display: block;
     margin: 2vh auto;
     text-align: center;
-    border: 2px solid #111;
+    border: 2px solid rgba(255,255,255,0.1);
     padding: 2vh 1.5vw;
     width: 70%;
     outline: none;
@@ -124,15 +137,17 @@ header.sticky .logo
     transition: 0.25s;
 }
 
-.box input[type = "text"]:focus,.box input[type = "password"]:focus
+.box input[type = "text"]:focus,
+.box input[type = "password"]:focus,
+.reg-box input[type = "text"]:focus,
+.reg-box input[type = "password"]:focus
 {
-    width: 80%;
+    width: 82%;
     border-color: #1E90FF;
 }
 
-.login-button,
-.register-button,
-.register-button2
+.button,
+.reg-button
 {
     text-decoration: none;
     font-size: 120%;
@@ -150,26 +165,23 @@ header.sticky .logo
     cursor:pointer;
 }
 
-.register-button,
-.register-button2
+.reg-button
 {
-    border: px solid #7CFC00;
+  border: 2px solid #228B22;
 }
-
-.login-button:hover
+.button:hover
 {
     background: #1E90FF;
     color: #000;
 }
-
-.register-button:hover,
-.register-button2:hover
+.reg-button:hover
 {
-    background: #7CFC00;
+    background: #228B22;
     color: #000;
 }
 
 /* Homepage Welcome msg and search bar */
+
 .welcome{
     font-size: 150%;
     text-align: center;
