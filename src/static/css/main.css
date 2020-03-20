@@ -134,6 +134,7 @@ header nav ul li a.active {
 }
 .menu-toggle {
   color: #fff;
+  padding: 0 15px;
   float: right;
   line-height: 50px;
   font-size: 24px;
@@ -353,65 +354,6 @@ header.sticky ul li a {
 
 /* Pages */
 
-  /* .submit-question{
-  background-color: rgba(0,0,0,0.3);
-  display: block;
-  text-align: center;
-  width: 60%;
-  margin: 15vh auto;
-  padding: 2vh 2vw;
-  border-radius: 10px;
-}
-
-#title,
-#question{
-  background: none;
-  display: flex;
-  margin: 2vh auto;
-  text-align: center;
-  border: 2px solid #fff;
-  padding: 2vh 1.5vw;
-  width: 97.5%;
-  outline: none;
-  color: #fff;
-  font-size: 110%;
-  border-radius: 18px;
-  transition: 0.25s;
-  overflow: auto;
-  word-wrap: break-word;
-}
-
-#title:focus,
-#question:focus{
-  border-color: #1E90FF;
-}
-
-#question:focus{
-  height: 50vh;
-}
-
-#submit-button{
-  text-decoration: none;
-  font-size: 110%;
-  background: none;
-  display: inline-block;
-  margin: 0.5vh;
-  width: 25%;
-  text-align: center;
-  border: 2px solid #1E90FF;
-  padding: 2vh;
-  outline: none;
-  color: #fff;
-  border-radius: 18px;
-  transition: 0.25s;
-  cursor:pointer;
-}
-
-#submit-button:hover{
-  background: #1E90FF;
-  color: #000;
-} */
-
 .mainbody {
   width: 80%;
   height: 120vh;
@@ -420,71 +362,91 @@ header.sticky ul li a {
   background-color: rgba(0,0,0,.2);
   border-radius: 8px;
 }
-.enter-question-area {
-  width: 90%;
-  height: 20vh;
-  margin: 5vh auto;
-  border-radius: 8px;
+.question-box {
+    position: relative;
+    top: 25vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background: rgba(0,0,0,.2);
+    padding: 40px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
-.other-question-area {
-  width: 90%;
-  height: 20vh;
-  margin: 5vh auto;
-  background-color: rgba(38,38,38,.9);
-  border-radius: 12px;
+.question-box h2 {
+    text-align: center;
+    margin: 0 0 40px;
+    padding: 0;
+    color: #2196f3;
+    text-transform: uppercase;
 }
-.enter-question-area h1 {
-  font-size: 200%;
-  text-align: center;
-  padding-bottom: 20px;
+.question-box input {
+    padding: 10px 0;
+    margin-bottom: 30px;
+    background: none;
 }
-/* #enter-title,
-#enter-question {
-  background: #fff;
-  display: block;
-  margin: 0 auto 2vh auto;
-  border: 1px solid #111;
-  padding: 1.5vh 2vw;
-  width: 98%;
-  outline: none;
-  color: #111;
-  font-size: 110%;
-  border-radius: 8px;
+.question-box textarea {
+    height: 80px;
+    padding: 10px 0;
+    background: none;
+    margin-bottom: 40px;
 }
-#enter-question {
-  height: vh;
-} */
-.enter-question-area input {
-  padding: 10px 0;
-  margin-bottom: 30px;
+.question-box input,
+.question-box textarea {
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    border-bottom: 2px solid #999;
 }
-.enter-question-area textarea {
-  height: 80px;
-  padding: 10px 0;
-  margin-bottom: 20px;
+.question-box textarea {
+    margin-bottom: 20px;
 }
-.enter-question-area input,
-.enter-question-area textarea {
-  width: 100%;
-  box-shadow: none;
-  outline: none;
-  border: none;
-  border-bottom: 2px solid #999;
+.question-box input[type="submit"] {
+    border-bottom: none;
+    cursor: pointer;
+    background: none;
+    border: 2px solid #2196f3;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    transition: .5s;
 }
-.enter-question-area input[type="submit"] {
-  border-bottom: none;
-  cursor: pointer;
+.question-box form div {
+    position: relative;
+}
+.question-box form div label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #999;
+    pointer-events: none;
+    transition: .5s;
+}
+.question-box input:focus ~ label,
+.question-box textarea:focus ~ label,
+.question-box input:valid ~ label,
+.question-box textarea:valid ~ label{
+    top: -16px;
+    left: 0;
+    color: #2196f3;
+    font-size: 14px;
+    font-weight: bold;
+}
+.question-box input:focus,
+.question-box textarea:focus,
+.question-box input:valid,
+.question-box textarea:valid {
+    border-bottom: 2px solid #2196f3;
+}
+.question-box input[type="submit"]:hover {
   background-color: #2196f3;
   color: #111;
-  margin-bottom: 0;
-  text-transform: uppercase;
-}
-.enter-question-area form div {
-  position: relative;
-}
-.enter-question-area form div label {
-  position: absolute;
-  top: 10px;
 }
 
 
