@@ -11,14 +11,14 @@
 
     <body>
         <header>
-            <a href="#" class="logo">Forum++</a>
+            <a href="index.html" class="logo">Forum++</a>
         </header>
         <div class="box">
             <h1 class="welcome">Welcome!</h1>
-            <input id="email" type="text" name="" placeholder="Email (ac.uk)">
+            <input id="email" type="text" name="" autocomplete="off" placeholder="Email (ac.uk)">
             <input id="password" type="password" name="" placeholder="Password">
-            <a class="login-button">Login</a>
-            <a class="register-button" href="register.html">Register</a>
+            <a class="button" href="homepage.html">Login</a>
+            <a class="reg-button" href="register.html">Register</a>
         </div>
 
 
@@ -35,6 +35,12 @@
             <img src="../static/media/book.png" alt="books">
         </div>
 
+        <script type="text/javascript">
+          window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+          })
+        </script>
 
         <script src="../static/js/main.js"></script>
         <script src="/static/js/example.js"></script>
