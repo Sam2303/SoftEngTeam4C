@@ -11,11 +11,13 @@ afterAll(async () => {
 // checkUser        DONE
 // getId            DONE
 // insertUser       DONE
-// insertQuestion
+// insertQuestion   DONE
 // getQuestion      DONE
 // validQuestionId  DONE
 // getAnswers       DONE
-// insertAnswer
+// insertAnswer     DONE
+
+// Reset: psql -U postgres -f "src/setup.sql
 
 describe('checkUser method', () => {
     test('Call checkUser with default test user', async () => {
@@ -107,5 +109,34 @@ describe('insertUser method', () => {
             'Sams-email@test.ac.uk',
             '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',
         )).toBe(2);
+    });
+});
+
+
+
+describe('insertQuestion method', () => {
+    test('Call insertQuestion with new details', async () => {
+        expect(await db.insertQuestion(
+            1,
+            'Test question, please ignore',
+            'Test Question - Working',
+        )).toBe(2);
+    });
+});
+
+
+
+describe('insertAnswer method', () => {
+  test('Call getAnswers with newly inserted question', async () => {
+      expect(await db.insertAnswer(2,
+        2,
+        'Have you tried turning it off and on again?',
+      ));
+  });
+    test('Call getAnswers with newly inserted question', async () => {
+        expect(await db.getAnswers(2)).toStrictEqual([{"id": 2,
+        "score": 0,
+        "text": 'Have you tried turning it off and on again?',
+        "user_id": 2}]);
     });
 });
