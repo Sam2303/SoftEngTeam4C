@@ -356,23 +356,21 @@ header.sticky ul li a {
 
 .mainbody {
   width: 80%;
-  height: 120vh;
+  height: 70vh;
   margin: 10vh auto;
   overflow: hidden;
-  background-color: rgba(0,0,0,.2);
-  border-radius: 8px;
 }
 .question-box {
     position: relative;
-    top: 25vh;
+    top: 18vh;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    background: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.4);
     padding: 40px;
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.75);
 }
 .question-box h2 {
     text-align: center;
@@ -408,6 +406,8 @@ header.sticky ul li a {
 }
 .question-box input[type="submit"] {
     border-bottom: none;
+    border-radius: 8px;
+    width: 18%;
     cursor: pointer;
     background: none;
     border: 2px solid #2196f3;
