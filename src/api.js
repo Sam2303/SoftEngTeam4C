@@ -192,4 +192,32 @@ api.post('/answer', async (req, res) => {
     }
 });
 
+/**
+ * Upvote or Downvote an answer to a question
+ * @name Submit answer
+ * @route {POST} /answer/vote
+ * @authentication This route requires the user to be logged in and have a valid cookie.
+ * @bodyparam {number} id - The ID of the answer to upvote.
+ * @bodyparam {boolean} upvote - vote should increment? otherwise decrement.
+ */
+api.put('/answer/vote', async (req, res) => {
+    if (req.session.loggedin !== true) {
+        await res.json({ success: false });
+        return;
+    }
+
+    // TODO: check that id is a valid answer id?
+    const { id } = req.body;
+    const { upvote } = req.body;
+
+    const score = await db.voteOnAnswer(id, upvote);
+
+    await res.json({
+        success: true,
+        score,
+    });
+
+
+});
+
 module.exports = api;
