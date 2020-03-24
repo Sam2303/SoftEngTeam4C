@@ -47,7 +47,7 @@ Object.values(elements).forEach((element) => {
 });
 
 // elements we wish to add the event listener to.
-const registerElements = document.getElementsByClassName('register-button2');
+const registerElements = document.getElementsByClassName('reg-button2');
 Object.values(registerElements).forEach((registerElements) => {
     // in this case we're using the 'click' event
     element.addEventListener('click', async () => {
@@ -112,7 +112,7 @@ Object.values(submit_but).forEach((submit_but) => {
             // redirect to pages.html
             window.location.href = 'pages.html';
             console.log("Your question has been submitted");
-            
+
             const id = "1";
 
             const url = baseUrl + id;

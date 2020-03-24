@@ -17,7 +17,7 @@
             <h1 class="welcome">Welcome!</h1>
             <input id="email" type="text" name="" autocomplete="off" placeholder="Email (ac.uk)">
             <input id="password" type="password" name="" placeholder="Password">
-            <a class="button" href="homepage.html">Login</a>
+            <a class="login-button" href="homepage.html">Login</a>
             <a class="reg-button" href="register.html">Register</a>
         </div>
 
@@ -36,10 +36,10 @@
         </div>
 
         <script type="text/javascript">
-          window.addEventListener("scroll", function(){
-            var header = document.querySelector("header");
-            header.classList.toggle("sticky", window.scrollY > 0);
-          })
+            window.addEventListener("scroll", function() {
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky", window.scrollY > 0);
+            })
         </script>
 
         <script src="../static/js/main.js"></script>
