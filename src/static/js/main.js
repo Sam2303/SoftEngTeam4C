@@ -84,9 +84,8 @@ Object.values(registerElements).forEach((registerElements) => {
 });
 
 const submit_but = document.getElementById('submit-button');
-Object.values(submit_but).forEach((submit_but) => {
     // in this case we're using the 'click' event
-    element.addEventListener('click', async () => {
+    submit_but.addEventListener('click', async () => {
         // The API route
         const url = '/api/question';
 
@@ -112,8 +111,8 @@ Object.values(submit_but).forEach((submit_but) => {
             // redirect to pages.html
             window.location.href = 'pages.html';
             console.log("Your question has been submitted");
-
-            const id = "1";
+            let number = 0;
+            const id = number++;
 
             const url = baseUrl + id;
 
@@ -128,7 +127,7 @@ Object.values(submit_but).forEach((submit_but) => {
 
         }
     });
-    });
+
 
 
 // Question Loop, Fetch the questions from server, only 5 at a time
