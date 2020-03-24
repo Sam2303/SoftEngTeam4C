@@ -142,14 +142,6 @@ header nav ul li a.active {
   display: none;
 }
 
-header.sticky {
-  background-color: #fff;
-}
-header.sticky .logo,
-header.sticky ul li a {
-  color: #111;
-}
-
 @media screen and (max-width: 1024px) {
   header {
     padding: 0 20px;
@@ -362,9 +354,7 @@ header.sticky ul li a {
 
 .mainbody {
   width: 80%;
-  height: 70vh;
-  margin: 10vh auto;
-  overflow: hidden;
+  margin: 12vh auto;
 }
 .question-box,
 .login-box {
@@ -489,4 +479,9 @@ header.sticky ul li a {
 .settings:hover
 {
     border: 4px solid #1E90FF;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
 }
