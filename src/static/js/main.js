@@ -18,8 +18,8 @@ Object.values(elements).forEach((element) => {
         // The data we want to send
         // Credentials taken from SQL setup file
         // making variables to ge† the values in the email and password input boxes
-        let email = document.body.getElementById('email').value;
-        let password = document.body.getElementById('password').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
         const data = {
             email: email,
             password: password,
