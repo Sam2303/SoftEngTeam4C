@@ -216,8 +216,20 @@ api.put('/answer/vote', async (req, res) => {
         success: true,
         score,
     });
+});
 
+api.get('/answer/search', async (req, res) => {
+    if (req.session.loggedin !== true) {
+        await res.json({success: false});
+        return;
+    }
+    const { searchText } = req.query;
+    const questionIds = await db.searchQuestions(searchText);
 
+    await res.json({
+        success: true,
+        questionIds,
+    });
 });
 
 module.exports = api;

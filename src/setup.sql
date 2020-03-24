@@ -8,6 +8,9 @@ ALTER USER team4c PASSWORD 'team4c';
 
 \c team4c;
 
+CREATE EXTENSION pg_trgm;
+CREATE EXTENSION btree_gist;
+
 CREATE TABLE fpp_user (
     id serial PRIMARY KEY,
     email varchar(50) NOT NULL,
@@ -20,9 +23,11 @@ CREATE TABLE question (
     id serial PRIMARY KEY,
     text text NOT NULL,
     title text NOT NULL,
-    date date NOT NULL DEFAULT NOW(),
+    date timestamp NOT NULL DEFAULT current_timestamp,
     user_id integer REFERENCES fpp_user (id)
 );
+
+CREATE INDEX ON question USING GIST (title gist_trgm_ops, id);
 
 CREATE TABLE answer (
     id serial PRIMARY KEY,

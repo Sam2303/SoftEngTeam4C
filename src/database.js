@@ -219,7 +219,6 @@ async function insertAnswer(userId, questionId, text) {
  * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
  * @returns {number} The new score.
  */
-
 async function voteOnAnswer(answerId, upvote) {
     const voteDifference = upvote ? 1 : -1;
 
@@ -230,6 +229,39 @@ async function voteOnAnswer(answerId, upvote) {
     `);
 
     return Object.values(rows[0])[0];
+}
+
+/**
+ * Get question ids based on search
+ * @param {string} searchText - The text to search against.
+ * @returns array of objects with id and title properties
+ */
+async function searchQuestions(searchText) {
+    // Textual search
+    if (searchText !== '') {
+        const { rows } = await query(`
+        SELECT x.id, x.title FROM
+        (
+            SELECT similarity(title, '${searchText}') AS similarity, id, title
+            FROM question
+            ORDER BY similarity DESC
+        ) as x;
+        `);
+        console.log(rows);
+        return rows;
+    }
+    // searchText is empty string, search all by date.
+    // order by date without selecting date
+    const { rows } = await query(`
+    SELECT x.id, x.title FROM
+    (
+        SELECT id, title, date
+        FROM question
+        ORDER BY date DESC
+    ) as x;
+    `);
+    console.log(rows);
+    return rows;
 }
 
 module.exports = {
@@ -244,4 +276,5 @@ module.exports = {
     insertAnswer,
     validQuestionId,
     voteOnAnswer,
+    searchQuestions,
 };
