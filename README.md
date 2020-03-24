@@ -55,7 +55,7 @@ POST|`/api/auth/register`|`{email: "", password: ""}`|Register user|`{success: t
 POST|`/api/question`|`{text: "", title: ""}`|Submit a question|The ID of the newly created question - `{success: true, id: 1}`
 GET|`/api/question`|`?id=1`|Get a questions details|`{success: true, text: "", title: "", date: "", user_id: 1}`
 GET|`/api/question/answers`|`?id=1`|Get all answers for the given question ID|A field with an array of objects, each containing `id`, `text`, `score`, and `user_id` - `{success: true, answers: [{...}, {...}, etc.]}`
-GET|`/api/question/search`|`?searchText=Lorem+ipsum`|Get all question IDs ordered using textual search. An empty search term will return result ordered by date|`[{id: 1, title: "Lorem ipsum dolor sit"}, ...]`
+GET|`/api/question/search`|`?searchText=Lorem+ipsum`|Get all question IDs and titles; ordered using textual search. An empty search term will return result ordered by date|`[{id: 1, title: "Lorem ipsum dolor sit"}, ...]`
 POST|`/api/answer`|`{question_id: 1, text: ""}`|Submit an answer. After submitting you should refresh your answer list using the `question/answers` route|`{success: true\|false}`
 PUT|`/api/answer/vote`|`{id: 1, upvote: true}`|Upvote / downvote an answer. The `upvote` field should be `true` if the user is upvoting, and `false` if the user is downvoting|The new score - `{success: true\|false, score: 1}`
 
