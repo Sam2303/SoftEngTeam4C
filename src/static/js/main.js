@@ -138,18 +138,22 @@ window.onload = questionLoop();
 function questionLoop(){
     console.log("The loop has started");
 
+
+
     for(let i = 0; i < 6; i++){
         const title = document.createElement("h2");
         title.textContent = "Team 4C";
-        title.id = i;
+        title.id = "qtitle";
         document.body.appendChild(title);
+
         console.log("Title" + i);
 
 
         const text = document.createElement("p");
         text.textContent = "I hate JS";
-        text.id = i;
+        text.id = "qtext";
         document.body.appendChild(text);
+
         console.log("Text" +i );
 
 
