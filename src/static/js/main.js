@@ -92,8 +92,8 @@ const submit_but = document.getElementById('submit-button');
         // The data we want to send
         // Credentials taken from SQL setup file
         // making variables to ge† the values in the title and question input boxes
-        let title = document.body.getElementById('title').value;
-        let question = document.body.getElementById('question').value;
+        let title = document.getElementById('title').value;
+        let question = document.getElementById('question').value;
         const data = {
             text: question,
             title: title,
