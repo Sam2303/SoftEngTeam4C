@@ -139,23 +139,27 @@ function questionLoop(){
     console.log("The loop has started");
 
 
+    for(let i = 0; i <= 5; i++){
 
-    for(let i = 0; i < 6; i++){
         const title = document.createElement("h2");
         title.textContent = "Team 4C";
         title.id = "qtitle";
-        document.body.appendChild(title);
+       // document.body.appendChild(title);
 
-        console.log("Title" + i);
+       // console.log("Title" + i);
 
 
         const text = document.createElement("p");
         text.textContent = "I hate JS";
         text.id = "qtext";
-        document.body.appendChild(text);
+        //document.body.appendChild(text);
+      //  console.log("Text" +i );
 
-        console.log("Text" +i );
 
-
+        const div = document.createElement("div");
+        div.textContent = title + text;
+        div.id = "question";
+        document.appendChild(div);
+        console.log("div made");
     }
 }
