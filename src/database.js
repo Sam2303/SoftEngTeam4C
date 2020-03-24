@@ -217,16 +217,19 @@ async function insertAnswer(userId, questionId, text) {
  * Change the vote for an answer
  * @param {number} answerId - The ID of the answer to change.
  * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
- * @returns {undefined}
+ * @returns {number} The new score.
  */
 
 async function voteOnAnswer(answerId, upvote) {
     const voteDifference = upvote ? 1 : -1;
 
-    await query(`
+    const { rows } = await query(`
     UPDATE answer
-    SET score = (SELECT score FROM answer WHERE id = ${answerId}) + ${voteDifference};
+    SET score = (SELECT score FROM answer WHERE id = ${answerId}) + ${voteDifference}
+    RETURNING score;
     `);
+
+    return Object.values(rows[0])[0];
 }
 
 module.exports = {

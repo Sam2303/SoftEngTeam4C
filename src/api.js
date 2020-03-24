@@ -210,7 +210,14 @@ api.put('/answer/vote', async (req, res) => {
     const { id } = req.body;
     const { upvote } = req.body;
 
-    db.voteOnAnswer(id, upvote);
+    const score = await db.voteOnAnswer(id, upvote);
+
+    await res.json({
+        success: true,
+        score,
+    });
+
+
 });
 
 module.exports = api;
