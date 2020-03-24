@@ -212,7 +212,8 @@ header nav ul li a.active {
   left: 23vw;
 }
 
-.login-box {
+.login-box,
+.register-box {
   position: relative;
   top: 18vh;
   left: 50%;
@@ -224,6 +225,10 @@ header nav ul li a.active {
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0,0,0,.75);
 }
+.register-box {
+  top: 25vh;
+}
+.register-box h2,
 .login-box h2 {
     text-align: center;
     margin: 0 0 30px;
@@ -231,6 +236,7 @@ header nav ul li a.active {
     color: #2196f3;
     text-transform: uppercase;
 }
+.register-box input,
 .login-box input {
     padding: 10px 0;
     margin-bottom: 30px;
@@ -242,6 +248,7 @@ header nav ul li a.active {
     background: none;
     margin-bottom: 40px;
 }
+.register-box input,
 .login-box input {
     width: 100%;
     box-sizing: border-box;
@@ -252,9 +259,11 @@ header nav ul li a.active {
     font-size: 18px;
     border-bottom: 2px solid #999;
 }
+.register-box form div,
 .login-box form div {
     position: relative;
 }
+.register-box form div label,
 .login-box form div label {
     position: absolute;
     top: 10px;
@@ -263,6 +272,8 @@ header nav ul li a.active {
     pointer-events: none;
     transition: .5s;
 }
+.register-box input:focus ~ label,
+.register-box input:valid ~ label ,
 .login-box input:focus ~ label,
 .login-box input:valid ~ label {
     top: -16px;
@@ -271,10 +282,13 @@ header nav ul li a.active {
     font-size: 14px;
     font-weight: bold;
 }
+.register-box input:focus,
+.register-box input:valid,
 .login-box input:focus,
 .login-box input:valid {
     border-bottom: 2px solid #2196f3;
 }
+.register-button,
 .login-button {
     position: relative;
     text-decoration: none;
@@ -293,6 +307,7 @@ header nav ul li a.active {
     transition: 0.25s;
     cursor:pointer;
 }
+.register-button:hover,
 .login-button:hover {
   background-color: #1E90FF;
   color: #111;
@@ -301,7 +316,6 @@ header nav ul li a.active {
   position: relative;
   margin-top: 14vh;
   left: 50%;
-  transform: translateX(-50%);
   transform: translate(-50%, -50%);
   width: 300px;
   background: rgba(0,0,0,.4);
@@ -316,6 +330,18 @@ header nav ul li a.active {
   padding: 0;
   color: #2196f3;
   text-transform: uppercase;
+}
+.reg-back {
+  position: relative;
+  margin-top: -5vh;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background: rgba(0,0,0,.4);
+  padding: 20px 10px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.75);
 }
 .reg-button {
     position: relative;
