@@ -230,25 +230,29 @@ header.sticky ul li a {
 .login-button,
 .reg-button
 {
+    position: absolute;
     text-decoration: none;
-    font-size: 120%;
+    /* left: 30%; */
+    /* transform: translateX(-50%); */
     background: none;
     display: inline-block;
     margin: 0.5vh;
     width: 40%;
     text-align: center;
     border: 2px solid #1E90FF;
-    padding: 2vh;
+    padding: 1.5vh;
     outline: none;
     color: #fff;
-    border-radius: 18px;
+    border-radius: 8px;
     transition: 0.25s;
     cursor:pointer;
 }
-
-.reg-button
-{
+.reg-button {
   border: 2px solid #228B22;
+  right: 8%;
+}
+.login-button {
+  left: 8%;
 }
 .login-button:hover
 {
@@ -360,7 +364,8 @@ header.sticky ul li a {
   margin: 10vh auto;
   overflow: hidden;
 }
-.question-box {
+.question-box,
+.login-box {
     position: relative;
     top: 18vh;
     left: 50%;
@@ -372,14 +377,21 @@ header.sticky ul li a {
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0,0,0,.75);
 }
-.question-box h2 {
+.login-box {
+  top: 30vh;
+  width: 50%;
+  height: 37.5vh;
+}
+.question-box h2,
+.login-box h2 {
     text-align: center;
     margin: 0 0 40px;
     padding: 0;
     color: #2196f3;
     text-transform: uppercase;
 }
-.question-box input {
+.question-box input,
+.login-box input {
     padding: 10px 0;
     margin-bottom: 30px;
     background: none;
@@ -390,6 +402,7 @@ header.sticky ul li a {
     background: none;
     margin-bottom: 40px;
 }
+.login-box input,
 .question-box input,
 .question-box textarea {
     width: 100%;
@@ -417,9 +430,11 @@ header.sticky ul li a {
     text-transform: uppercase;
     transition: .5s;
 }
+.login-box form div,
 .question-box form div {
     position: relative;
 }
+.login-box form div label,
 .question-box form div label {
     position: absolute;
     top: 10px;
@@ -428,6 +443,8 @@ header.sticky ul li a {
     pointer-events: none;
     transition: .5s;
 }
+.login-box input:focus ~ label,
+.login-box input:valid ~ label,
 .question-box input:focus ~ label,
 .question-box textarea:focus ~ label,
 .question-box input:valid ~ label,
@@ -438,6 +455,8 @@ header.sticky ul li a {
     font-size: 14px;
     font-weight: bold;
 }
+.login-box input:valid,
+.login-box input:focus,
 .question-box input:focus,
 .question-box textarea:focus,
 .question-box input:valid,
