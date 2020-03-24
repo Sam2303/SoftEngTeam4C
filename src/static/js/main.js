@@ -122,11 +122,36 @@ Object.values(submit_but).forEach((submit_but) => {
 
             if (returned.success === true) {
                 const newQuestionId = returned.id;
-            }     else {
-                //
             }
         } else {
             console.log('There has been an error');
 
         }
     });
+    });
+
+
+// Question Loop, Fetch the questions from server, only 5 at a time
+
+window.onload = questionLoop();
+
+function questionLoop(){
+    console.log("The loop has started");
+
+    for(let i = 0; i < 6; i++){
+        const title = document.createElement("h2");
+        title.textContent = "Team 4C";
+        title.id = i;
+        document.body.appendChild(title);
+        console.log("Title" + i);
+
+
+        const text = document.createElement("p");
+        text.textContent = "I hate JS";
+        text.id = i;
+        document.body.appendChild(text);
+        console.log("Text" +i );
+
+
+    }
+}
