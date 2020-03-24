@@ -537,6 +537,36 @@ header nav ul li a.active {
   text-align: center;
 }
 
+
+/* Useful Links */
+.links-box{
+  margin-top: 5%;
+  position: relative;
+  top: 18vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  background: rgba(0,0,0,.4);
+  padding: 40px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.75);
+}
+
+.links-box h2{
+  text-align: center;
+  margin: 0 0 40px;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.img{
+  height: 100px;
+  width: auto;
+  margin: 2.3%;
+}
+
+
 /* Settings */
 
 .settings
@@ -555,9 +585,4 @@ header nav ul li a.active {
 .settings:hover
 {
     border: 4px solid #1E90FF;
-}
-
-.img {
-  width: 100px;
-  height: 100px;
 }
