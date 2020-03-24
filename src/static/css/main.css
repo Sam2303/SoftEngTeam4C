@@ -228,7 +228,8 @@ header.sticky ul li a {
     border-color: #1E90FF;
 }
 .login-button,
-.reg-button
+.reg-button,
+.button
 {
     position: absolute;
     text-decoration: none;
@@ -254,7 +255,8 @@ header.sticky ul li a {
 .login-button {
   left: 8%;
 }
-.login-button:hover
+.login-button:hover,
+.button:hover
 {
     background: #1E90FF;
     color: #000;
