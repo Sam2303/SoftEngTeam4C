@@ -219,9 +219,14 @@ async function insertAnswer(userId, questionId, text) {
  * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
  * @returns {undefined}
  */
-// eslint-disable-next-line no-unused-vars
+
 async function voteOnAnswer(answerId, upvote) {
-    // TODO: This and the API route for this.
+    const voteDifference = upvote ? 1 : -1;
+
+    await query(`
+    UPDATE answer
+    SET score = (SELECT score FROM answer WHERE id = ${answerId}) + ${voteDifference};
+    `);
 }
 
 module.exports = {
@@ -235,4 +240,5 @@ module.exports = {
     getAnswers,
     insertAnswer,
     validQuestionId,
+    voteOnAnswer,
 };
