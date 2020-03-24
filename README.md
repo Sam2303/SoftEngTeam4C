@@ -59,12 +59,6 @@ GET|`/api/question/search`|`?searchText=Lorem+ipsum`|Get all question IDs ordere
 POST|`/api/answer`|`{question_id: 1, text: ""}`|Submit an answer. After submitting you should refresh your answer list using the `question/answers` route|`{success: true\|false}`
 PUT|`/api/answer/vote`|`{id: 1, upvote: true}`|Upvote / downvote an answer. The `upvote` field should be `true` if the user is upvoting, and `false` if the user is downvoting|The new score - `{success: true\|false, score: 1}`
 
-### ToDo
-
-- `/api/question/search`
-  - Getting a list of question ID + titles based on a textual search
-  - Getting a list of question ID + titles based on a date search
-
 ### Javascript Example
 
 ```javascript
