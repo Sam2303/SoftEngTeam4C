@@ -18,8 +18,8 @@ Object.values(elements).forEach((element) => {
         // The data we want to send
         // Credentials taken from SQL setup file
         // making variables to ge† the values in the email and password input boxes
-        let email = document.body.getElementById('email').value;
-        let password = document.body.getElementById('password').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
         const data = {
             email: email,
             password: password,
@@ -108,8 +108,8 @@ const submit_but = document.getElementById('submit-button');
 
         // Check if it worked
         if (returned.success === true) {
-            // redirect to pages.html
-            window.location.href = 'pages.html';
+            // redirect to questions.html
+            window.location.href = 'questions.html';
             console.log("Your question has been submitted");
             let number = 0;
             const id = number++;
@@ -131,37 +131,30 @@ const submit_but = document.getElementById('submit-button');
 
 
 // Question Loop, Fetch the questions from server, only 5 at a time
-let title = document.createElement("h2");
-title.textContent = "Question Title";
-title.id = "qtitle";
-
-
-let text = document.createElement("p");
-text.textContent = "Actual Question Text";
-text.id = "qtext";
-
-
 window.onload = questionLoop();
 
-
-
-
+// function to load the questions for the page
 
 function questionLoop(){
+
+  // a loop to stop repeated code and ease
   for(let i = 1; i <= 5; i++){
-    let element = document.createElement('div');
-    element.id = 'question' + i;
-    element.appendChild(document.createTextNode(''));
-    document.getElementById('list-questions').appendChild(element);
+    //creation of the div tag
+    let qelement = document.createElement('div');
+    qelement.id = 'question' + i;
+    qelement.appendChild(document.createTextNode(''));
+    document.getElementById('list-questions').appendChild(qelement);
 
-    let title = document.createElement('h2');
-    title.textContent = 'Question Title';
-    title.id = 'qtitle';
-    document.getElementById('question' + i).appendChild(title);
+    // creation and input of the h2 tag
+    let qtitle = document.createElement('h2');
+    qtitle.textContent = 'Question Title';
+    qtitle.id = 'qtitle';
+    document.getElementById('question' + i).appendChild(qtitle);
 
-    let text = document.createElement('p');
-    text.textContent = 'question text';
-    text.id = 'qtext';
-    document.getElementById('question' + i).appendChild(text);
+// creation and input of the p tag
+    let qtext = document.createElement('p');
+    qtext.textContent = 'question text';
+    qtext.id = 'qtext';
+    document.getElementById('question' + i).appendChild(qtext);
   }
 }
