@@ -247,7 +247,6 @@ async function searchQuestions(searchText) {
             ORDER BY similarity DESC
         ) as x;
         `);
-        console.log(rows);
         return rows;
     }
     // searchText is empty string, search all by date.
@@ -260,7 +259,6 @@ async function searchQuestions(searchText) {
         ORDER BY date DESC
     ) as x;
     `);
-    console.log(rows);
     return rows;
 }
 
