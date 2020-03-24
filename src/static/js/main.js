@@ -47,7 +47,7 @@ Object.values(elements).forEach((element) => {
 });
 
 // elements we wish to add the event listener to.
-const registerElements = document.getElementsByClassName('reg-button2');
+const registerElements = document.getElementsByClassName('reg-button');
 Object.values(registerElements).forEach((registerElements) => {
     // in this case we're using the 'click' event
     element.addEventListener('click', async () => {
