@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="../static/css/main.css" rel="stylesheet" title="Default">
         <title>Forum++</title>
     </head>
@@ -38,14 +39,16 @@
             </div>
         </div>
 
+        <script src="../static/js/main.js"></script>
+
         <script type="text/javascript">
-          window.addEventListener("scroll", function(){
-            var header = document.querySelector("header");
-            header.classList.toggle("sticky", window.scrollY > 0);
-          })
+            window.addEventListener("scroll", function() {
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky", window.scrollY > 0);
+            })
         </script>
 
-        <script src="../static/js/main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.menu-toggle').click(function() {
