@@ -131,37 +131,30 @@ const submit_but = document.getElementById('submit-button');
 
 
 // Question Loop, Fetch the questions from server, only 5 at a time
-let title = document.createElement("h2");
-title.textContent = "Question Title";
-title.id = "qtitle";
-
-
-let text = document.createElement("p");
-text.textContent = "Actual Question Text";
-text.id = "qtext";
-
-
 window.onload = questionLoop();
 
-
-
-
+// function to load the questions for the page
 
 function questionLoop(){
+
+  // a loop to stop repeated code and ease
   for(let i = 1; i <= 5; i++){
-    let element = document.createElement('div');
-    element.id = 'question' + i;
-    element.appendChild(document.createTextNode(''));
-    document.getElementById('list-questions').appendChild(element);
+    //creation of the div tag
+    let qelement = document.createElement('div');
+    qelement.id = 'question' + i;
+    qelement.appendChild(document.createTextNode(''));
+    document.getElementById('list-questions').appendChild(qelement);
 
-    let title = document.createElement('h2');
-    title.textContent = 'Question Title';
-    title.id = 'qtitle';
-    document.getElementById('question' + i).appendChild(title);
+    // creation and input of the h2 tag
+    let qtitle = document.createElement('h2');
+    qtitle.textContent = 'Question Title';
+    qtitle.id = 'qtitle';
+    document.getElementById('question' + i).appendChild(qtitle);
 
-    let text = document.createElement('p');
-    text.textContent = 'question text';
-    text.id = 'qtext';
-    document.getElementById('question' + i).appendChild(text);
+// creation and input of the p tag
+    let qtext = document.createElement('p');
+    qtext.textContent = 'question text';
+    qtext.id = 'qtext';
+    document.getElementById('question' + i).appendChild(qtext);
   }
 }
