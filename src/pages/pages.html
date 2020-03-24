@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../static/css/main.css" rel="stylesheet" title="Default">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <title>Questions</title>
+  <title>Pages</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
       <ul>
         <li><a href="homepage.html">Home</a></li>
         <li><a href="usefullinks.html">Useful Links</a></li>
-        <li><a href="questions.html" class="active">Questions</a></li>
+        <li><a href="pages.html" class="active">Pages</a></li>
         <li><a href="settings.html">Settings</a></li>
         <li class="logout-button"><a href="index.html">Logout</a></li>
       </ul>
@@ -30,11 +30,11 @@
       <h2>Have a question?</h2>
       <form>
         <div>
-          <input id='title' ype="text" name="" required="">
+          <input type="text" name="" required="">
           <label>Question Title</label>
         </div>
         <div>
-          <textarea id='question' required=""></textarea>
+          <textarea required=""></textarea>
           <label>Write your Question</label>
         </div>
         <input id="submit-button" type="submit" name="" value="Submit">
@@ -56,10 +56,10 @@
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-          $('
-              .menu - toggle ').click(function() { $('
-              nav ').toggleClass('
-              active ') }) })
+      $('.menu-toggle').click(function() {
+        $('nav').toggleClass('active')
+      })
+    })
   </script>
 </body>
 

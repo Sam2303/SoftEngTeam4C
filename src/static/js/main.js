@@ -108,8 +108,8 @@ const submit_but = document.getElementById('submit-button');
 
         // Check if it worked
         if (returned.success === true) {
-            // redirect to pages.html
-            window.location.href = 'pages.html';
+            // redirect to questions.html
+            window.location.href = 'questions.html';
             console.log("Your question has been submitted");
             let number = 0;
             const id = number++;
