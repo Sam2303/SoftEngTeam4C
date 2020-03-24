@@ -460,6 +460,32 @@ header nav ul li a.active {
   color: #111;
 }
 
+/* Questions */
+
+#list-questions{
+  position: relative;
+  top: 18vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  background: rgba(0,0,0,.4);
+  padding: 40px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.75);
+}
+
+#question1,
+#question2,
+#question3,
+#question4,
+#question5
+{
+  background-color: blue;
+  padding: 1vh;
+  margin: 1vh;
+  text-align: center;
+}
 
 /* Settings */
 

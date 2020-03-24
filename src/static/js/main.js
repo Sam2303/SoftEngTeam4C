@@ -132,34 +132,37 @@ Object.values(submit_but).forEach((submit_but) => {
 
 
 // Question Loop, Fetch the questions from server, only 5 at a time
+let title = document.createElement("h2");
+title.textContent = "Question Title";
+title.id = "qtitle";
+
+
+let text = document.createElement("p");
+text.textContent = "Actual Question Text";
+text.id = "qtext";
+
 
 window.onload = questionLoop();
 
+
+
+
+
 function questionLoop(){
-    console.log("The loop has started");
+  for(let i = 1; i <= 5; i++){
+    let element = document.createElement('div');
+    element.id = 'question' + i;
+    element.appendChild(document.createTextNode(''));
+    document.getElementById('list-questions').appendChild(element);
 
+    let title = document.createElement('h2');
+    title.textContent = 'Question Title';
+    title.id = 'qtitle';
+    document.getElementById('question' + i).appendChild(title);
 
-    for(let i = 0; i <= 5; i++){
-
-        const title = document.createElement("h2");
-        title.textContent = "Team 4C";
-        title.id = "qtitle";
-       // document.body.appendChild(title);
-
-       // console.log("Title" + i);
-
-
-        const text = document.createElement("p");
-        text.textContent = "I hate JS";
-        text.id = "qtext";
-        //document.body.appendChild(text);
-      //  console.log("Text" +i );
-
-
-        const div = document.createElement("div");
-        div.textContent = title + text;
-        div.id = "question";
-        document.appendChild(div);
-        console.log("div made");
-    }
+    let text = document.createElement('p');
+    text.textContent = 'question text';
+    text.id = 'qtext';
+    document.getElementById('question' + i).appendChild(text);
+  }
 }
