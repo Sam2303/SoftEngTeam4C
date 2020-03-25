@@ -32,6 +32,7 @@ const submit_but = document.getElementById('submit-button');
             // redirect to questions.html
             window.location.href = 'questions.html';
             console.log("Your question has been submitted");
+
             let number = 0;
             const id = number++;
 
