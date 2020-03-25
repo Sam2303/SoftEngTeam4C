@@ -79,13 +79,9 @@ async function getId(email) {
     `);
 
     if (rows.length === 1) {
-        console.log("TEST + 1");
         const [{ id }] = rows;
-        console.log(id);
         return id;
     }
-    console.log("TEST - 1");
-
     return -1;
 }
 
@@ -98,11 +94,9 @@ async function getId(email) {
 async function insertUser(email, passwordHash) {
     const idCheck = await getId(email);
     if (idCheck !== -1) {
-      console.log("INSERTUSER TEST")
         return -1;
     }
 
-    console.log("INSERTUSER TEST")
     const { rows } = await query(`
         INSERT INTO fpp_user (email, password_hash)
             VALUES ('${email}', '${passwordHash}')
@@ -129,6 +123,7 @@ async function insertQuestion(userId, questionText, questionTitle) {
             id;
     `);
 
+    console.log(rows)
     const [{ id }] = rows;
     return id;
 }
