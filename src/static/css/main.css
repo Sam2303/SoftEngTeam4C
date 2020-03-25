@@ -592,8 +592,14 @@ header nav ul li a.active {
   width: auto;
   margin: 1%;
   display: inline-block;
+  grid-column: 1 / -1;
+  grid-row: 1/ -1;
 }
 
+.links-box img:hover {
+    color: red;
+    border: 10px;
+}
 
 /* Settings */
 
