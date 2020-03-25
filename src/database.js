@@ -217,11 +217,49 @@ async function insertAnswer(userId, questionId, text) {
  * Change the vote for an answer
  * @param {number} answerId - The ID of the answer to change.
  * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
- * @returns {undefined}
+ * @returns {number} The new score.
  */
-// eslint-disable-next-line no-unused-vars
 async function voteOnAnswer(answerId, upvote) {
-    // TODO: This and the API route for this.
+    const voteDifference = upvote ? 1 : -1;
+
+    const { rows } = await query(`
+    UPDATE answer
+    SET score = (SELECT score FROM answer WHERE id = ${answerId}) + ${voteDifference}
+    RETURNING score;
+    `);
+
+    return Object.values(rows[0])[0];
+}
+
+/**
+ * Get question ids based on search
+ * @param {string} searchText - The text to search against.
+ * @returns array of objects with id and title properties
+ */
+async function searchQuestions(searchText) {
+    // Textual search
+    if (searchText !== '') {
+        const { rows } = await query(`
+        SELECT x.id, x.title FROM
+        (
+            SELECT similarity(title, '${searchText}') AS similarity, id, title
+            FROM question
+            ORDER BY similarity DESC
+        ) as x;
+        `);
+        return rows;
+    }
+    // searchText is empty string, search all by date.
+    // order by date without selecting date
+    const { rows } = await query(`
+    SELECT x.id, x.title FROM
+    (
+        SELECT id, title, date
+        FROM question
+        ORDER BY date DESC
+    ) as x;
+    `);
+    return rows;
 }
 
 module.exports = {
@@ -235,4 +273,6 @@ module.exports = {
     getAnswers,
     insertAnswer,
     validQuestionId,
+    voteOnAnswer,
+    searchQuestions,
 };
