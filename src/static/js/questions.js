@@ -69,14 +69,33 @@ function questionLoop(){
 
     // creation and input of the h2 tag
     let qtitle = document.createElement('h2');
-    qtitle.textContent = 'Question Title';
+
+    qtitle.textContent = 'Question Title'; // needs to be changed to actual title of questions
+
     qtitle.id = 'qtitle';
     document.getElementById('question' + i).appendChild(qtitle);
 
-// creation and input of the p tag
-    let qtext = document.createElement('p');
-    qtext.textContent = 'question text';
-    qtext.id = 'qtext';
-    document.getElementById('question' + i).appendChild(qtext);
+    let arrow = document.createElement('img');
+    arrow.src = '../static/media/downArrow.png';
+    document.getElementById('question'+i).appendChild(arrow);
+
+  }
+}
+
+
+window.onload = questionText();
+
+// function makes the question text appear when the title is clicked
+function questionText(){
+
+  for(let i = 1; i <=5; i++){
+    document.getElementById("question"+i).addEventListener("click", (event) => {
+      let qtext = document.createElement('p');
+
+      qtext.textContent = 'question text'; // needs to be changed to actual text of questions
+
+      qtext.id = 'qtext';
+      document.getElementById('question' + i).appendChild(qtext);
+    });
   }
 }
