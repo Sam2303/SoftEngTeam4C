@@ -566,9 +566,9 @@ header nav ul li a.active {
 
 /* Useful Links */
 .links-box{
-  margin-top: 5%;
-  position: relative;
-  top: 18vh;
+  margin-top: 10%;
+  position: absolute;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
@@ -590,7 +590,8 @@ header nav ul li a.active {
 .img{
   height: 100px;
   width: auto;
-  margin: 2.3%;
+  margin: 1%;
+  display: inline-block;
 }
 
 
