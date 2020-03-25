@@ -16,6 +16,8 @@ afterAll(async () => {
 // validQuestionId  DONE
 // getAnswers       DONE
 // insertAnswer     DONE
+// voteOnAnswer
+// searchQuestions
 
 // Reset: psql -U postgres -f "src/setup.sql
 
@@ -144,4 +146,24 @@ describe('insertAnswer method', () => {
     test('Call getAnswers with newly inserted question', async () => {
         expect(await db.getAnswers(2)).not.toBe([]);
     });
+});
+
+
+
+// describe('voteOnAnswer method', () => {
+//   test('Call voteOnAnswer with an upvote', async () => {
+//       expect(await db.voteOnAnswer(3, 1));
+//   });
+// });
+
+
+
+describe('searchQuestions method', () => {
+  test('Call searchQuestions without a value. Show all items, newest first', async () => {
+      expect(await db.searchQuestions('')).not.toBe([]);
+  });
+
+  test('Call searchQuestions with criteria in order of similarity', async () => {
+      expect(await db.searchQuestions("I need air! I can''t breath!"));
+  });
 });

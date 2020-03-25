@@ -122,8 +122,6 @@ async function insertQuestion(userId, questionText, questionTitle) {
          RETURNING
             id;
     `);
-
-    console.log(rows)
     const [{ id }] = rows;
     return id;
 }
@@ -223,6 +221,7 @@ async function voteOnAnswer(answerId, upvote) {
     RETURNING score;
     `);
 
+        console.log(rows[0]);
     return Object.values(rows[0])[0];
 }
 
@@ -233,6 +232,7 @@ async function voteOnAnswer(answerId, upvote) {
  */
 async function searchQuestions(searchText) {
     // Textual search
+    console.log(searchText);
     if (searchText !== '') {
         const { rows } = await query(`
         SELECT x.id, x.title FROM
@@ -242,6 +242,8 @@ async function searchQuestions(searchText) {
             ORDER BY similarity DESC
         ) as x;
         `);
+        console.log("Not Blank");
+        console.log(rows);
         return rows;
     }
     // searchText is empty string, search all by date.
@@ -254,6 +256,8 @@ async function searchQuestions(searchText) {
         ORDER BY date DESC
     ) as x;
     `);
+    console.log("Blank");
+    console.log(rows);
     return rows;
 }
 
