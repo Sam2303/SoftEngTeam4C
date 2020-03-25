@@ -24,10 +24,9 @@ window.addEventListener('click', searchButton => {
     const response = await fetch(url, {method: 'GET'});
     const returned = await response.json();
 
-    window.loaction.href = 'questions.html';
-    console.log('you have been redirected');
-
     if (returned.success === true) {
+        window.loaction.href = 'questions.html';
+        console.log('you have been redirected');
         const newSearchId = returned.id;
     } else {
         //
