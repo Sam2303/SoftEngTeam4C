@@ -188,7 +188,8 @@ async function getAnswers(id) {
     WHERE
         question_id = ${id};
     `);
-
+    // console.log(id);
+    // console.log(rows);
     return rows;
 }
 
@@ -214,14 +215,14 @@ async function insertAnswer(userId, questionId, text) {
  */
 async function voteOnAnswer(answerId, upvote) {
     const voteDifference = upvote ? 1 : -1;
+    console.log("voteDifference: ", voteDifference);
 
     const { rows } = await query(`
     UPDATE answer
     SET score = (SELECT score FROM answer WHERE id = ${answerId}) + ${voteDifference}
     RETURNING score;
     `);
-
-        console.log(rows[0]);
+    console.log(rows);
     return Object.values(rows[0])[0];
 }
 

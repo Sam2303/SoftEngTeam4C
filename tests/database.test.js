@@ -16,7 +16,7 @@ afterAll(async () => {
 // validQuestionId  DONE
 // getAnswers       DONE
 // insertAnswer     DONE
-// voteOnAnswer
+// voteOnAnswer     DONE
 // searchQuestions
 
 // Reset: psql -U postgres -f "src/setup.sql
@@ -137,33 +137,49 @@ describe('insertQuestion method', () => {
 
 
 describe('insertAnswer method', () => {
-  test('Call getAnswers with newly inserted question', async () => {
+  test('Call insertAnswer to insert new answer', async () => {
       expect(await db.insertAnswer(2,
         2,
         'Have you tried turning it off and on again?',
       ));
   });
-    test('Call getAnswers with newly inserted question', async () => {
+    test('Call getAnswers with newly inserted answer', async () => {
         expect(await db.getAnswers(2)).not.toBe([]);
     });
 });
 
 
 
-// describe('voteOnAnswer method', () => {
-//   test('Call voteOnAnswer with an upvote', async () => {
-//       expect(await db.voteOnAnswer(3, 1));
-//   });
-// });
-
-
-
-describe('searchQuestions method', () => {
-  test('Call searchQuestions without a value. Show all items, newest first', async () => {
-      expect(await db.searchQuestions('')).not.toBe([]);
+describe('voteOnAnswer method', () => {
+  test('Call voteOnAnswer with an upvote', async () => {
+      expect(await db.voteOnAnswer(2, true));
+  });
+  test('Call getAnswers to check new score', async () => {
+    expect(await db.getAnswers(1)).toStrictEqual([{"id": 1,
+    "score": 1,
+    "text": "leave the smoking area then..",
+    "user_id": 1}]);
   });
 
-  test('Call searchQuestions with criteria in order of similarity', async () => {
-      expect(await db.searchQuestions("I need air! I can''t breath!"));
+  test('Call voteOnAnswer with a downvote', async () => {
+      expect(await db.voteOnAnswer(2, false));
+  });
+  test('Call getAnswers to check new score', async () => {
+    expect(await db.getAnswers(1)).toStrictEqual([{"id": 1,
+    "score": 0,
+    "text": "leave the smoking area then..",
+    "user_id": 1}]);
   });
 });
+
+
+
+// describe('searchQuestions method', () => {
+//   test('Call searchQuestions without a value. Show all items, newest first', async () => {
+//       expect(await db.searchQuestions('')).not.toBe([]);
+//   });
+//
+//   test('Call searchQuestions with criteria in order of similarity', async () => {
+//       expect(await db.searchQuestions("I need air! I can''t breath!"));
+//   });
+// });

@@ -1,6 +1,5 @@
 const utils = require('../src/utils');
 
-// TODO
 describe('isTextString method', () => {
     test('Call isTextString with a string', async () => {
         expect(await utils.isTextString(
