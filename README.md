@@ -9,6 +9,8 @@ SammyJC|Sam Clifton|UP880264
 Bancsii|Daniel McKenna|UP846201
 romelblair|Romel Blair|UP811440
 
+For Daniel 21 commissions were done without registering the right account, containing 1,400 additions. They can be viewed in the history.
+
 ## Installation / Running
 
 - [Install and run PostgreSQL](https://www.postgresqltutorial.com/install-postgresql/)
