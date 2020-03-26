@@ -7,10 +7,11 @@ async function upvote(answerId, thumb, voteText, sendToServer = true) {
     thumb.style.display = 'none';
 
     const voteCount = Number(voteText.textContent);
-    voteText.textContent = voteCount + 1;
     voteText.style.color = 'green';
 
     if (sendToServer) {
+        voteText.textContent = voteCount + 1;
+
         await fetch('/api/answer/vote', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
