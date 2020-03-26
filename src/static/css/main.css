@@ -629,6 +629,7 @@ input:checked[type="checkbox"]:before {
 .answers{
   position: relative;
   /* height: 100vh; */
+  display: flex;
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
@@ -643,12 +644,12 @@ input:checked[type="checkbox"]:before {
 .answers p{
   text-align:center;
   padding: 2vh;
+  padding-left: 10%;
 }
 
 .answers i{
   right: 5%;
   position: absolute;
-  display: flex;
 }
 
 .main {
