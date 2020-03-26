@@ -4,6 +4,7 @@ const listQuestions = document.getElementById('list-questions');
 listQuestions.style.visibility = 'hidden';
 
 searchButton.addEventListener('click', async () => {
+    listQuestions.innerHTML = '';
     const search = searchText.value.replace(' ', '+');
     const url = `/api/question/search/?searchText=${search}`;
     const response = await fetch(url, { method: 'GET' });

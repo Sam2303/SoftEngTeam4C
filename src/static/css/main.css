@@ -472,9 +472,9 @@ header nav ul li a.active {
 
 #list-questions{
   position: relative;
-  top: 18vh;
+  top: 40vh;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   width: 80%;
   background: rgba(0,0,0,.4);
   padding: 40px;
