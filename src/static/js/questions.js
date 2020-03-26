@@ -1,7 +1,7 @@
 const submit_but = document.getElementById('submit-button');
 
 submit_but.addEventListener('click', async () => {
-    console.log("Clicked");
+    console.log('Clicked');
 
     const url = '/api/question';
 
