@@ -215,11 +215,11 @@ api.get('/question/search', async (req, res) => {
     }
     const { searchText } = req.query;
 
-    const questionIds = await db.searchQuestions(searchText);
+    const questions = await db.searchQuestions(searchText);
 
     await res.json({
         success: true,
-        questionIds,
+        questions,
     });
 });
 
