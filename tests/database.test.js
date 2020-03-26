@@ -174,12 +174,12 @@ describe('voteOnAnswer method', () => {
 
 
 
-// describe('searchQuestions method', () => {
-//   test('Call searchQuestions without a value. Show all items, newest first', async () => {
-//       expect(await db.searchQuestions('')).not.toBe([]);
-//   });
-//
-//   test('Call searchQuestions with criteria in order of similarity', async () => {
-//       expect(await db.searchQuestions("I need air! I can''t breath!"));
-//   });
-// });
+describe('searchQuestions method', () => {
+  test('Call searchQuestions without a value. Show all items, newest first', async () => {
+      expect(await db.searchQuestions('')).not.toBe([]);
+  });
+
+  test('Call searchQuestions with criteria in order of similarity', async () => {
+      expect(await db.searchQuestions("I need air! I can''t breath!"));
+  });
+});
