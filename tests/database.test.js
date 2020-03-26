@@ -46,7 +46,6 @@ describe('checkUser method', () => {
 });
 
 
-
 describe('getId method', () => {
     test('Call getId with default test user', async () => {
         expect(await db.getId('test-email@test.ac.uk')).toBe(1);
@@ -56,7 +55,6 @@ describe('getId method', () => {
         expect(await db.getId('incorrect-email@test.ac.uk')).toBe(-1);
     });
 });
-
 
 
 describe('getQuestion method', () => {
@@ -70,20 +68,20 @@ describe('getQuestion method', () => {
 });
 
 
-
 describe('getAnswers method', () => {
     test('Call getAnswers with correct ID', async () => {
-        expect(await db.getAnswers(1)).toStrictEqual([{"id": 1,
-        "score": 0,
-        "text": "leave the smoking area then..",
-        "user_id": 1}]);
+        expect(await db.getAnswers(1)).toStrictEqual([{
+            id: 1,
+            score: 0,
+            text: 'leave the smoking area then..',
+            user_id: 1,
+        }]);
     });
 
     test('Call getAnswers with incorrect ID', async () => {
         expect(await db.getAnswers(-1)).toStrictEqual([]);
     });
 });
-
 
 
 describe('validQuestionId method', () => {
@@ -95,7 +93,6 @@ describe('validQuestionId method', () => {
         expect(await db.validQuestionId(-1)).toBe(false);
     });
 });
-
 
 
 describe('insertUser method', () => {
@@ -113,7 +110,6 @@ describe('insertUser method', () => {
         )).toEqual(expect.any(Number));
     });
 });
-
 
 
 describe('insertQuestion method', () => {
@@ -135,43 +131,43 @@ describe('insertQuestion method', () => {
 });
 
 
-
 describe('insertAnswer method', () => {
-  test('Call insertAnswer to insert new answer', async () => {
-      expect(await db.insertAnswer(2,
-        2,
-        'Have you tried turning it off and on again?',
-      ));
-  });
+    test('Call insertAnswer to insert new answer', async () => {
+        expect(await db.insertAnswer(2,
+            2,
+            'Have you tried turning it off and on again?'));
+    });
     test('Call getAnswers with newly inserted answer', async () => {
         expect(await db.getAnswers(2)).not.toBe([]);
     });
 });
 
 
-
 describe('voteOnAnswer method', () => {
-  test('Call voteOnAnswer with an upvote', async () => {
-      expect(await db.voteOnAnswer(2, true));
-  });
-  test('Call getAnswers to check new score', async () => {
-    expect(await db.getAnswers(1)).toStrictEqual([{"id": 1,
-    "score": 1,
-    "text": "leave the smoking area then..",
-    "user_id": 1}]);
-  });
+    test('Call voteOnAnswer with an upvote', async () => {
+        expect(await db.voteOnAnswer(2, true));
+    });
+    test('Call getAnswers to check new score', async () => {
+        expect(await db.getAnswers(1)).toStrictEqual([{
+            id: 1,
+            score: 1,
+            text: 'leave the smoking area then..',
+            user_id: 1,
+        }]);
+    });
 
-  test('Call voteOnAnswer with a downvote', async () => {
-      expect(await db.voteOnAnswer(2, false));
-  });
-  test('Call getAnswers to check new score', async () => {
-    expect(await db.getAnswers(1)).toStrictEqual([{"id": 1,
-    "score": 0,
-    "text": "leave the smoking area then..",
-    "user_id": 1}]);
-  });
+    test('Call voteOnAnswer with a downvote', async () => {
+        expect(await db.voteOnAnswer(2, false));
+    });
+    test('Call getAnswers to check new score', async () => {
+        expect(await db.getAnswers(1)).toStrictEqual([{
+            id: 1,
+            score: 0,
+            text: 'leave the smoking area then..',
+            user_id: 1,
+        }]);
+    });
 });
-
 
 
 // describe('searchQuestions method', () => {
