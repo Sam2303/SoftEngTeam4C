@@ -549,7 +549,7 @@ header nav ul li a.active {
   border: 1px solid rgba(0,0,0,.1);
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0,0,0,.75);
-  margin-top: 20%;
+  margin-top: 15%;
 }
 
 #question1,
@@ -561,11 +561,15 @@ header nav ul li a.active {
   background: black;
   opacity: 60%;
   border-radius: 10px;
-  padding: 2vh;
+  padding: 4vh;
   margin: 2vh;
   text-align: center;
 }
 
+.list-questions img{
+  heigth: 1px;
+  width: auto;
+}
 
 
 /* Useful Links */
@@ -598,12 +602,10 @@ header nav ul li a.active {
   display: inline-block;
   grid-column: 1 / -1;
   grid-row: 1/ -1;
+  box-shadow: 7px 7px 5px grey;
+
 }
 
-.links-box img:hover {
-    color: red;
-    border: 10px;
-}
 
 /* Settings */
 
