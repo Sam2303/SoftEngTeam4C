@@ -1,10 +1,15 @@
+:root{
+  --white: #fff;
+}
+
+
 *
 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Patua One';
-    color: #fff;
+    color: var(--white);
 }
 body
 {
@@ -34,19 +39,19 @@ body
 header.sticky
 {
     padding: 12px 100px;
-    background: #fff;
+    background: var(--white);
 }
 header .logo
 {
     position: relative;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     font-size: 2em;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: 0.6s;
-    border-bottom: 4px solid #fff;
+    border-bottom: 4px solid var(--white);
 }
 header ul
 {
@@ -65,7 +70,7 @@ header ul li a
     position: relative;
     margin: 0 15px;
     text-decoration: none;
-    color: #fff;
+    color: var(--white);
     letter-spacing: 2px;
     font-weight: 500px;
     transition: 0.6s;
@@ -102,7 +107,7 @@ header {
   transition: 0.5s;
 }
 header .logo {
-  color: #fff;
+  color: var(--white);
   height: 50px;
   line-height: 50px;
   font-size: 24px;
@@ -122,18 +127,18 @@ header nav ul li a {
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   display: block;
   transition: 0.25s;
 }
 header nav ul li a:hover,
 header nav ul li a.active {
-  color: #fff;
+  color: var(--white);
   background: #2196f3;
 }
 .menu-toggle {
-  color: #fff;
+  color: var(--white);
   padding: 0 15px;
   float: right;
   line-height: 50px;
@@ -255,7 +260,7 @@ header nav ul li a.active {
     box-shadow: none;
     outline: none;
     border: none;
-    color: #fff;
+    color: var(--white);
     font-size: 18px;
     border-bottom: 2px solid #999;
 }
@@ -302,7 +307,7 @@ header nav ul li a.active {
     margin-top: 1vh;
     padding: 1.5vh;
     outline: none;
-    color: #fff;
+    color: var(--white);
     border-radius: 8px;
     transition: 0.25s;
     cursor:pointer;
@@ -355,7 +360,7 @@ header nav ul li a.active {
     border: 2px solid #1E90FF;
     padding: 1.5vh;
     outline: none;
-    color: #fff;
+    color: var(--white);
     border-radius: 8px;
     transition: 0.25s;
     cursor:pointer;
@@ -391,53 +396,42 @@ header nav ul li a.active {
 /* End of Login */
 /* Homepage Welcome msg and search bar */
 
-.welcome{
-    font-size: 150%;
-    text-align: center;
-    margin-top: 15%;
-}
-
-.search {
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.searchTerm {
-  width: 100%;
-  border: 3px solid #1E90FF;
-  border-right: none;
-  padding: 5px;
-  height: 50px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #f3f3f3;
-  font-size: 130%;
-}
-
-.searchTerm:focus{
-  color: black;
-}
-
-.searchButton{
-  width: 55px;
-  height: 50px;
-  border: 1px solid #00B4CC;
-  background: #1E90FF;
-  text-align: center;
+.search-box h1 {
+  margin: 0 0 10px;
+  padding: 0;
   color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
 }
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 40%;
+.search-box {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  width: 500px;
+  transform: translate(-50%, 50%);
+}
+.search-box input {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  transition: .5s;
+}
+.search-box input[type="text"] {
+  background: #fff;
+  width: 340px;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 25px;
+  border-radius: 25px 0 0 25px;
+  color: #111;
+}
+.search-box input[type="button"] {
+  position: relative;
+  border-radius: 0 25px 25px 0;
+  width: 150px;
+  height: 50px;
+  color: #111;
+  left: -5px;
 }
 
 /* Pages */
@@ -446,7 +440,8 @@ header nav ul li a.active {
   width: 80%;
   margin: 12vh auto;
 }
-.question-box {
+.question-box,
+.search-box {
     position: relative;
     top: 18vh;
     left: 50%;
@@ -484,7 +479,7 @@ header nav ul li a.active {
     box-shadow: none;
     outline: none;
     border: none;
-    color: #fff;
+    color: var(--white);
     font-size: 18px;
     border-bottom: 2px solid #999;
 }
@@ -498,7 +493,7 @@ header nav ul li a.active {
     cursor: pointer;
     background: none;
     border: 2px solid #2196f3;
-    color: #fff;
+    color: var(--white);
     margin-top: 20px;
     margin-bottom: 0;
     text-transform: uppercase;
@@ -602,12 +597,10 @@ header nav ul li a.active {
   display: inline-block;
   grid-column: 1 / -1;
   grid-row: 1/ -1;
+  box-shadow: 7px 7px 5px grey;
+
 }
 
-.links-box img:hover {
-    color: red;
-    border: 10px;
-}
 
 /* Settings */
 
@@ -659,7 +652,7 @@ input[type="checkbox"]:before {
   border-radius: 20px;
   top: 0;
   left: 0;
-  background: #fff;
+  background: var(--white);
   transform: scale(1.1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
   transition: .5s;
