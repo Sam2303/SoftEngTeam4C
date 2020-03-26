@@ -638,7 +638,7 @@ input:checked[type="checkbox"]:before {
   text-align: center;
   margin-top: 5%;
 }
-.answers p{
+#answer{
   text-align:center;
   padding: 2vh;
   padding-left: 10%;
@@ -659,53 +659,9 @@ h1 {
   font-family: sans-serif;
 }
 
-.vote {
-  border: none;
-  background: none;
-  width: 20px;
-  height: 21.5px;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+#vote{
 
-  &:active {
-    outline: none;
-    border: none;
-  }
+  right: 2%;
+  position: absolute
 
-  &:focus {
-    outline: 0;
-  }
-}
-
-.upArrow {
-  x: 0px;
-  y: 0px;
-  enable-background: new 0 0 11.5 6.4;
-  path {
-    fill: #BBBBBB;
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    margin: 0;
-  }
-}
-
-.downArrow {
-  x: 0px;
-  y: 0px;
-  enable-background: new 0 0 11.5 6.4;
-  path {
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    fill: #BBBBBB;
-  }
-}
-
-#upButton :hover {
-  fill: #6CC576;
-  cursor: pointer;
-}
-
-#downButton :hover {
-  fill: #FF586C;
-  cursor: pointer;
 }
