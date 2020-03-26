@@ -463,7 +463,7 @@ header nav ul li a.active {
 .question-box textarea:valid {
     border-bottom: 2px solid var(--blue);
 }
-.question-box input[type="submit"]:hover {
+.question-box input[type="button"]:hover {
   background-color: var(--blue);
   color: #111;
 }
