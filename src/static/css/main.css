@@ -423,7 +423,7 @@ header nav ul li a.active {
 .question-box textarea {
     margin-bottom: 20px;
 }
-.question-box input[type="submit"] {
+.question-box input[type="button"] {
     border-bottom: none;
     border-radius: 8px;
     width: 18%;
