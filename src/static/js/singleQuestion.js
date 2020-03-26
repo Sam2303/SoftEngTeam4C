@@ -1,5 +1,20 @@
 const questionId = window.location.href.split('?id=').pop();
 
+function upvote(thumb, voteText, sendToServer = true) {
+    // Hide upvote button, turn upvote text green.
+    // Set sendToServer to true to send an upvote to the server.
+
+    thumb.style.display = 'none';
+
+    const voteCount = Number(voteText.textContent);
+    voteText.textContent = voteCount + 1;
+    voteText.style.color = 'green';
+
+    if (sendToServer) {
+        // TODO: Send upvote to server.
+    }
+}
+
 window.addEventListener('load', async () => {
     if (questionId === undefined || questionId === '') {
         return;
@@ -33,13 +48,14 @@ window.addEventListener('load', async () => {
 
         const thumb = document.createElement('i');
         thumb.className = 'fa fa-thumbs-up';
-        thumb.addEventListener('click', (event) => {
-
-        });
 
         const voteText = document.createElement('p');
         voteText.id = 'vote';
         voteText.textContent = answer.score;
+
+        thumb.addEventListener('click', () => {
+            upvote(thumb, voteText);
+        });
 
         containerDiv.appendChild(text);
         containerDiv.appendChild(thumb);
@@ -47,6 +63,8 @@ window.addEventListener('load', async () => {
 
         document.body.appendChild(containerDiv);
 
+        // TODO: If user has already upvoted this answer, call upvote on the element (with
+        //  sendToServer as false).
     }
 });
 
@@ -69,39 +87,9 @@ submitAnswerBtn.addEventListener('click', async () => {
     const returned = await submit_response.json();
 
     if (returned.success === true) {
-        console.log(`Your answer has been submitted`);
+        console.log('Your answer has been submitted');
         window.location.reload();
     } else {
         console.log('There has been an error');
     }
 });
-
-// TODO:
-// function stuff() {
-//     const score = document.getElementById("scoreCounter");
-//     score.innerHTML = "0";
-//     const scoreValue = 0;
-//     checkScore();
-//
-//     function upVote() {
-//         scoreValue++;
-//         score.innerHTML = scoreValue;
-//         checkScore();
-//     }
-//
-//     function downVote() {
-//         scoreValue--;
-//         score.innerHTML = scoreValue;
-//         checkScore();
-//     }
-//
-//     function checkScore() {
-//         if (scoreValue < 0) {
-//             score.style.color = "#FF586C";
-//         } else if (scoreValue > 0) {
-//             score.style.color = "#6CC576";
-//         } else {
-//             score.style.color = "#666666";
-//         }
-//     }
-// }

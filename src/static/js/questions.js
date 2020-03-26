@@ -22,6 +22,7 @@ submit_but.addEventListener('click', async () => {
 
     if (returned.success === true) {
         console.log(`Your question has been submitted with the ID ${returned.id}`);
+        window.location.reload();
     } else {
         console.log('There has been an error');
     }
