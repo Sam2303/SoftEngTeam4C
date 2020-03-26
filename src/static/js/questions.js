@@ -32,16 +32,21 @@ submit_but.addEventListener('click', async () => {
 window.onload = async () => {
     // Search without parameter orders by date
     const response = await fetch('/api/question/search', { method: 'GET' });
-    const questions = await response.json();
+    const { questions } = await response.json();
 
-    for (const question of questions) {
+    console.log(questions);
+
+    for (let i = 0; i < 5; i++) {
         const qelement = document.createElement('div');
-        qelement.id = `question${i}`;
+        qelement.id = `question${i + 1}`;
 
         const qtitle = document.createElement('h2');
-        qtitle.textContent = "title"; // question.title;
+        qtitle.textContent = questions[i].title; // question.title;Question title
         qtitle.class = 'qtitle';
-        qtitle.href = `test`;
+
+        qelement.addEventListener('click', () => {
+            window.location.href = `/singleQuestion.html?id=${questions[i].id}`;
+        });
 
         qelement.appendChild(qtitle);
         document.getElementById('list-questions').appendChild(qelement);
