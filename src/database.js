@@ -188,7 +188,7 @@ async function getAnswers(id, userId) {
         answer
     WHERE
         question_id = ${id}
-    ORDER BY score;
+    ORDER BY score DESC;
     `);
     for (let i = 0; i < rows.length; i++) {
         rows[i].currentUserHasVoted = await userHasVoted(userId, rows[i].id);
