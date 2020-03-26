@@ -220,6 +220,7 @@ async function voteOnAnswer(answerId, upvote) {
     const { rows } = await query(`
     UPDATE answer
     SET score = (SELECT score FROM answer WHERE id = ${answerId}) + ${voteDifference}
+    WHERE id = ${answerId}
     RETURNING score;
     `);
 
