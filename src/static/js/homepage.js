@@ -1,5 +1,7 @@
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('search-text');
+const listQuestions = document.getElementById('list-questions');
+listQuestions.style.visibility = 'hidden';
 
 searchButton.addEventListener('click', async () => {
     const search = searchText.value.replace(' ', '+');
@@ -21,6 +23,7 @@ searchButton.addEventListener('click', async () => {
         });
 
         qelement.appendChild(qtitle);
-        document.getElementById('list-questions').appendChild(qelement);
+        listQuestions.appendChild(qelement);
     }
+    listQuestions.style.visibility = 'visible';
 });
