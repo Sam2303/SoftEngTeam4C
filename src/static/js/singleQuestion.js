@@ -33,6 +33,9 @@ window.addEventListener('load', async () => {
 
         const thumb = document.createElement('i');
         thumb.className = 'fa fa-thumbs-up';
+        thumb.addEventListener('click', (event) => {
+
+        });
 
         const voteText = document.createElement('p');
         voteText.id = 'vote';
