@@ -215,7 +215,7 @@ async function insertAnswer(userId, questionId, text) {
  * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
  * @returns {number} The new score.
  */
-async function voteOnAnswer(answerId, upvote) {
+async function voteOnAnswer(answerId, upvote, userId) {
     const voteDifference = upvote ? 1 : -1;
 
     const { rows } = await query(`
@@ -224,8 +224,25 @@ async function voteOnAnswer(answerId, upvote) {
     WHERE id = ${answerId}
     RETURNING score;
     `);
+    if(upvote){
+        await query(`
+        INSERT INTO user_vote(user_id, answer_id)
+        VALUES (${userId}, ${answerId});`);
+    } else {
+        await query(`
+        DELETE FROM user_vote
+        WHERE user_id = ${userId} AND answer_id = ${answerId}`);
+    }
 
     return Object.values(rows[0])[0];
+}
+
+async function userHasVoted(userId, answerId) {
+    const { rows } = await query(`
+    SELECT * FROM user_vote
+    WHERE user_id = ${userId} AND answer_id = ${answerId}`);
+
+    return rows.length !== 0;
 }
 
 /**
@@ -273,4 +290,5 @@ module.exports = {
     validQuestionId,
     voteOnAnswer,
     searchQuestions,
+    userHasVoted,
 };

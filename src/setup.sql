@@ -38,6 +38,12 @@ CREATE TABLE answer (
     question_id integer REFERENCES question (id)
 );
 
+CREATE TABLE user_vote (
+    id serial PRIMARY KEY,
+    user_id integer REFERENCES fpp_user (id),
+    answer_id integer REFERENCES answer (id)
+);
+
 -- insert test user (password is "password")
 INSERT INTO fpp_user (email, password_hash)
     VALUES ('test-email@test.ac.uk', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
