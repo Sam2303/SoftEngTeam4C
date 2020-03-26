@@ -9,16 +9,6 @@ const utils = require('./utils');
 const api = express.Router();
 
 /**
- * This sends a response with a "501 Not Implemented" message.
- * @param res - The response variable from an express route.
- */
-// eslint-disable-next-line no-unused-vars
-function notImplemented(res) {
-    res.status(501);
-    res.send('501 Not Implemented');
-}
-
-/**
  * This route is used to log a user in.
  * If the login was successful, a cookie is set on the client which is attached to all future
  * requests. This means that to "log in" all you have to do is send a request to this route with
@@ -218,12 +208,13 @@ api.put('/answer/vote', async (req, res) => {
     });
 });
 
-api.get('/answer/search', async (req, res) => {
+api.get('/question/search', async (req, res) => {
     if (req.session.loggedin !== true) {
-        await res.json({success: false});
+        await res.json({ success: false });
         return;
     }
     const { searchText } = req.query;
+
     const questionIds = await db.searchQuestions(searchText);
 
     await res.json({

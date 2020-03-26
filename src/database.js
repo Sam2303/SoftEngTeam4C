@@ -3,6 +3,7 @@
  */
 
 const { Client } = require('pg');
+const utils = require('./utils');
 
 // When writing postgres queries, use http://sqlformat.darold.net/ for readability.
 
@@ -215,7 +216,6 @@ async function insertAnswer(userId, questionId, text) {
  */
 async function voteOnAnswer(answerId, upvote) {
     const voteDifference = upvote ? 1 : -1;
-    console.log("voteDifference: ", voteDifference);
 
     const { rows } = await query(`
     UPDATE answer
@@ -223,7 +223,7 @@ async function voteOnAnswer(answerId, upvote) {
     WHERE id = ${answerId}
     RETURNING score;
     `);
-    console.log(rows);
+
     return Object.values(rows[0])[0];
 }
 
@@ -234,8 +234,7 @@ async function voteOnAnswer(answerId, upvote) {
  */
 async function searchQuestions(searchText) {
     // Textual search
-    console.log(searchText);
-    if (searchText !== '') {
+    if (utils.isTextString(searchText)) {
         const { rows } = await query(`
         SELECT x.id, x.title FROM
         (
@@ -244,10 +243,9 @@ async function searchQuestions(searchText) {
             ORDER BY similarity DESC
         ) as x;
         `);
-        console.log("Not Blank");
-        console.log(rows);
         return rows;
     }
+
     // searchText is empty string, search all by date.
     // order by date without selecting date
     const { rows } = await query(`
@@ -258,8 +256,6 @@ async function searchQuestions(searchText) {
         ORDER BY date DESC
     ) as x;
     `);
-    console.log("Blank");
-    console.log(rows);
     return rows;
 }
 
