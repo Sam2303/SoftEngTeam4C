@@ -1,6 +1,6 @@
 const questionId = window.location.href.split('?id=').pop();
 
-function upvote(thumb, voteText, sendToServer = true) {
+async function upvote(answerId, thumb, voteText, sendToServer = true) {
     // Hide upvote button, turn upvote text green.
     // Set sendToServer to true to send an upvote to the server.
 
@@ -11,7 +11,11 @@ function upvote(thumb, voteText, sendToServer = true) {
     voteText.style.color = 'green';
 
     if (sendToServer) {
-        // TODO: Send upvote to server.
+        await fetch('/api/answer/vote', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: answerId, upvote: true }),
+        });
     }
 }
 
@@ -53,8 +57,8 @@ window.addEventListener('load', async () => {
         voteText.id = 'vote';
         voteText.textContent = answer.score;
 
-        thumb.addEventListener('click', () => {
-            upvote(thumb, voteText);
+        thumb.addEventListener('click', async () => {
+            await upvote(answer.id, thumb, voteText);
         });
 
         containerDiv.appendChild(text);
@@ -63,8 +67,11 @@ window.addEventListener('load', async () => {
 
         document.body.appendChild(containerDiv);
 
-        // TODO: If user has already upvoted this answer, call upvote on the element (with
-        //  sendToServer as false).
+        // If user has already upvoted this answer, call upvote on the element
+        if (answer.currentUserHasVoted) {
+            // eslint-disable-next-line no-await-in-loop
+            await upvote(answer.id, thumb, voteText, false);
+        }
     }
 });
 
