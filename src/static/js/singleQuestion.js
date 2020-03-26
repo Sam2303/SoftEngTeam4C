@@ -49,7 +49,7 @@ window.addEventListener('load', async () => {
 
 const submitAnswerBtn = document.querySelector('#submit-answer-button');
 submitAnswerBtn.addEventListener('click', async () => {
-    const answerText = document.getElementById('answer').value;
+    const answerText = document.getElementById('answer-input').value;
     if (answerText.trim() === '') {
         return;
     }
@@ -102,4 +102,3 @@ submitAnswerBtn.addEventListener('click', async () => {
 //         }
 //     }
 // }
-
