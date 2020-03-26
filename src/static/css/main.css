@@ -397,23 +397,25 @@ header nav ul li a.active {
 /* Homepage Welcome msg and search bar */
 
 .search-box h1 {
-  margin: 0 0 10px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 20px;
   padding: 0;
-  color: #fff;
+  color: #1E90FF;
   font-size: 24px;
 }
 .search-box {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   width: 500px;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
 }
 .search-box input {
   position: relative;
   display: inline-block;
   font-size: 20px;
-  transition: .5s;
+  transition: .2s;
 }
 .search-box input[type="text"] {
   background: #fff;
@@ -430,8 +432,15 @@ header nav ul li a.active {
   border-radius: 0 25px 25px 0;
   width: 150px;
   height: 50px;
-  color: #111;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #1E90FF;
   left: -5px;
+}
+.search-box input[type="button"]:hover {
+  background-color: #0f5294;
 }
 
 /* Pages */
@@ -440,8 +449,7 @@ header nav ul li a.active {
   width: 80%;
   margin: 12vh auto;
 }
-.question-box,
-.search-box {
+.question-box {
     position: relative;
     top: 18vh;
     left: 50%;
