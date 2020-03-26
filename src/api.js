@@ -141,7 +141,7 @@ api.get('/question/answers', async (req, res) => {
         return;
     }
 
-    const answers = await db.getAnswers(qId);
+    const answers = await db.getAnswers(qId, req.session.userId);
 
     if (answers === []) {
         await res.json({ success: false });
@@ -191,23 +191,15 @@ api.post('/answer', async (req, res) => {
  * @bodyparam {boolean} upvote - vote should increment? otherwise decrement.
  */
 api.put('/answer/vote', async (req, res) => {
-    if (req.session.loggedin !== true ) {
+    if (req.session.loggedin !== true) {
         await res.json({ success: false });
         return;
     }
 
     // TODO: check that id is a valid answer id?
     const { id } = req.body;
-    const { upvote } = req.body;
     const { userId } = req.session;
-    let score;
-
-    if (db.userHasVoted(userId, id)) {
-        score = await db.voteOnAnswer(id, false, userId);
-        db.removeVote(id);
-    } else {
-        score = await db.voteOnAnswer(id, upvote, userId);
-    }
+    const score = await db.voteOnAnswer(id, userId);
     await res.json({
         success: true,
         score,

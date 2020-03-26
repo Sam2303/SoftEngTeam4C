@@ -177,7 +177,7 @@ async function validQuestionId(questionId) {
  * @param {number} id - The ID of the question with which to get the answers.
  * @returns {array} Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
  */
-async function getAnswers(id) {
+async function getAnswers(id, userId) {
     const { rows } = await query(`
     SELECT
         id,
@@ -190,8 +190,9 @@ async function getAnswers(id) {
         question_id = ${id}
     ORDER BY score;
     `);
-    // console.log(id);
-    // console.log(rows);
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].currentUserHasVoted = await userHasVoted(userId, rows[i].id);
+    }
     return rows;
 }
 
@@ -213,10 +214,11 @@ async function insertAnswer(userId, questionId, text) {
  * Change the vote for an answer
  * @param {number} answerId - The ID of the answer to change.
  * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
+ * @param {number} userId - The ID of the user.
  * @returns {number} The new score.
  */
-async function voteOnAnswer(answerId, upvote, userId) {
-    const voteDifference = upvote ? 1 : -1;
+async function voteOnAnswer(answerId, userId) {
+    const voteDifference = await userHasVoted(userId, answerId) ? 1 : -1;
 
     const { rows } = await query(`
     UPDATE answer
@@ -224,26 +226,33 @@ async function voteOnAnswer(answerId, upvote, userId) {
     WHERE id = ${answerId}
     RETURNING score;
     `);
-    if(upvote){
+
+    if (voteDifference === 1) {
         await query(`
         INSERT INTO user_vote(user_id, answer_id)
         VALUES (${userId}, ${answerId});`);
     } else {
         await query(`
         DELETE FROM user_vote
-        WHERE user_id = ${userId} AND answer_id = ${answerId}`);
+        WHERE (user_id = ${userId} AND answer_id = ${answerId});`);
     }
 
     return Object.values(rows[0])[0];
 }
 
+/**
+ * Get whether the given user has voted on the given answer
+ * @param {number} userId - The user's ID.
+ * @param {number} answerId - The ID of the answer.
+ * @returns {boolean} Has the user already voted on this answer?
+ */
 async function userHasVoted(userId, answerId) {
     const { rows } = await query(`
     SELECT * FROM user_vote
-    WHERE user_id = ${userId} AND answer_id = ${answerId}`);
-
-    return rows.length !== 0;
+    WHERE (user_id = ${userId} AND answer_id = ${answerId});`);
+    return rows !== [];
 }
+
 
 /**
  * Get question ids based on search
@@ -276,6 +285,7 @@ async function searchQuestions(searchText) {
     `);
     return rows;
 }
+
 
 module.exports = {
     connect,
