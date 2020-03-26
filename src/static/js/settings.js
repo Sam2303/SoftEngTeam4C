@@ -7,13 +7,12 @@ window.addEventListener('scroll', () => {
 
 let LDBtn = document.getElementById('lightOrDarkBtn');
 LDBtn.addEventListener('click', (event) => {
+  location.reload;
   if((event).target.checked){
       console.log('checked');
-
-      document.body.style.background = 'white';
-      
+      localStorage.setItem('LightTheme', 'true');
   }
   else{
-    location.reload();
+    localStorage.setItem('LightTheme', 'false');
   }
 });
