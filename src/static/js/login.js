@@ -2,7 +2,6 @@ const elements = document.getElementsByClassName('login-button');
 
 // for each element attach the event listener.
 Object.values(elements).forEach((element) => {
-
     element.addEventListener('click', async () => {
         // The API route
         const url = '/api/auth/login';
@@ -33,5 +32,4 @@ Object.values(elements).forEach((element) => {
             console.log('Failed to log in!');
         }
     });
-
 });
