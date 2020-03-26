@@ -29,13 +29,17 @@
     <div class="search-box">
       <h1>Welcome to Forum++</h1>
       <form>
-          <input type="text" name="" placeholder="Type...">
-          <input type="button" name="" value="Search">
+          <input id="search-text" type="text" name="" placeholder="Type...">
+          <input id="search-button" type="button" name="" value="Search">
       </form>
     </div>
   </div>
 
+  <div id="list-questions" class="row forumModule">
+  </div>
+
   <script src="../static/js/main.js"></script>
+  <script src="../static/js/homepage.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
