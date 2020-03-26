@@ -218,7 +218,7 @@ async function insertAnswer(userId, questionId, text) {
  * @returns {number} The new score.
  */
 async function voteOnAnswer(answerId, userId) {
-    const voteDifference = await userHasVoted(userId, answerId) ? 1 : -1;
+    const voteDifference = await userHasVoted(userId, answerId) ? -1 : 1;
 
     const { rows } = await query(`
     UPDATE answer
@@ -250,7 +250,7 @@ async function userHasVoted(userId, answerId) {
     const { rows } = await query(`
     SELECT * FROM user_vote
     WHERE (user_id = ${userId} AND answer_id = ${answerId});`);
-    return rows !== [];
+    return rows.length !== 0;
 }
 
 
