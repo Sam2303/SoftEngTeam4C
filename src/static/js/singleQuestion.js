@@ -34,6 +34,9 @@ window.addEventListener('load', async () => {
 const submitAnswerBtn = document.querySelector('#submit-answer-button');
 submitAnswerBtn.addEventListener('click', async () => {
     const answerText = document.getElementById('answer').value;
+    if (answerText.trim() === '') {
+        return;
+    }
 
     const data = {
         question_id: Number(questionId),
@@ -53,3 +56,34 @@ submitAnswerBtn.addEventListener('click', async () => {
         console.log('There has been an error');
     }
 });
+
+// TODO:
+// function stuff() {
+//     const score = document.getElementById("scoreCounter");
+//     score.innerHTML = "0";
+//     const scoreValue = 0;
+//     checkScore();
+//
+//     function upVote() {
+//         scoreValue++;
+//         score.innerHTML = scoreValue;
+//         checkScore();
+//     }
+//
+//     function downVote() {
+//         scoreValue--;
+//         score.innerHTML = scoreValue;
+//         checkScore();
+//     }
+//
+//     function checkScore() {
+//         if (scoreValue < 0) {
+//             score.style.color = "#FF586C";
+//         } else if (scoreValue > 0) {
+//             score.style.color = "#6CC576";
+//         } else {
+//             score.style.color = "#666666";
+//         }
+//     }
+// }
+
