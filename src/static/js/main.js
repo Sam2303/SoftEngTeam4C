@@ -6,10 +6,9 @@ window.addEventListener('scroll', () => {
 
 
 
+let searchBtn = document.getElementById('searchButton');
+searchBtn.addEventListener('click', search);
 
-window.addEventListener('click', searchButton => {
-    search();
-    });
  async function search(){
 
    const searchTerm = document.getElementById('search').value;
