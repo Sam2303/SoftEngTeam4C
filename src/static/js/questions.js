@@ -88,7 +88,7 @@ function questionLoop(){
 
 
 // whole set of functions to make the question text and answers appear and dissapear when the arrow is clicked
-window.onload = wrappedClickedArrow();
+window.onload = wrappedClickedArrow;
 
 function wrappedClickedArrow(){
 // loop so that we can show to answers to the question when the down arrow is clicked
