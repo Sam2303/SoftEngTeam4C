@@ -187,7 +187,8 @@ async function getAnswers(id) {
     FROM
         answer
     WHERE
-        question_id = ${id};
+        question_id = ${id}
+    ORDER BY score;
     `);
     // console.log(id);
     // console.log(rows);
