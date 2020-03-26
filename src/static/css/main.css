@@ -12,6 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Patua One';
     color: var(--white);
 }
 body
@@ -22,7 +23,6 @@ body
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    font-family: 'Patua One';
 }
 
 header {
@@ -628,8 +628,9 @@ input:checked[type="checkbox"]:before {
 
 .answers{
   position: relative;
+  height: 100vh;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   width: 80%;
   background: rgba(0,0,0,.4);
   padding: 2vh;
@@ -637,7 +638,7 @@ input:checked[type="checkbox"]:before {
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0,0,0,.75);
   text-align: center;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .answers p{
   text-align:center;
