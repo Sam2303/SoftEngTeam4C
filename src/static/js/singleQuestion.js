@@ -21,13 +21,29 @@ window.addEventListener('load', async () => {
     titleE.textContent = questionData.title;
     textE.textContent = questionData.text;
 
-    const answerDiv = document.querySelector('#answers');
-
     // eslint-disable-next-line no-restricted-syntax
     for (const answer of answerData.answers) {
-        const newP = document.createElement('p');
-        newP.textContent = answer.text;
-        answerDiv.appendChild(newP);
+        const containerDiv = document.createElement('div');
+        containerDiv.className = 'answers';
+        containerDiv.id = 'answers';
+
+        const text = document.createElement('p');
+        text.id = 'answer';
+        text.textContent = answer.text;
+
+        const thumb = document.createElement('i');
+        thumb.className = 'fa fa-thumbs-up';
+
+        const voteText = document.createElement('p');
+        voteText.id = 'vote';
+        voteText.textContent = answer.score;
+
+        containerDiv.appendChild(text);
+        containerDiv.appendChild(thumb);
+        containerDiv.appendChild(voteText);
+
+        document.body.appendChild(containerDiv);
+
     }
 });
 
