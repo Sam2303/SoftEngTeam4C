@@ -10,7 +10,7 @@ searchButton.addEventListener('click', async () => {
 
     for (let i = 0; i < questions.length; i++) {
         const qelement = document.createElement('div');
-        qelement.id = `question`;
+        qelement.id = `question1`;
 
         const qtitle = document.createElement('h2');
         qtitle.textContent = questions[i].title; // question.title;Question title
