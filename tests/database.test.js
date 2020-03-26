@@ -145,7 +145,7 @@ describe('insertAnswer method', () => {
 
 describe('voteOnAnswer method', () => {
     test('Call voteOnAnswer with an upvote', async () => {
-        expect(await db.voteOnAnswer(2, true));
+        expect(await db.voteOnAnswer(1, true));
     });
     test('Call getAnswers to check new score', async () => {
         expect(await db.getAnswers(1)).toStrictEqual([{
@@ -157,7 +157,7 @@ describe('voteOnAnswer method', () => {
     });
 
     test('Call voteOnAnswer with a downvote', async () => {
-        expect(await db.voteOnAnswer(2, false));
+        expect(await db.voteOnAnswer(1, false));
     });
     test('Call getAnswers to check new score', async () => {
         expect(await db.getAnswers(1)).toStrictEqual([{
@@ -170,12 +170,12 @@ describe('voteOnAnswer method', () => {
 });
 
 
-// describe('searchQuestions method', () => {
-//   test('Call searchQuestions without a value. Show all items, newest first', async () => {
-//       expect(await db.searchQuestions('')).not.toBe([]);
-//   });
-//
-//   test('Call searchQuestions with criteria in order of similarity', async () => {
-//       expect(await db.searchQuestions("I need air! I can''t breath!"));
-//   });
-// });
+describe('searchQuestions method', () => {
+  test('Call searchQuestions without a value. Show all items, newest first', async () => {
+      expect(await db.searchQuestions('')).not.toBe([]);
+  });
+
+  test('Call searchQuestions with criteria in order of similarity', async () => {
+      expect(await db.searchQuestions("I need air! I can''t breath!"));
+  });
+});
