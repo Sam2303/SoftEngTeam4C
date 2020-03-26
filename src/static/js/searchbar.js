@@ -1,4 +1,4 @@
-document.querySelector('.searchButton').addEventListener('click', async () => {
+document.querySelector('#searchButton').addEventListener('click', async () => {
     const searchTerm = document.getElementById('search').value;
     console.log(`Using searchTerm: ${searchTerm}`);
 

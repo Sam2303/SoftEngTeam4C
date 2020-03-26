@@ -1,4 +1,4 @@
-const registerElements = document.getElementsByClassName('reg-button');
+const registerElements = document.getElementsByClassName('register-button');
 
 Object.values(registerElements).forEach((element) => {
     element.addEventListener('click', async () => {
@@ -8,8 +8,8 @@ Object.values(registerElements).forEach((element) => {
         // The data we want to send
         // Credentials taken from SQL setup file
         // making variables to ge† the values in the email and password input boxes
-        const reg_email = document.body.getElementById('reg-email').value;
-        const reg_password = document.body.getElementById('reg-password').value;
+        const reg_email = document.getElementById('email').value;
+        const reg_password = document.getElementById('password').value;
         const data = {
             email: reg_email,
             password: reg_password,
@@ -26,8 +26,8 @@ Object.values(registerElements).forEach((element) => {
         // Check if it worked
         if (returned.success === true) {
             // redirect to homepage.html
-            window.location.href = 'homepage.html';
             console.log("You're registered");
+            window.location.href = 'homepage.html';
         } else {
             console.log('Failed to register');
         }
