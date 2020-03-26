@@ -52,6 +52,7 @@ const submit_but = document.getElementById('submit-button');
 
 
 
+
 // Question Loop, Fetch the questions from server, only 5 at a time
 window.onload = questionLoop();
 
@@ -76,26 +77,83 @@ function questionLoop(){
     document.getElementById('question' + i).appendChild(qtitle);
 
     let arrow = document.createElement('img');
+    arrow.id = 'arrow'+i;
     arrow.src = '../static/media/downArrow.png';
+    arrow.style = 'max-width: 2%; max-height: 2%; margin-top: 3vh;'
     document.getElementById('question'+i).appendChild(arrow);
 
   }
 }
 
 
-window.onload = questionText();
 
-// function makes the question text appear when the title is clicked
-function questionText(){
+// whole set of functions to make the question text and answers appear and dissapear when the arrow is clicked
+window.onload = wrappedClickedArrow();
 
-  for(let i = 1; i <=5; i++){
-    document.getElementById("question"+i).addEventListener("click", (event) => {
-      let qtext = document.createElement('p');
+function wrappedClickedArrow(){
+// loop so that we can show to answers to the question when the down arrow is clicked
+for(let i = 1; i <= 5; i++){
+// setting the variable for the arrow
 
-      qtext.textContent = 'question text'; // needs to be changed to actual text of questions
 
-      qtext.id = 'qtext';
-      document.getElementById('question' + i).appendChild(qtext);
-    });
+  let arrowBtn = document.getElementById('arrow' + i);
+
+// function to see what arrow is clicked and what to do when the arrow is clicked
+  function clickedArrow(){
+
+          let qtext = document.createElement('p');
+          qtext.textContent = 'question text'; // needs to be changed to actual text of questions
+          qtext.id = 'qtext';
+
+
+          let answers = document.createElement('p');
+          answers.textContent = 'Answers';
+          answers.id = 'answer' + i;
+
+
+          let arrow = document.getElementById('arrow'+i);
+          document.getElementById('question' + i).insertBefore(qtext, arrow);
+          document.getElementById('question' + i).insertBefore(answers, arrow);
+
+          let arrowDelete = document.getElementById('arrow'+i);
+          arrowDelete.parentNode.removeChild(arrowDelete);
+
+          let upArrow = document.createElement('img');
+          upArrow.id = 'upArrow' + i;
+          upArrow.src = '../static/media/upArrow.png';
+          upArrow.style = 'max-width: 2%; max-height: 2%; margin-top: 3vh;'
+          document.getElementById('question'+i).appendChild(upArrow);
+
+          clickedAgain();
+}
+// event listener to run the fucntion when the arrow is clicked
+  arrowBtn.addEventListener('click', clickedArrow);
+
+function clickedAgain(){
+
+
+  let upArrowBtn = document.getElementById('upArrow'+i);
+
+  function clickedUpArrow(){
+
+    let DqText = document.getElementById('qtext');
+    DqText.parentNode.removeChild(DqText);
+
+    let DAnswers = document.getElementById('answer'+i);
+    DAnswers.parentNode.removeChild(DAnswers);
+
+    let DUpArrow = document.getElementById('upArrow'+i);
+    DUpArrow.parentNode.removeChild(DUpArrow);
+
+    let arrow = document.createElement('img');
+    arrow.id = 'arrow'+i;
+    arrow.src = '../static/media/downArrow.png';
+    arrow.style = 'max-width: 2%; max-height: 2%; margin-top: 3vh;'
+    document.getElementById('question'+i).appendChild(arrow);
+
+    wrappedClickedArrow();
   }
+  upArrowBtn.addEventListener('click', clickedUpArrow);
+}
+}
 }
