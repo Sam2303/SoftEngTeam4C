@@ -506,11 +506,7 @@ header nav ul li a.active {
 
 /* Useful Links */
 .links-box{
-  margin-top: 10%;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 10%;
   width: 80%;
   background: rgba(255,255,255,10);
   padding: 40px;
@@ -529,7 +525,7 @@ header nav ul li a.active {
 
 .img{
   height: 100px;
-  width: auto;
+  max-width: 80%;
   margin: 1%;
   display: inline-block;
   grid-column: 1 / -1;
@@ -537,6 +533,7 @@ header nav ul li a.active {
   box-shadow: 7px 7px 5px grey;
 
 }
+
 
 
 /* Settings */
@@ -665,7 +662,7 @@ h1 {
 .vote {
   border: none;
   background: none;
-  width: 47px;
+  width: 20px;
   height: 21.5px;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
