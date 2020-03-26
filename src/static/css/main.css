@@ -628,7 +628,6 @@ input:checked[type="checkbox"]:before {
 
 .answers{
   position: relative;
-  height: 100vh;
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
