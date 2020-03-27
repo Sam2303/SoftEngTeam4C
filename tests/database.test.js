@@ -70,16 +70,17 @@ describe('getQuestion method', () => {
 
 describe('getAnswers method', () => {
     test('Call getAnswers with correct ID', async () => {
-        expect(await db.getAnswers(1)).toStrictEqual([{
+        expect(await db.getAnswers(1, 1)).toStrictEqual([{
             id: 1,
             score: 0,
             text: 'leave the smoking area then..',
             user_id: 1,
+            currentUserHasVoted: false,
         }]);
     });
 
     test('Call getAnswers with incorrect ID', async () => {
-        expect(await db.getAnswers(-1)).toStrictEqual([]);
+        expect(await db.getAnswers(-1, 1)).toStrictEqual([]);
     });
 });
 
@@ -138,7 +139,7 @@ describe('insertAnswer method', () => {
             'Have you tried turning it off and on again?'));
     });
     test('Call getAnswers with newly inserted answer', async () => {
-        expect(await db.getAnswers(2)).not.toBe([]);
+        expect(await db.getAnswers(2, 2)).not.toBe([]);
     });
 });
 
