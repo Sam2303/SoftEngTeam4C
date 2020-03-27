@@ -72,10 +72,10 @@ describe('getAnswers method', () => {
     test('Call getAnswers with correct ID', async () => {
         expect(await db.getAnswers(1, 1)).toStrictEqual([{
             id: 1,
-            score: 0,
+            score: 1,
             text: 'leave the smoking area then..',
             user_id: 1,
-            currentUserHasVoted: false,
+            currentUserHasVoted: true,
         }]);
     });
 
@@ -145,27 +145,29 @@ describe('insertAnswer method', () => {
 
 
 describe('voteOnAnswer method', () => {
-    test('Call voteOnAnswer with an upvote', async () => {
-        expect(await db.voteOnAnswer(1, true));
-    });
-    test('Call getAnswers to check new score', async () => {
-        expect(await db.getAnswers(1)).toStrictEqual([{
-            id: 1,
-            score: 1,
-            text: 'leave the smoking area then..',
-            user_id: 1,
-        }]);
-    });
-
     test('Call voteOnAnswer with a downvote', async () => {
-        expect(await db.voteOnAnswer(1, false));
+        expect(await db.voteOnAnswer(1, 1));
     });
     test('Call getAnswers to check new score', async () => {
-        expect(await db.getAnswers(1)).toStrictEqual([{
+        expect(await db.getAnswers(1, 1)).toStrictEqual([{
             id: 1,
             score: 0,
             text: 'leave the smoking area then..',
             user_id: 1,
+            currentUserHasVoted: false,
+        }]);
+    });
+
+    test('Call voteOnAnswer with an upvote', async () => {
+        expect(await db.voteOnAnswer(1, 1));
+    });
+    test('Call getAnswers to check new score', async () => {
+        expect(await db.getAnswers(1, 1)).toStrictEqual([{
+            id: 1,
+            score: 1,
+            text: 'leave the smoking area then..',
+            user_id: 1,
+            currentUserHasVoted: true,
         }]);
     });
 });
