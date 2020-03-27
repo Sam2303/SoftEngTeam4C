@@ -37,7 +37,7 @@ window.onload = async () => {
 
     console.log(questions);
 
-    for (let i = 0; i < questions.length % 5; i++) {
+    for (let i = 0; i < questions.length - (questions.length % 5); i++) {
         const qelement = document.createElement('div');
         qelement.id = `question${i + 1}`;
 
