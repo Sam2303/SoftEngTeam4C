@@ -10,6 +10,6 @@ before_script:
   - npm install
   - psql -f src/setup.sql
 script:
-- npm run test
+- npm test
 notifications:
   email: false
