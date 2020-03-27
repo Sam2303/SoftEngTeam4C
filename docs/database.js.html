@@ -31,6 +31,7 @@
  */
 
 const { Client } = require('pg');
+const utils = require('./utils');
 
 // When writing postgres queries, use http://sqlformat.darold.net/ for readability.
 
@@ -150,7 +151,6 @@ async function insertQuestion(userId, questionText, questionTitle) {
          RETURNING
             id;
     `);
-
     const [{ id }] = rows;
     return id;
 }
@@ -174,45 +174,12 @@ async function getQuestion(id) {
 
     if (rows.length === 0) {
         return [];
+        // return -1;
     }
 
     const [{ title, text, date }] = rows;
     return [title, text, date];
-}
-
-/**
- * Get info for a specific question.
- * @param {number} id - The ID of the question with which to get the answers.
- * @returns {array} Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
- */
-async function getAnswers(id) {
-    const { rows } = await query(`
-    SELECT
-        id,
-        text,
-        score,
-        user_id
-    FROM
-        answer
-    WHERE
-        question_id = ${id};
-    `);
-
-    return rows;
-}
-
-/**
- * Insert an answer for a question.
- * @param {number} userId - The ID of the user that is submitting this answer.
- * @param {number} questionId - The ID of the question that the answer is answering.
- * @param {string} text - The text of the answer.
- * @returns {undefined} Nothing.
- */
-async function insertAnswer(userId, questionId, text) {
-    await query(`
-        INSERT INTO answer (text, user_id, question_id)
-            VALUES ('${text}', ${userId}, ${questionId});
-    `);
+    // return 1;
 }
 
 /**
@@ -233,6 +200,121 @@ async function validQuestionId(questionId) {
     return rows.length !== 0;
 }
 
+/**
+ * Get info for a specific question.
+ * @param {number} id - The ID of the question with which to get the answers.
+ * @returns {array} Array of Objects in the form {id: , text: , score: , user_id: }. If the query fails, the Objects are undefined.
+ */
+async function getAnswers(id, userId) {
+    const { rows } = await query(`
+    SELECT
+        id,
+        text,
+        score,
+        user_id
+    FROM
+        answer
+    WHERE
+        question_id = ${id}
+    ORDER BY score DESC;
+    `);
+    for (let i = 0; i &lt; rows.length; i++) {
+        rows[i].currentUserHasVoted = await userHasVoted(userId, rows[i].id);
+    }
+    return rows;
+}
+
+/**
+ * Insert an answer for a question.
+ * @param {number} userId - The ID of the user that is submitting this answer.
+ * @param {number} questionId - The ID of the question that the answer is answering.
+ * @param {string} text - The text of the answer.
+ * @returns {undefined} Nothing.
+ */
+async function insertAnswer(userId, questionId, text) {
+    await query(`
+        INSERT INTO answer (text, user_id, question_id)
+            VALUES ('${text}', ${userId}, ${questionId});
+    `);
+}
+
+/**
+ * Change the vote for an answer
+ * @param {number} answerId - The ID of the answer to change.
+ * @param {boolean} upvote - If true, the vote will +1, if false, the vote will -1.
+ * @param {number} userId - The ID of the user.
+ * @returns {number} The new score.
+ */
+async function voteOnAnswer(answerId, userId) {
+    const voteDifference = await userHasVoted(userId, answerId) ? -1 : 1;
+
+    const { rows } = await query(`
+    UPDATE answer
+    SET score = (SELECT score FROM answer WHERE id = ${answerId}) + ${voteDifference}
+    WHERE id = ${answerId}
+    RETURNING score;
+    `);
+
+    if (voteDifference === 1) {
+        await query(`
+        INSERT INTO user_vote(user_id, answer_id)
+        VALUES (${userId}, ${answerId});`);
+    } else {
+        await query(`
+        DELETE FROM user_vote
+        WHERE (user_id = ${userId} AND answer_id = ${answerId});`);
+    }
+
+    return Object.values(rows[0])[0];
+}
+
+/**
+ * Get whether the given user has voted on the given answer
+ * @param {number} userId - The user's ID.
+ * @param {number} answerId - The ID of the answer.
+ * @returns {boolean} Has the user already voted on this answer?
+ */
+async function userHasVoted(userId, answerId) {
+    const { rows } = await query(`
+    SELECT * FROM user_vote
+    WHERE (user_id = ${userId} AND answer_id = ${answerId});`);
+    return rows.length !== 0;
+}
+
+
+/**
+ * Get question ids based on search
+ * @param {string} searchText - The text to search against.
+ * @returns array of objects with id and title properties
+ */
+async function searchQuestions(searchText) {
+    // Textual search
+    if (utils.isTextString(searchText)) {
+        const { rows } = await query(`
+        SELECT x.id, x.title FROM
+        (
+            SELECT similarity(title, '${searchText}') AS similarity, id, title
+            FROM question
+            ORDER BY similarity DESC
+        ) as x;
+        `);
+        return rows;
+    }
+
+    // searchText is empty string, search all by date.
+    // order by date without selecting date
+    const { rows } = await query(`
+    SELECT x.id, x.title FROM
+    (
+        SELECT id, title, date
+        FROM question
+        ORDER BY date DESC
+    ) as x;
+    `);
+    return rows;
+}
+
+
 module.exports = {
     connect,
     disconnect,
@@ -244,6 +326,9 @@ module.exports = {
     getAnswers,
     insertAnswer,
     validQuestionId,
+    voteOnAnswer,
+    searchQuestions,
+    userHasVoted,
 };
 </code></pre>
         </article>
@@ -261,7 +346,7 @@ module.exports = {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Mar 09 2020 03:15:52 GMT+0000 (Greenwich Mean Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 11:31:28 GMT+0000 (GMT)
 </footer>
 
 <script> prettyPrint(); </script>

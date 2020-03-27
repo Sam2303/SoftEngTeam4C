@@ -138,42 +138,13 @@
 
         
             
-<h4 class="name" id="Getanswers"><span class="type-signature">(route) </span>Get answers<span class="type-signature"></span></h4>
+<h4 class="name" id="~Getanswers"><span class="type-signature">(inner) </span>Get answers<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/question/answers</td>
-                            </tr>
-                            </table>
-                            Get array of answers for a specific question
-                          <h5>Authentication</h5>
-                          <p>This route requires the user to be logged in and have a valid cookie.</p>
-                            <h5>Query Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">id</td>
-            <td class="type">number</td>
-            
-            
-            <td class="description last">The question id.</td>
-          </tr>
-          </table>
+    Get array of answers for a specific question
 </div>
 
 
@@ -211,7 +182,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line138">line 138</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line128">line 128</a>
     </li></ul></dd>
     
 
@@ -229,42 +200,13 @@
 
         
             
-<h4 class="name" id="Getquestion"><span class="type-signature">(route) </span>Get question<span class="type-signature"></span></h4>
+<h4 class="name" id="~Getquestion"><span class="type-signature">(inner) </span>Get question<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/question</td>
-                            </tr>
-                            </table>
-                            Get a questions details
-                          <h5>Authentication</h5>
-                          <p>This route requires the user to be logged in and have a valid cookie.</p>
-                            <h5>Query Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">id</td>
-            <td class="type">number</td>
-            
-            
-            <td class="description last">The question id.</td>
-          </tr>
-          </table>
+    Get a questions details
 </div>
 
 
@@ -302,7 +244,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line104">line 104</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -320,21 +262,13 @@
 
         
             
-<h4 class="name" id="LogIn"><span class="type-signature">(route) </span>Log In<span class="type-signature"></span></h4>
+<h4 class="name" id="~LogIn"><span class="type-signature">(inner) </span>Log In<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">POST</td>
-                            <td class="name last">/auth/login</td>
-                            </tr>
-                            </table>
-                            This route is used to log a user in.
+    This route is used to log a user in.
 If the login was successful, a cookie is set on the client which is attached to all future
 requests. This means that to "log in" all you have to do is send a request to this route with
 the correct details, and everything else will happen automatically.
@@ -375,7 +309,7 @@ the correct details, and everything else will happen automatically.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line21">line 21</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -393,21 +327,13 @@ the correct details, and everything else will happen automatically.
 
         
             
-<h4 class="name" id="Register"><span class="type-signature">(route) </span>Register<span class="type-signature"></span></h4>
+<h4 class="name" id="~Register"><span class="type-signature">(inner) </span>Register<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">POST</td>
-                            <td class="name last">/auth/register</td>
-                            </tr>
-                            </table>
-                            This route is used to register a new user.
+    This route is used to register a new user.
 For the request to be valid, the email must be not already in the database, otherwise the
 request will return {success: false}.
 </div>
@@ -447,7 +373,7 @@ request will return {success: false}.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line50">line 50</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -465,48 +391,13 @@ request will return {success: false}.
 
         
             
-<h4 class="name" id="Submitanswer"><span class="type-signature">(route) </span>Submit answer<span class="type-signature"></span></h4>
+<h4 class="name" id="~Submitanswer"><span class="type-signature">(inner) </span>Submit answer<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">POST</td>
-                            <td class="name last">/answer</td>
-                            </tr>
-                            </table>
-                            Submit an answer for a question.
-                          <h5>Authentication</h5>
-                          <p>This route requires the user to be logged in and have a valid cookie.</p>
-                            <h5>Body Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">question_id</td>
-            <td class="type">number</td>
-            
-            
-            <td class="description last">The ID of the question being answered.</td>
-          </tr><tr>
-            <td class="name">text</td>
-            <td class="type">string</td>
-            
-            
-            <td class="description last">The answers text.</td>
-          </tr>
-          </table>
+    Submit an answer for a question.
 </div>
 
 
@@ -544,7 +435,7 @@ request will return {success: false}.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line166">line 166</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line156">line 156</a>
     </li></ul></dd>
     
 
@@ -562,48 +453,13 @@ request will return {success: false}.
 
         
             
-<h4 class="name" id="Submitquestion"><span class="type-signature">(route) </span>Submit question<span class="type-signature"></span></h4>
+<h4 class="name" id="~Submitanswer"><span class="type-signature">(inner) </span>Submit answer<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">POST</td>
-                            <td class="name last">/question</td>
-                            </tr>
-                            </table>
-                            undefined
-                          <h5>Authentication</h5>
-                          <p>This route requires the user to be logged in and have a valid cookie.</p>
-                            <h5>Body Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">text</td>
-            <td class="type">string</td>
-            
-            
-            <td class="description last">The questions text.</td>
-          </tr><tr>
-            <td class="name">title</td>
-            <td class="type">string</td>
-            
-            
-            <td class="description last">The questions title.</td>
-          </tr>
-          </table>
+    Upvote or Downvote an answer to a question
 </div>
 
 
@@ -641,7 +497,7 @@ request will return {success: false}.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line80">line 80</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line185">line 185</a>
     </li></ul></dd>
     
 
@@ -658,78 +514,12 @@ request will return {success: false}.
 
 
         
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
             
-
-    
-
-    
-    <h4 class="name" id="~notImplemented"><span class="type-signature">(inner) </span>notImplemented<span class="signature">(res)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    This sends a response with a "501 Not Implemented" message.
-</div>
+<h4 class="name" id="~Submitquestion"><span class="type-signature">(inner) </span>Submit question<span class="type-signature"></span></h4>
 
 
 
 
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The response variable from an express route.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -765,7 +555,7 @@ request will return {success: false}.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line16">line 16</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -781,21 +571,9 @@ request will return {success: false}.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
+    
+
     
 
     
@@ -817,7 +595,7 @@ request will return {success: false}.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Mar 09 2020 03:15:52 GMT+0000 (Greenwich Mean Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 11:31:28 GMT+0000 (GMT)
 </footer>
 
 <script> prettyPrint(); </script>
