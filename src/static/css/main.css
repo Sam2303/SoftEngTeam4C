@@ -372,6 +372,28 @@ header nav ul li a.active {
   background-color: #0f5294;
 }
 
+@media screen and (max-width: 600px) {
+  .search-box input {
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .search-box input[type="text"] {
+    border-radius: 25px;
+  }
+  .search-box input[type="button"] {
+    border-radius: 25px;
+    margin-top: 1vh;
+  }
+  .search-box input[type="text"],
+  .search-box input[type="button"] {
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+}
+
 /* Pages */
 
 .mainbody {
@@ -468,6 +490,18 @@ header nav ul li a.active {
   color: #111;
 }
 
+@media screen and (max-width: 600px) {
+  .question-box {
+    margin-top: 20vh;
+  }
+  .question-box input[type="button"] {
+    position: relative;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 /* Questions */
 
 #list-questions{
@@ -508,7 +542,7 @@ header nav ul li a.active {
 .links-box{
   margin: 10%;
   width: 80%;
-  background: rgba(255,255,255,10);
+  background: rgba(255,255,255,.2);
   padding: 40px;
   border: 1px solid rgba(0,0,0,.1);
   border-radius: 8px;
@@ -524,16 +558,27 @@ header nav ul li a.active {
 }
 
 .img{
+  position: relative;
   height: 100px;
   max-width: 80%;
   margin: 1%;
   display: inline-block;
   grid-column: 1 / -1;
   grid-row: 1/ -1;
-  box-shadow: 7px 7px 5px grey;
+  /* box-shadow: 7px 7px 5px grey; */
 
 }
-
+@media screen and (max-width: 600px) {
+  .links-box {
+    margin-top: 15vh;
+  }
+  .img {
+    margin-top: 2vh;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 
 
 /* Settings */
@@ -595,7 +640,17 @@ input:checked[type="checkbox"]:before {
   left: 40px;
 }
 
-
+@media screen and (max-width: 1250px) {
+  .settings-box {
+    margin-top: 25vh;
+  }
+  .center {
+    margin-top: 1vh;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 
 /* single question page */
 .question{
