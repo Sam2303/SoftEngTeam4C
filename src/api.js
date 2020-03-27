@@ -206,6 +206,13 @@ api.put('/answer/vote', async (req, res) => {
     });
 });
 
+/**
+ * Search for a list of questions
+ * @name Search questions
+ * @route {GET} /question/search
+ * @authentication This route requires the user to be logged in and have a valid cookie.
+ * @queryparam {string} searchText - The text to search for. If left blank, a date search is performed.
+ */
 api.get('/question/search', async (req, res) => {
     if (req.session.loggedin !== true) {
         await res.json({ success: false });

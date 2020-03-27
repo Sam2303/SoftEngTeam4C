@@ -4,12 +4,7 @@ window.addEventListener('scroll', () => {
         .classList.toggle('sticky', window.scrollY > 0);
 });
 
-
-let light = localStorage.getItem('LightTheme');
-if(light === 'true'){
+const light = localStorage.getItem('LightTheme');
+if (light === 'true') {
   document.body.style.background = 'white';
-
-}
-else if(light === 'false'){
-
 }
