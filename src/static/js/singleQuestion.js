@@ -1,3 +1,4 @@
+// Grab the question ID from the current URL, e.g. /singleQuestion.html?id=1
 const questionId = window.location.href.split('?id=').pop();
 
 async function upvote(answerId, thumb, voteText, sendToServer = true) {
@@ -10,6 +11,7 @@ async function upvote(answerId, thumb, voteText, sendToServer = true) {
     voteText.style.color = 'green';
 
     if (sendToServer) {
+        // Only update the local count if we are also updating the server count
         voteText.textContent = voteCount + 1;
 
         await fetch('/api/answer/vote', {
@@ -22,6 +24,7 @@ async function upvote(answerId, thumb, voteText, sendToServer = true) {
 
 window.addEventListener('load', async () => {
     if (questionId === undefined || questionId === '') {
+        // No ID found
         return;
     }
 
@@ -32,6 +35,7 @@ window.addEventListener('load', async () => {
     const answerData = await aResponse.json();
 
     if (questionData.success === false || answerData.success === false) {
+        // Don't do anything if either of the requests failed
         return;
     }
 
