@@ -4,7 +4,7 @@ GitHub Username|Name|UP Number
 -|-|-
 Harry-Martin|Harry Martin|UP896106
 psidex|Simon Jenner|UP897821
-Sam200080|Sam Parsons|UP889823
+Sam2303|Sam Parsons|UP889823
 SammyJC|Sam Clifton|UP880264
 Bancsii|Daniel McKenna|UP846201
 romelblair|Romel Blair|UP811440
